@@ -5,6 +5,7 @@
 #include <opencv2/imgproc.hpp>
 #include <array>
 #include <vector>
+#include <filesystem>
 
 int main(int argc, char **argv) {
 
@@ -12,7 +13,7 @@ int main(int argc, char **argv) {
     (void)argv;
 
     std::vector<cv::String> fileNames;
-    cv::glob("/home/alex/projects/calibration/images/*.png", fileNames, false);
+    cv::glob("../Calibration/images/*.png", fileNames, false);
     cv::Size patternSize(10 - 1, 7 - 1);
     std::vector<std::vector<cv::Point2f>> q(fileNames.size());
 
