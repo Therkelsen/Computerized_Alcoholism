@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="machineVision"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\Qt5.12.11\;CMake Files\..\..\..\Qt5.12.11\Tools\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\share\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\share\qtcreator\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\share\qtcreator\package-manager\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="machineVision">
+				<Option output="/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/machineVision" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/pylon/include"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 machineVision"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="machineVision/fast">
+				<Option output="/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/machineVision" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/pylon/include"/>
+					<Add directory="/usr/local/include/opencv4"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 machineVision/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alex/Computerized_Alcoholism/MachineVision/build-machineVision-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/main.cpp">
+			<Option target="machineVision"/>
+		</Unit>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/FindPylon.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/../../../Qt5.12.11/Tools/QtCreator/share/qtcreator/package-manager/auto-setup.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\share\qtcreator\package-manager\"/>
+		</Unit>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/../../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/home/alex/Computerized_Alcoholism/MachineVision/machineVision/../../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
