@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
 
     (void)argc;
     (void)argv;
-
+    // prutte prutte prut
     std::vector<cv::String> fileNames;
     cv::glob("../calibration/images/*.png", fileNames, false);
     cv::Size patternSize(10 - 1, 7 - 1);

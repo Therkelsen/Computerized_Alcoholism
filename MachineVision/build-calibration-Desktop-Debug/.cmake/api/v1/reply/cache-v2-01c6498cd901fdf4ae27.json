@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug"
+			"value" : "/home/host/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-j12"
+			"value" : "-j2"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/calibration"
+			"value" : "/home/host/Computerized_Alcoholism/MachineVision/calibration"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1143,7 +1143,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "/usr/lib/x86_64-linux-gnu/qt5/bin/qmake"
+			"value" : "/usr/lib/qt5/bin/qmake"
 		},
 		{
 			"name" : "calibration_BINARY_DIR",
@@ -1155,7 +1155,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug"
+			"value" : "/home/host/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug"
 		},
 		{
 			"name" : "calibration_SOURCE_DIR",
@@ -1167,7 +1167,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/calibration"
+			"value" : "/home/host/Computerized_Alcoholism/MachineVision/calibration"
 		}
 	],
 	"kind" : "cache",

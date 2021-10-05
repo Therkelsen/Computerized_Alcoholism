@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug",
-		"source" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/calibration"
+		"build" : "/home/host/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug",
+		"source" : "/home/host/Computerized_Alcoholism/MachineVision/calibration"
 	},
 	"version" : 
 	{

@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug/CMakeFiles/3.16.3/CMakeSystem.cmake"
+			"path" : "/home/host/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug/CMakeFiles/3.16.3/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -240,7 +240,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
+			"path" : "/home/host/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -384,7 +384,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
+			"path" : "/home/host/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isExternal" : true,
@@ -416,8 +416,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug",
-		"source" : "/home/therkelsen/Computerized_Alcoholism/MachineVision/calibration"
+		"build" : "/home/host/Computerized_Alcoholism/MachineVision/build-calibration-Desktop-Debug",
+		"source" : "/home/host/Computerized_Alcoholism/MachineVision/calibration"
 	},
 	"version" : 
 	{

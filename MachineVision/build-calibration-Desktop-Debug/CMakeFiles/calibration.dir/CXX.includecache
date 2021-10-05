@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/therkelsen/Computerized_Alcoholism/MachineVision/calibration/main.cpp
+/home/host/Computerized_Alcoholism/MachineVision/calibration/main.cpp
 iostream
 -
 opencv2/calib3d.hpp
@@ -20,8 +20,6 @@ opencv2/imgproc.hpp
 array
 -
 vector
--
-filesystem
 -
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
