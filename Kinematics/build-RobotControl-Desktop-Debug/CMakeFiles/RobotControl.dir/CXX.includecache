@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/therkelsen/Computerized_Alcoholism/Kinematics/RobotControl/main.cpp
+iostream
+-
+ur_rtde/rtde_control_interface.h
+-
+ur_rtde/rtde_receive_interface.h
+-
+ur_rtde/rtde_io_interface.h
+-
+ur_rtde/rtde.h
+-
+ur_rtde/script_client.h
+-
+ur_rtde/dashboard_client.h
+-
+ur_rtde/robotiq_gripper.h
+-
+

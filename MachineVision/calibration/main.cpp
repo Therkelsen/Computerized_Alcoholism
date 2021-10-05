@@ -5,13 +5,11 @@
 #include <opencv2/imgproc.hpp>
 #include <array>
 #include <vector>
-#include <filesystem>
 
 int main(int argc, char **argv) {
 
     (void)argc;
     (void)argv;
-    std::cout << "test1234" << std::endl;
 
     std::vector<cv::String> fileNames;
     cv::glob("../calibration/images/*.png", fileNames, false);
@@ -79,8 +77,8 @@ int main(int argc, char **argv) {
     cv::Mat mapX, mapY;
     cv::initUndistortRectifyMap(K, k, cv::Matx33f::eye(), K, frameSize, CV_32FC1,
                                 mapX, mapY);
-    std::cout << mapX << std::endl;
-    std::cout << mapY << std::endl;
+    //std::cout << mapX << std::endl;
+    //std::cout << mapY << std::endl;
     // Show lens corrected images
     for (auto const &f : fileNames) {
         std::cout << std::string(f) << std::endl;

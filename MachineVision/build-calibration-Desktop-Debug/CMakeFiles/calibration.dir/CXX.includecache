@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/alex/Computerized_Alcoholism/MachineVision/calibration/main.cpp
+/home/therkelsen/Computerized_Alcoholism/MachineVision/calibration/main.cpp
 iostream
 -
 opencv2/calib3d.hpp
@@ -35,8 +35,6 @@ opencv2/core/affine.hpp
 /usr/local/include/opencv4/opencv2/core.hpp
 opencv2/core/cvdef.h
 /usr/local/include/opencv4/opencv2/opencv2/core/cvdef.h
-opencv2/core/version.hpp
-/usr/local/include/opencv4/opencv2/opencv2/core/version.hpp
 opencv2/core/base.hpp
 /usr/local/include/opencv4/opencv2/opencv2/core/base.hpp
 opencv2/core/cvstd.hpp
@@ -125,6 +123,8 @@ arm_neon.h
 -
 arm_neon.h
 -
+riscv-vector.h
+-
 arm_neon.h
 -
 altivec.h
@@ -132,6 +132,8 @@ altivec.h
 hal/msa_macros.h
 /usr/local/include/opencv4/opencv2/core/hal/msa_macros.h
 wasm_simd128.h
+-
+riscv_vector.h
 -
 emmintrin.h
 -
@@ -143,10 +145,14 @@ arm_neon.h
 -
 altivec.h
 -
+immintrin.h
+-
 
 /usr/local/include/opencv4/opencv2/core/cv_cpu_helper.h
 
 /usr/local/include/opencv4/opencv2/core/cvdef.h
+opencv2/core/version.hpp
+/usr/local/include/opencv4/opencv2/core/opencv2/core/version.hpp
 cvconfig.h
 /usr/local/include/opencv4/opencv2/core/cvconfig.h
 limits
@@ -339,8 +345,6 @@ opencv2/core/utils/tls.hpp
 -
 
 /usr/local/include/opencv4/opencv2/core/utils/tls.hpp
-opencv2/core/utility.hpp
--
 
 /usr/local/include/opencv4/opencv2/core/version.hpp
 
@@ -385,6 +389,12 @@ opencv2/core.hpp
 /usr/local/include/opencv4/opencv2/imgproc.hpp
 opencv2/core.hpp
 /usr/local/include/opencv4/opencv2/opencv2/core.hpp
+./imgproc/segmentation.hpp
+/usr/local/include/opencv4/opencv2/imgproc/segmentation.hpp
+
+/usr/local/include/opencv4/opencv2/imgproc/segmentation.hpp
+opencv2/imgproc.hpp
+/usr/local/include/opencv4/opencv2/imgproc/opencv2/imgproc.hpp
 
 /usr/local/include/opencv4/opencv2/opencv_modules.hpp
 
