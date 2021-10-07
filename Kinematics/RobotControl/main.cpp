@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <ur_rtde/rtde_control_interface.h>
 #include <ur_rtde/rtde_receive_interface.h>
 #include <ur_rtde/rtde_io_interface.h>
@@ -17,27 +18,40 @@ int main() {
 
   try {
     // Connect to the robot socket
-
+    cout << boolalpha;
     cout << "UR_RTDE: Attempting connection to robot socket at " << ip << " " << endl;
     ur_rtde::RTDEControlInterface rtde_control(ip);
 
-    cout << "UR_RTDE: Connected to robot socket at " << ip << " " << endl;
+    cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
     double rad = M_PI/180;
 
     // Send robot to base position
     // (const std::vector<double> &q, double speed = 1.05, double acceleration = 1.4, bool async = false)
-    std::vector<double> jPose{-90*rad,-90*rad,-135*rad,0*rad,90*rad,0*rad};
+    std::vector<double> jPose{-90,-90,-135,0,90,0};
 
     double speed = 1;
     double accel = 1;
     bool async = false;
 
-    cout << "UR_RTDE: Sending joint pose (" << jPose.at(0) << "," << jPose.at(1) << ","  << jPose.at(2) << ","  << jPose.at(3) << ","  << jPose.at(4) << ","  << jPose.at(5) << ") to Robot using moveJ" << endl;
-    rtde_control.moveJ(jPose, speed, accel, async);
+    cout << "UR_RTDE: Sending joint pose to Robot using moveJ" << endl;
+    cout << "         Joint parameters [rad]: (";
+
+    for (int i = 0; i < jPose.size(); i++) {
+      jPose[i] = jPose.at(i) * rad;
+      if (i < jPose.size()-1) {
+        cout << jPose.at(i) << ", ";
+      } else {
+        cout << jPose.at(i) << ")" << endl;
+      }
+    }
+
+    cout << "         Speed [unit]: " << speed << "\n         Acceleration [unit]: " << accel << "\n         Async: " << async << "\n" <<endl;
+
+    //rtde_control.moveJ(jPose, speed, accel, async);
 
   } catch (const runtime_error& error) {
-    cout << "UR_RTDE: Failed connecting to robot socket at " << ip << " " << endl;
+    cout << "UR_RTDE: Failed connecting to robot socket at " << ip << "\n" << endl;
     cout << "System : Exiting" << endl;
     return -1;
   }

@@ -9,6 +9,8 @@
 /home/therkelsen/Computerized_Alcoholism/Kinematics/RobotControl/main.cpp
 iostream
 -
+iomanip
+-
 ur_rtde/rtde_control_interface.h
 -
 ur_rtde/rtde_receive_interface.h
