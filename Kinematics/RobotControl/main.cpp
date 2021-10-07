@@ -17,21 +17,26 @@ int main() {
 
   try {
     // Connect to the robot socket
+
     cout << "UR_RTDE: Attempting connection to robot socket at " << ip << " " << endl;
     ur_rtde::RTDEControlInterface rtde_control(ip);
 
     cout << "UR_RTDE: Connected to robot socket at " << ip << " " << endl;
 
+    double rad = M_PI/180;
+
     // Send robot to base position
     // (const std::vector<double> &q, double speed = 1.05, double acceleration = 1.4, bool async = false)
-    std::vector<double> jPose{-90,-90,-135,0,90,0};
+    std::vector<double> jPose{-90*rad,-90*rad,-135*rad,0*rad,90*rad,0*rad};
+
     double speed = 1;
     double accel = 1;
     bool async = false;
-    rtde_control.moveJ_IK(jPose, speed, accel, async);
 
-  }
-  catch (const runtime_error& error) {
+    cout << "UR_RTDE: Sending joint pose (" << jPose.at(0) << "," << jPose.at(1) << ","  << jPose.at(2) << ","  << jPose.at(3) << ","  << jPose.at(4) << ","  << jPose.at(5) << ") to Robot using moveJ" << endl;
+    rtde_control.moveJ(jPose, speed, accel, async);
+
+  } catch (const runtime_error& error) {
     cout << "UR_RTDE: Failed connecting to robot socket at " << ip << " " << endl;
     cout << "System : Exiting" << endl;
     return -1;
