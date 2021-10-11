@@ -1,3 +1,11 @@
+
+/* 
+*  Implementation of ur_rtde library @ https://sdurobotics.gitlab.io/ur_rtde/index.html
+*  Created October 4th, 2021
+*  Authored by Thomas Therkelsen @
+*/ 
+
+
 #include <iostream>
 #include <iomanip>
 #include <ur_rtde/rtde_control_interface.h>
