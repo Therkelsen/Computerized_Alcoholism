@@ -5,7 +5,6 @@
 *  Authored by Thomas Therkelsen @
 */ 
 
-
 #include <iostream>
 #include <iomanip>
 #include <ur_rtde/rtde_control_interface.h>
