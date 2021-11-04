@@ -6,13 +6,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(ur_rtde REQUIRED)
-add_executable(Controller main.cpp)
+add_executable(Controller main.cpp robotcontroller.cpp robotcontroller.h)
 target_link_libraries(Controller PRIVATE ur_rtde::rtde)
 
-set(project_sources
-    main.cpp
-    )
-
-add_executable(${PROJECT_NAME}
-    ${project_sources}
-)

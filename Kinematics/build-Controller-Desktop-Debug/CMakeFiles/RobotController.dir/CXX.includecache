@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp
+robotcontroller.h
+/home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.h
+
+/home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.h
+

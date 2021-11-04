@@ -19,9 +19,9 @@ using namespace std;
 
 int main() {
   // Create strings to contain ip adresses
-  const std::string ipPhysical = "192.168.100.49";
-  const std::string ipSimulator = "127.0.0.1";
-  std::string ip = ipSimulator;
+  const string ipPhysical = "192.168.100.49";
+  const string ipSimulator = "127.0.0.1";
+  string ip = ipSimulator;
 
   try {
     // Connect to the robot socket
@@ -56,6 +56,11 @@ int main() {
     cout << "         Speed [unit]: " << speed << "\n         Acceleration [unit]: " << accel << "\n         Async: " << async << "\n" <<endl;
 
     //rtde_control.moveJ(jPose, speed, accel, async);
+
+    std::vector<double> startingPoint{182.90, -288.56, 427.56, 1.576, 2.378, -0.256};
+
+    rtde_control.moveL(startingPoint, speed, accel, async);
+
 
   } catch (const runtime_error& error) {
     cout << "UR_RTDE: Failed connecting to robot socket at " << ip << "\n" << endl;
