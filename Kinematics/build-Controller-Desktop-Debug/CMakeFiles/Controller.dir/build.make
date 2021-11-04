@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/Computerized_Alcoholism/Kinematics/Controller
+CMAKE_SOURCE_DIR = /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug
+CMAKE_BINARY_DIR = /home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Controller.dir/depend.make
@@ -58,30 +58,30 @@ include CMakeFiles/Controller.dir/progress.make
 include CMakeFiles/Controller.dir/flags.make
 
 CMakeFiles/Controller.dir/main.cpp.o: CMakeFiles/Controller.dir/flags.make
-CMakeFiles/Controller.dir/main.cpp.o: /home/victoria/Computerized_Alcoholism/Kinematics/Controller/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Controller.dir/main.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/main.cpp.o -c /home/victoria/Computerized_Alcoholism/Kinematics/Controller/main.cpp
+CMakeFiles/Controller.dir/main.cpp.o: /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Controller.dir/main.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/main.cpp.o -c /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/main.cpp
 
 CMakeFiles/Controller.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/main.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/Computerized_Alcoholism/Kinematics/Controller/main.cpp > CMakeFiles/Controller.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/main.cpp > CMakeFiles/Controller.dir/main.cpp.i
 
 CMakeFiles/Controller.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/main.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/Computerized_Alcoholism/Kinematics/Controller/main.cpp -o CMakeFiles/Controller.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/main.cpp -o CMakeFiles/Controller.dir/main.cpp.s
 
 CMakeFiles/Controller.dir/robotcontroller.cpp.o: CMakeFiles/Controller.dir/flags.make
-CMakeFiles/Controller.dir/robotcontroller.cpp.o: /home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Controller.dir/robotcontroller.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/robotcontroller.cpp.o -c /home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp
+CMakeFiles/Controller.dir/robotcontroller.cpp.o: /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Controller.dir/robotcontroller.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Controller.dir/robotcontroller.cpp.o -c /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp
 
 CMakeFiles/Controller.dir/robotcontroller.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Controller.dir/robotcontroller.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp > CMakeFiles/Controller.dir/robotcontroller.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp > CMakeFiles/Controller.dir/robotcontroller.cpp.i
 
 CMakeFiles/Controller.dir/robotcontroller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Controller.dir/robotcontroller.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp -o CMakeFiles/Controller.dir/robotcontroller.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp -o CMakeFiles/Controller.dir/robotcontroller.cpp.s
 
 # Object files for target Controller
 Controller_OBJECTS = \
@@ -99,7 +99,7 @@ Controller: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
 Controller: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 Controller: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.71.0
 Controller: CMakeFiles/Controller.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Controller"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Controller.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -112,6 +112,6 @@ CMakeFiles/Controller.dir/clean:
 .PHONY : CMakeFiles/Controller.dir/clean
 
 CMakeFiles/Controller.dir/depend:
-	cd /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victoria/Computerized_Alcoholism/Kinematics/Controller /home/victoria/Computerized_Alcoholism/Kinematics/Controller /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/Controller.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller /home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug /home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug /home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/Controller.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Controller.dir/depend
 

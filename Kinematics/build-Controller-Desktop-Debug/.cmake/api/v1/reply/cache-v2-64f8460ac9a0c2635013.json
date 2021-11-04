@@ -107,7 +107,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
+			"value" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -639,7 +639,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/Controller"
+			"value" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1187,7 +1187,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
+			"value" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
 		},
 		{
 			"name" : "Controller_SOURCE_DIR",
@@ -1199,7 +1199,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/Controller"
+			"value" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Boost",
@@ -1255,7 +1255,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "/usr/lib/qt5/bin/qmake"
+			"value" : "/usr/lib/x86_64-linux-gnu/qt5/bin/qmake"
 		},
 		{
 			"name" : "boost_atomic_DIR",

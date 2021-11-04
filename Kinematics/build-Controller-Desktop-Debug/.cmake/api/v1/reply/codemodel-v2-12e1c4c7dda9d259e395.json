@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug",
-		"source" : "/home/victoria/Computerized_Alcoholism/Kinematics/Controller"
+		"build" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug",
+		"source" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller"
 	},
 	"version" : 
 	{
