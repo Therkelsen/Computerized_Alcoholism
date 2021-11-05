@@ -13,5 +13,5 @@ list( APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} )
 find_package(Pylon)
 include_directories(${Pylon_INCLUDE_DIRS})
 
-add_executable(machineVision main.cpp)
+add_executable(machineVision main.cpp machinevision.h machinevision.cpp)
 target_link_libraries( machineVision ${OpenCV_LIBS} ${Pylon_LIBRARIES})

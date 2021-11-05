@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     (void)argc;
     (void)argv;
     std::vector<cv::String> fileNames;
-    cv::glob("../calibration/images/*.png", fileNames, false);
+    cv::glob("../calibration/imagesStation3/*.png", fileNames, false);
     cv::Size patternSize(10 - 1, 7 - 1);
     std::vector<std::vector<cv::Point2f>> q(fileNames.size());
 

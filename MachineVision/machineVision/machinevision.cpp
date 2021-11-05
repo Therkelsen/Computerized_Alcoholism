@@ -1,27 +1,16 @@
+#include "machinevision.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/calib3d.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <iostream>
-#include <pylon/PylonIncludes.h>
-#include "machinevision.h"
 
-int main(int argc, char* argv[])
+machineVision::machineVision(){
+}
+
+std::vector<double> machineVision::getObject(bool getBall)
 {
-    std::vector<double> ball;
-    std::vector<double> cup;
-    machineVision m1;
-    ball = m1.getObject(1);
-    cup = m1.getObject(0);
-    std::cout << "Ball position:" << std::endl;
-    std::cout << ball[0] << std::endl;
-    std::cout << ball[1] << std::endl;
-    std::cout << "Cup position:" << std::endl;
-    std::cout << cup[0] << std::endl;
-    std::cout << cup[1] << std::endl;
-
-    /*
     int myExposure = 30000;
     // The exit code of the sample application.
     int exitCode = 0;
@@ -29,7 +18,7 @@ int main(int argc, char* argv[])
     // Automagically call PylonInitialize and PylonTerminate to ensure the pylon runtime system
     // is initialized during the lifetime of this object.
     Pylon::PylonAutoInitTerm autoInitTerm;
-
+    std::vector<double> tableCoordinatesInhomo;
     try
     {
         // Create an instant camera object with the camera device found first.
@@ -80,7 +69,7 @@ int main(int argc, char* argv[])
         }else {
 
             std::cout << ">> Failed to set exposure value." << std::endl;
-            return false;
+            //return false;
         }
         std::cout << "New exposure: " << exposureTime->GetValue() << std::endl;
 
@@ -130,7 +119,7 @@ int main(int argc, char* argv[])
                     break;
                 }
 
-                if(keyPressed == ' '){ //take picture
+                //if(keyPressed == ' '){ //take picture
                     std::cout << "Taking picture..." << std::endl;
                     float data[9] = {443.30481, 0, 719.5, 0, 471.87396, 539.5, 0, 0, 1};
                     cv::Mat K(3,3,CV_32F,data);  // intrinsic camera matrix
@@ -154,6 +143,7 @@ int main(int argc, char* argv[])
                     tablePoints[3] = cv::Point2f(650, 650);
 
                     cv::Mat H = cv::getPerspectiveTransform(imagePoints, tablePoints, cv::DECOMP_LU);
+                    std::cout << "Homography matrix:" << std::endl;
                     std::cout << H << std::endl;
 
                     cv::warpPerspective(undistortedImg, output, H, output.size());
@@ -168,8 +158,10 @@ int main(int argc, char* argv[])
                     std::vector<cv::Vec3f> cups;
                     std::vector<cv::Vec3f> balls;
                     cv::Vec3f ball;
+                    cv::Vec3f cup;
                     cv::HoughCircles(gray, circles, cv::HOUGH_GRADIENT, 1, gray.rows/16, 60, 30, 15, 40);
                     for (int i = 0; i < circles.size(); i++) {
+                        std::cout << "Detected circle:" << std::endl;
                         cv::Vec3f temp = circles[i];
                         std::cout << temp << std::endl;
                         if(temp[2] < 20){
@@ -179,14 +171,16 @@ int main(int argc, char* argv[])
                         else{
                             temp[2] = 1;
                             cups.push_back(temp);
+                            cup = cups[0];
                         }
                     }
+                    std::cout << balls.size() << std::endl;
 
                     try{
                         if(balls.size() == 1){
                             ball = balls[0];
                         }
-                        else {
+                        else{
                             int numberOfBalls = balls.size();
                             throw(numberOfBalls);
                         }
@@ -194,14 +188,42 @@ int main(int argc, char* argv[])
                     catch(int numberOfBalls){
                         std::cout << "Error. Too many balls" << std::endl;
                         std::cout << "Number of balls found: " << numberOfBalls << std::endl;
+                        // Display the image with found circles
+                        for (int i = 0; i < circles.size(); i++) {
+                            cv::Vec3i c = circles[i];
+                            cv::Point center = cv::Point(c[0], c[1]);
+                            //circle center
+                            circle(undistortedImg, center, 1, cv::Scalar(0, 100, 100), 3, cv::LINE_AA);
+                            //circle outline
+                            int radius = c[2];
+                            circle(undistortedImg, center, radius, cv::Scalar(255, 0, 255), 3, cv::LINE_AA);
+                        }
+
+                        cv::imshow("Detected circles", undistortedImg);
+                        cv::waitKey(0);
+                        std::cout << "Shutting down camera..." << std::endl;
+                        camera.Close();
+                        std::cout << "Camera successfully closed." << std::endl;
+                        break;
                     }
 
                     cv::Mat ballMat = cv::Mat(ball);
                     ballMat.convertTo(ballMat, CV_64F);
 
-                    cv::Mat tableCoordinatesHomo = H * ballMat;
-                    std::vector<double> tableCoordinatesInhomo = {tableCoordinatesHomo.at<double>(0,0)/tableCoordinatesHomo.at<double>(2,0),
-                                                                            tableCoordinatesHomo.at<double>(1,0)/tableCoordinatesHomo.at<double>(2,0)};
+                    cv::Mat cupMat = cv::Mat(cup);
+                    cupMat.convertTo(cupMat, CV_64F);
+
+                    cv::Mat tableCoordinatesHomo;
+                    if(getBall == 1){
+                        tableCoordinatesHomo = H * ballMat;
+                    }
+                    else{
+                        tableCoordinatesHomo = H * cupMat;                        
+                    }
+                    tableCoordinatesInhomo = {tableCoordinatesHomo.at<double>(1,0)/tableCoordinatesHomo.at<double>(2,0),
+                                              tableCoordinatesHomo.at<double>(0,0)/tableCoordinatesHomo.at<double>(2,0)};
+                    std::cout << tableCoordinatesHomo.at<double>(0,0)/tableCoordinatesHomo.at<double>(2,0) << std::endl;
+                    std::cout << tableCoordinatesHomo.at<double>(1,0)/tableCoordinatesHomo.at<double>(2,0) << std::endl;
 
                     // Display the image with found circles
                     for (int i = 0; i < circles.size(); i++) {
@@ -214,10 +236,14 @@ int main(int argc, char* argv[])
                         circle(undistortedImg, center, radius, cv::Scalar(255, 0, 255), 3, cv::LINE_AA);
                     }
 
-                    cv::imshow("Detected circles", undistortedImg);
-                    cv::waitKey(0);
+                    //cv::imshow("Detected circles", undistortedImg);
+                    //cv::waitKey(0);
+                    std::cout << "Shutting down camera..." << std::endl;
+                    camera.Close();
+                    std::cout << "Camera successfully closed." << std::endl;
+                    break;
 
-                }
+                //}
 
 
 
@@ -247,6 +273,5 @@ int main(int argc, char* argv[])
         exitCode = 1;
     }
 
-    return exitCode;
-    */
+    return tableCoordinatesInhomo;
 }
