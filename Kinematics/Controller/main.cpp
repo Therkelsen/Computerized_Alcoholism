@@ -9,6 +9,16 @@
 #include <iomanip>
 #include "robotcontroller.h"
 
+#include <math.h>
+#include <vector>
+#include <ur_rtde/rtde_control_interface.h>
+#include <ur_rtde/rtde_receive_interface.h>
+#include <ur_rtde/rtde_io_interface.h>
+#include <ur_rtde/rtde.h>
+#include <ur_rtde/script_client.h>
+#include <ur_rtde/dashboard_client.h>
+#include <ur_rtde/robotiq_gripper.h>
+
 using namespace std;
 
 int main() {
@@ -17,19 +27,18 @@ int main() {
     const string ipSimulator = "127.0.0.1";
     string ip = ipSimulator;
 
-    //std::vector<double> startPos{182.90, -288.56, 427.56, 1.576, 2.378, -0.256};
-    std::vector<double> startPos{90,-90,135,0,90,0};
+    // ([mm], [mm], [mm], [rad], [rad], [rad])
+    std::vector<double> startPos{160,-475,415,0,0,0};
 
     try {
         cout << "UR_RTDE: Attempting connection to robot socket at " << ip << " " << endl;
 
         // Create RobotController object
         RobotController rc(ip, startPos);
+
         cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
         rc.startingPos();
-
-        cout << boolalpha;
 
     } catch (const runtime_error& error) {
         cout << "UR_RTDE: Failed connecting to robot socket at " << ip << "\n" << endl;

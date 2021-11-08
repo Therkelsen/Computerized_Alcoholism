@@ -9,6 +9,7 @@
 
 RobotController::RobotController(const std::string ipAddress, std::vector<double> &startingPos)
   :rc(ipAddress), startPos(startingPos) {
+  std::cout << std::boolalpha;
   robToPong.reserve(2);
   abovePong.reserve(6);
   atPong.reserve(6);
@@ -16,9 +17,8 @@ RobotController::RobotController(const std::string ipAddress, std::vector<double
 
 void RobotController::startingPos() {
     // Send robot to base position
-    printPose(startPos, speed, accel, async, "startPos", "moveJ");
-    rc.moveJ(startPos, speed, accel, async);
-
+    printPose(startPos, speed, accel, async, "startPos", "moveL");
+    rc.moveL(startPos);
 }
 
 void RobotController::setPongPos(std::vector<double> &pongCoordinates) {
@@ -54,7 +54,6 @@ void RobotController::gripAndLift() {
 }
 
 void RobotController::printPose(std::vector<double> &inPose, double inSpeed, double inAccel, bool inAsync, const std::string inName, const std::string inType) {
-  std::vector<double> pose = inPose;
   double speed = inSpeed;
   double accel = inAccel;
   bool async = inAsync;
@@ -62,23 +61,23 @@ void RobotController::printPose(std::vector<double> &inPose, double inSpeed, dou
   std::string type = inType;
 
   std::cout << "UR_RTDE: Sending joint pose to Robot using " << type << std::endl;
-  std::cout << "         " << name << " [rad]: (";
+  std::cout << "         " << name << " (";
 
-  for (int i = 0; i < pose.size(); i++) {
-      if (i < pose.size()-1) {
-          std::cout << pose.at(i) << ", ";
+  for (int i = 0; i < inPose.size(); i++) {
+  //pose.at(i) = pose.at(i) * rad;
+      if (i < 3) {
+          inPose.at(i) = inPose.at(i)/1000;
+      }
+      if (i < inPose.size()-1) {
+          std::cout << inPose.at(i) << ", ";
       } else {
-          std::cout << pose.at(i) << ")" << std::endl;
+          std::cout << inPose.at(i) << ")" << std::endl;
       }
   }
 
-  std::cout << "         Speed [unit]: " << speed;
+  /*std::cout << "         Speed [unit]: " << speed;
   std::cout << "\n         Acceleration [unit]: " << accel;
-  std::cout << "\n         Async: " << async << "\n" << std::endl;
+  std::cout << "\n         Async: " << async << "\n" << std::endl;*/
 }
-
-
-
-
 
 

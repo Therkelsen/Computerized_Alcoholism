@@ -1,6 +1,7 @@
 #ifndef ROBOTCONTROLLER_H
 #define ROBOTCONTROLLER_H
 #include <iostream>
+#include <math.h>
 #include <vector>
 #include <ur_rtde/rtde_control_interface.h>
 #include <ur_rtde/rtde_receive_interface.h>
@@ -11,8 +12,7 @@
 #include <ur_rtde/robotiq_gripper.h>
 
 
-class RobotController
-{
+class RobotController {
 public:
     RobotController(const std::string ipAddress, std::vector<double> &startingPos);
     void connectToRobot(const std::string ip);
@@ -24,7 +24,7 @@ public:
     void printPose(std::vector<double> &inPose, double inSpeed, double inAccel, bool inAsync, const std::string inName, const std::string inType);
 
 private:
-    double rad = M_PI/180;
+    double rad = acos(-1)/180;
 
     double speed = 1;
     double accel = 1;
