@@ -14,4 +14,4 @@ find_package(Pylon)
 include_directories(${Pylon_INCLUDE_DIRS})
 
 add_executable(machineVision main.cpp machinevision.h machinevision.cpp)
-target_link_libraries( machineVision ${OpenCV_LIBS} ${Pylon_LIBRARIES})
+target_link_libraries( Controller ${OpenCV_LIBS} ${Pylon_LIBRARIES} PRIVATE ur_rtde::rtde)

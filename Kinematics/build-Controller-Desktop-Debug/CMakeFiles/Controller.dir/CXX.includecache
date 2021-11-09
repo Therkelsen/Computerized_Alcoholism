@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/machinevision.cpp
+machinevision.h
+/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/machinevision.h
+opencv2/core/core.hpp
+-
+opencv2/calib3d.hpp
+-
+opencv2/core.hpp
+-
+opencv2/highgui.hpp
+-
+opencv2/imgproc.hpp
+-
+iostream
+-
+
+/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/machinevision.h
+vector
+-
+pylon/PylonIncludes.h
+-
+
 /home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/main.cpp
 iostream
 -

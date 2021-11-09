@@ -123,6 +123,33 @@ Controller/fast:
 	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/build
 .PHONY : Controller/fast
 
+machinevision.o: machinevision.cpp.o
+
+.PHONY : machinevision.o
+
+# target to build an object file
+machinevision.cpp.o:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/machinevision.cpp.o
+.PHONY : machinevision.cpp.o
+
+machinevision.i: machinevision.cpp.i
+
+.PHONY : machinevision.i
+
+# target to preprocess a source file
+machinevision.cpp.i:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/machinevision.cpp.i
+.PHONY : machinevision.cpp.i
+
+machinevision.s: machinevision.cpp.s
+
+.PHONY : machinevision.s
+
+# target to generate assembly for a file
+machinevision.cpp.s:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/machinevision.cpp.s
+.PHONY : machinevision.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Controller"
+	@echo "... machinevision.o"
+	@echo "... machinevision.i"
+	@echo "... machinevision.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

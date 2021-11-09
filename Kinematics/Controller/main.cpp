@@ -12,12 +12,6 @@
 #include <math.h>
 #include <vector>
 #include <ur_rtde/rtde_control_interface.h>
-#include <ur_rtde/rtde_receive_interface.h>
-#include <ur_rtde/rtde_io_interface.h>
-#include <ur_rtde/rtde.h>
-#include <ur_rtde/script_client.h>
-#include <ur_rtde/dashboard_client.h>
-#include <ur_rtde/robotiq_gripper.h>
 
 using namespace std;
 
