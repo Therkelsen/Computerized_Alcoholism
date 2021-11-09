@@ -123,6 +123,33 @@ Controller/fast:
 	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/build
 .PHONY : Controller/fast
 
+calib.o: calib.cpp.o
+
+.PHONY : calib.o
+
+# target to build an object file
+calib.cpp.o:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/calib.cpp.o
+.PHONY : calib.cpp.o
+
+calib.i: calib.cpp.i
+
+.PHONY : calib.i
+
+# target to preprocess a source file
+calib.cpp.i:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/calib.cpp.i
+.PHONY : calib.cpp.i
+
+calib.s: calib.cpp.s
+
+.PHONY : calib.s
+
+# target to generate assembly for a file
+calib.cpp.s:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/calib.cpp.s
+.PHONY : calib.cpp.s
+
 machinevision.o: machinevision.cpp.o
 
 .PHONY : machinevision.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Controller"
+	@echo "... calib.o"
+	@echo "... calib.i"
+	@echo "... calib.s"
 	@echo "... machinevision.o"
 	@echo "... machinevision.i"
 	@echo "... machinevision.s"

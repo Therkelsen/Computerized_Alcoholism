@@ -94,6 +94,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/calib.cpp">
+			<Option target="Controller"/>
+		</Unit>
+		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/calib.h">
+			<Option target="Controller"/>
+		</Unit>
 		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/machinevision.cpp">
 			<Option target="Controller"/>
 		</Unit>
