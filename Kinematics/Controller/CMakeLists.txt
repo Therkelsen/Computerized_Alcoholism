@@ -15,4 +15,4 @@ include_directories(${Pylon_INCLUDE_DIRS})
 
 find_package(ur_rtde REQUIRED)
 add_executable(Controller main.cpp robotcontroller.cpp robotcontroller.h machinevision.h machinevision.cpp)
-target_link_libraries(Controller PRIVATE ur_rtde::rtde)
+target_link_libraries(Controller ${OpenCV_LIBS} ${Pylon_LIBRARIES} ur_rtde::rtde)

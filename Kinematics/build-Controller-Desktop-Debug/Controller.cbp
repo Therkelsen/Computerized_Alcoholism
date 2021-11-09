@@ -48,6 +48,8 @@
 					<Add option="-DBOOST_ALL_NO_LIB"/>
 					<Add option="-DBOOST_THREAD_DYN_LINK"/>
 					<Add option="-DBOOST_ATOMIC_DYN_LINK"/>
+					<Add directory="/opt/pylon/include"/>
+					<Add directory="/usr/local/include/opencv4"/>
 					<Add directory="/usr/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -74,6 +76,8 @@
 					<Add option="-DBOOST_ALL_NO_LIB"/>
 					<Add option="-DBOOST_THREAD_DYN_LINK"/>
 					<Add option="-DBOOST_ATOMIC_DYN_LINK"/>
+					<Add directory="/opt/pylon/include"/>
+					<Add directory="/usr/local/include/opencv4"/>
 					<Add directory="/usr/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
