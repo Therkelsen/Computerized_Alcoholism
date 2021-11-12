@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.0, 2021-11-11T12:14:29. -->
+<!-- Written by QtCreator 4.11.0, 2021-11-12T10:29:40. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -322,6 +322,7 @@
     <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseTerminal">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug</value>
    </valuemap>

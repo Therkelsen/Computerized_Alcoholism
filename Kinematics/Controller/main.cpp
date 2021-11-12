@@ -32,19 +32,15 @@ int main() {
         // Create RobotController object
         RobotController rc(ip, startPos);
 
-        machineVision mv();
+          cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
-        std::vector<double> vector = mv.getObject(1);
+        machineVision mv;
 
-       /* for (unsigned int i  = 0; i < vector.size(); ++i) {
-            std::cout << vector.at(i);
-        }*/
-
-        cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
         rc.startingPos();
 
-        Calib cal1(rc);
+        Calib cal1(rc, mv, std::cout, std::cin);
+
 
         cal1.printCoordinates(std::cout);
 

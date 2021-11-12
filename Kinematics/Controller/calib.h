@@ -11,7 +11,6 @@ class Calib
 {
 public:
     Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist);
-    Calib(RobotController &rc);
     void printCoordinates(std::ostream &ost);
     void calcCentroids();
     void calcQ();

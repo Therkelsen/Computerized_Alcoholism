@@ -44,22 +44,6 @@ Calib::Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::ist
 
 }
 
-Calib::Calib(RobotController &rc) {
-    rc.getTCP();
-
-    PRobot.push_back(rc.getTCP());
-
-    std::array<double, 3> worldTest;
-
-    double num;
-
-    for (unsigned int i = 0; i < 3; ++i) {
-        num++;
-        worldTest.at(i) = num;
-    }
-
-    pWorld.push_back(worldTest);
-}
 
 void Calib::printCoordinates(std::ostream &ost) {
     ost << " __________________________ __________________________ " << "\n";
