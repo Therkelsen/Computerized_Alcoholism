@@ -8,9 +8,6 @@ class machineVision
 public:
     machineVision();
     std::vector<double> getObject(bool getBall);
-
-private:
-    Pylon::CInstantCamera camera;
 };
 
 

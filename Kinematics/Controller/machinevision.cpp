@@ -143,8 +143,8 @@ std::vector<double> machineVision::getObject(bool getBall)
                     tablePoints[3] = cv::Point2f(650, 650);
 
                     cv::Mat H = cv::getPerspectiveTransform(imagePoints, tablePoints, cv::DECOMP_LU);
-                    std::cout << "Homography matrix:" << std::endl;
-                    std::cout << H << std::endl;
+                    //std::cout << "Homography matrix:" << std::endl;
+                    //std::cout << H << std::endl;
 
                     cv::warpPerspective(undistortedImg, output, H, output.size());
                     cv::imshow("output", output);
@@ -161,9 +161,9 @@ std::vector<double> machineVision::getObject(bool getBall)
                     cv::Vec3f cup;
                     cv::HoughCircles(gray, circles, cv::HOUGH_GRADIENT, 1, gray.rows/16, 60, 30, 15, 40);
                     for (int i = 0; i < circles.size(); i++) {
-                        std::cout << "Detected circle:" << std::endl;
+                        //std::cout << "Detected circle:" << std::endl;
                         cv::Vec3f temp = circles[i];
-                        std::cout << temp << std::endl;
+                        //std::cout << temp << std::endl;
                         if(temp[2] < 20){
                             temp[2] = 1;
                             balls.push_back(temp);
@@ -186,7 +186,7 @@ std::vector<double> machineVision::getObject(bool getBall)
                         }
                     }
                     catch(int numberOfBalls){
-                        std::cout << "Error. Too many balls" << std::endl;
+                        std::cout << "Error. Incorrect number of balls" << std::endl;
                         std::cout << "Number of balls found: " << numberOfBalls << std::endl;
                         // Display the image with found circles
                         for (int i = 0; i < circles.size(); i++) {
@@ -201,9 +201,9 @@ std::vector<double> machineVision::getObject(bool getBall)
 
                         cv::imshow("Detected circles", undistortedImg);
                         cv::waitKey(0);
-                        std::cout << "Shutting down camera..." << std::endl;
+                        //std::cout << "Shutting down camera..." << std::endl;
                         camera.Close();
-                        std::cout << "Camera successfully closed." << std::endl;
+                        //std::cout << "Camera successfully closed." << std::endl;
                         break;
                     }
 
@@ -222,8 +222,6 @@ std::vector<double> machineVision::getObject(bool getBall)
                     }
                     tableCoordinatesInhomo = {tableCoordinatesHomo.at<double>(1,0)/tableCoordinatesHomo.at<double>(2,0),
                                               tableCoordinatesHomo.at<double>(0,0)/tableCoordinatesHomo.at<double>(2,0)};
-                    std::cout << tableCoordinatesHomo.at<double>(0,0)/tableCoordinatesHomo.at<double>(2,0) << std::endl;
-                    std::cout << tableCoordinatesHomo.at<double>(1,0)/tableCoordinatesHomo.at<double>(2,0) << std::endl;
 
                     // Display the image with found circles
                     for (int i = 0; i < circles.size(); i++) {
@@ -238,9 +236,9 @@ std::vector<double> machineVision::getObject(bool getBall)
 
                     //cv::imshow("Detected circles", undistortedImg);
                     //cv::waitKey(0);
-                    std::cout << "Shutting down camera..." << std::endl;
+                    //std::cout << "Shutting down camera..." << std::endl;
                     camera.Close();
-                    std::cout << "Camera successfully closed." << std::endl;
+                    //std::cout << "Camera successfully closed." << std::endl;
                     break;
 
                 //}
