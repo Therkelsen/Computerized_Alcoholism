@@ -5,10 +5,6 @@
 			"path" : "CMakeLists.txt"
 		},
 		{
-			"isExternal" : true,
-			"path" : "/home/alex/Qt5.12.11/Tools/QtCreator/share/qtcreator/package-manager/auto-setup.cmake"
-		},
-		{
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/usr/share/cmake-3.16/Modules/CMakeDetermineSystem.cmake"
@@ -20,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeSystem.cmake"
+			"path" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -244,7 +240,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
+			"path" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -388,7 +384,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
+			"path" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isExternal" : true,
@@ -591,7 +587,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx"
+			"path" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx"
 		},
 		{
 			"isCMake" : true,
@@ -600,7 +596,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx"
+			"path" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx"
 		},
 		{
 			"isCMake" : true,
@@ -616,8 +612,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug",
-		"source" : "/home/alex/Computerized_Alcoholism/Kinematics/Controller"
+		"build" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug",
+		"source" : "/home/victoria/Computerized_Alcoholism/Kinematics/Controller"
 	},
 	"version" : 
 	{

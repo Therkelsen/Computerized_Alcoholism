@@ -7,12 +7,11 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/alex/Computerized_Alcoholism/Kinematics/Controller/CMakeLists.txt"
-  "/home/alex/Computerized_Alcoholism/Kinematics/Controller/FindPylon.cmake"
+  "/home/victoria/Computerized_Alcoholism/Kinematics/Controller/CMakeLists.txt"
+  "/home/victoria/Computerized_Alcoholism/Kinematics/Controller/FindPylon.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
   "CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx"
-  "/home/alex/Qt5.12.11/Tools/QtCreator/share/qtcreator/package-manager/auto-setup.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfigVersion.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/BoostDetectToolset-1.71.0.cmake"

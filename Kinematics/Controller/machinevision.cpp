@@ -52,12 +52,12 @@ std::vector<double> machineVision::getObject(bool getBall)
         GenApi::CEnumerationPtr exposureAuto( nodemap.GetNode( "ExposureAuto"));
         if ( GenApi::IsWritable( exposureAuto)){
             exposureAuto->FromString("Off");
-            std::cout << "Exposure auto disabled." << std::endl;
+           // std::cout << "Exposure auto disabled." << std::endl;
         }
 
         // Set custom exposure
         GenApi::CFloatPtr exposureTime = nodemap.GetNode("ExposureTime");
-        std::cout << "Old exposure: " << exposureTime->GetValue() << std::endl;
+       // std::cout << "Old exposure: " << exposureTime->GetValue() << std::endl;
         if(exposureTime.IsValid()) {
             if(myExposure >= exposureTime->GetMin() && myExposure <= exposureTime->GetMax()) {
                 exposureTime->SetValue(myExposure);
@@ -71,7 +71,7 @@ std::vector<double> machineVision::getObject(bool getBall)
             std::cout << ">> Failed to set exposure value." << std::endl;
             //return false;
         }
-        std::cout << "New exposure: " << exposureTime->GetValue() << std::endl;
+        //std::cout << "New exposure: " << exposureTime->GetValue() << std::endl;
 
         // Start the grabbing of c_countOfImagesToGrab images.
         // The camera device is parameterized with a default configuration which
@@ -106,10 +106,10 @@ std::vector<double> machineVision::getObject(bool getBall)
                 //////////////////////////////////////////////////////
 
                 // Create an OpenCV display window.
-                cv::namedWindow( "myWindow", cv::WINDOW_NORMAL); // other options: CV_AUTOSIZE, CV_FREERATIO
+                //cv::namedWindow( "myWindow", cv::WINDOW_NORMAL); // other options: CV_AUTOSIZE, CV_FREERATIO
 
                 // Display the current image in the OpenCV display window.
-                cv::imshow( "myWindow", openCvImage);
+                //cv::imshow( "myWindow", openCvImage);
                 int keyPressed = cv::waitKey(1);
                 // Detect key press and quit if 'q' is pressed
                 if(keyPressed == 'q') { //quit
@@ -147,7 +147,7 @@ std::vector<double> machineVision::getObject(bool getBall)
                     //std::cout << H << std::endl;
 
                     cv::warpPerspective(undistortedImg, output, H, output.size());
-                    cv::imshow("output", output);
+                    //cv::imshow("output", output);
 
                     //Convert to grayscale
                     cv::Mat gray;
@@ -174,7 +174,7 @@ std::vector<double> machineVision::getObject(bool getBall)
                             cup = cups[0];
                         }
                     }
-                    std::cout << balls.size() << std::endl;
+
 
                     try{
                         if(balls.size() == 1){

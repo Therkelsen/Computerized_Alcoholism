@@ -19,7 +19,7 @@ using namespace std;
 
 int main() {
     // Create strings to contain ip adresses
-    const string ipPhysical = "192.168.100.49";
+    const string ipPhysical = "192.168.100.30";
     const string ipSimulator = "127.0.0.1";
     string ip = ipSimulator;
 
