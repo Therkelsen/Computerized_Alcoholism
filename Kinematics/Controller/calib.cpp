@@ -1,6 +1,6 @@
 #include "calib.h"
 
-Calib::Calib(std::ostream &ost, std::istream &ist){
+Calib::Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist){
     int saveValues = 0;
     while (saveValues != 2) {
         ost << "Place robotic arm at pong ball" << std::endl;
@@ -10,6 +10,23 @@ Calib::Calib(std::ostream &ost, std::istream &ist){
         ist >> saveValues;
 
         if (saveValues == 1) {
+
+            PRobot.push_back(rc.getTCP());
+
+            std::vector<double> pongCoords = mv.getObject(1);
+
+            std::array<double, 3> pCoords;
+
+            for (unsigned int i = 0; i < 3; ++i) {
+                if (i == 2) {
+                    pCoords.at(i) = 0;
+                } else {
+                    pCoords.at(i) = pongCoords.at(i);
+                }
+            }
+
+            pWorld.push_back(pCoords);
+
 
             //Kalder metode på rc-objekt som returnerer TCP pose af robot
             //Kalder metode på mv-objekt som returnerer boldsens koordinater
@@ -27,11 +44,28 @@ Calib::Calib(std::ostream &ost, std::istream &ist){
 
 }
 
+Calib::Calib(RobotController &rc) {
+    rc.getTCP();
+
+    PRobot.push_back(rc.getTCP());
+
+    std::array<double, 3> worldTest;
+
+    double num;
+
+    for (unsigned int i = 0; i < 3; ++i) {
+        num++;
+        worldTest.at(i) = num;
+    }
+
+    pWorld.push_back(worldTest);
+}
+
 void Calib::printCoordinates(std::ostream &ost) {
-    ost << " _______________________ _______________________ " << "\n";
-    ost << "|         pWorld        |        PRobot         |" << "\n";
-    ost << " _______________________ _______________________ " << "\n";
-    ost << "|px     |py     |pz     |Px     |Py     |Pz     |" << "\n";
+    ost << " __________________________ __________________________ " << "\n";
+    ost << "|          pWorld          |          PRobot          |" << "\n";
+    ost << " __________________________ __________________________ " << "\n";
+    ost << "|px      |py      |pz      |Px      |Py      |Pz      |" << "\n";
 
 
     for (unsigned int i = 0; i < pWorld.size(); ++i) {
@@ -39,13 +73,13 @@ void Calib::printCoordinates(std::ostream &ost) {
            ost << "\n";
         }
         for (unsigned int j = 0; j < 3; ++j) {
-            ost << "|" << std::setw(8) <<  std::left << pWorld.at(i).at(j);
+            ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << pWorld.at(i).at(j);
         }
         for (unsigned int j = 0; j < 3; ++j) {
             if (j == 2) {
-                ost << "|" << std::setw(8) <<  std::left << PRobot.at(i).at(j) << "|";
+                ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << PRobot.at(i).at(j) << "|";
             } else {
-                ost << "|" << std::setw(8) <<  std::left << PRobot.at(i).at(j);
+                ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << PRobot.at(i).at(j);
             }
         }
     }
@@ -132,7 +166,7 @@ void Calib::calcRot() {
 
 }
 
-void Calib::calcTrans() {
+/*void Calib::calcTrans() {
     std::array<double, 3> temp;
 
     for (unsigned int i = 0; i < 3; ++i) {
@@ -144,11 +178,12 @@ void Calib::calcTrans() {
     }
 
     for (unsigned int i = 0; i < 3; ++i) {
-        T.at(i) = centroidW[i] - temp.at(i);
+         T.at(i) = centroidW[i] - temp.at(i);
     }
 
 
 }
+*/
 
 
 

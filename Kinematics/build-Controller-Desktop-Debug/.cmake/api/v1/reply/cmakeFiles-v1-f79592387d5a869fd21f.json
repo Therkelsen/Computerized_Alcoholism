@@ -6,7 +6,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeSystem.cmake"
+			"path" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -15,7 +15,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
+			"path" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -310,8 +310,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug",
-		"source" : "/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller"
+		"build" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug",
+		"source" : "/home/victoria/Computerized_Alcoholism/Kinematics/Controller"
 	},
 	"version" : 
 	{

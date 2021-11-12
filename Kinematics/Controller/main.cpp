@@ -5,10 +5,12 @@
 *  Authored by Thomas Therkelsen @ SDU
 */
 
+
+#include "robotcontroller.h"
+#include "calib.h"
+#include "machinevision.h"
 #include <iostream>
 #include <iomanip>
-#include "robotcontroller.h"
-
 #include <math.h>
 #include <vector>
 #include <ur_rtde/rtde_control_interface.h>
@@ -30,9 +32,23 @@ int main() {
         // Create RobotController object
         RobotController rc(ip, startPos);
 
+        machineVision mv();
+
+        std::vector<double> vector = mv.getObject(1);
+
+       /* for (unsigned int i  = 0; i < vector.size(); ++i) {
+            std::cout << vector.at(i);
+        }*/
+
         cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
         rc.startingPos();
+
+        Calib cal1(rc);
+
+        cal1.printCoordinates(std::cout);
+
+
 
     } catch (const runtime_error& error) {
         cout << "UR_RTDE: Failed connecting to robot socket at " << ip << "\n" << endl;

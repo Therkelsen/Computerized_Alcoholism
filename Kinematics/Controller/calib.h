@@ -1,5 +1,7 @@
 #ifndef CALIB_H
 #define CALIB_H
+#include "robotcontroller.h"
+#include "machinevision.h"
 #include <iostream>
 #include <vector>
 #include <array>
@@ -8,7 +10,8 @@
 class Calib
 {
 public:
-    Calib(std::ostream &ost, std::istream &ist);
+    Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist);
+    Calib(RobotController &rc);
     void printCoordinates(std::ostream &ost);
     void calcCentroids();
     void calcQ();

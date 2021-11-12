@@ -7,8 +7,8 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/CMakeLists.txt"
-  "/home/therkelsen/Computerized_Alcoholism/Kinematics/Controller/FindPylon.cmake"
+  "/home/victoria/Computerized_Alcoholism/Kinematics/Controller/CMakeLists.txt"
+  "/home/victoria/Computerized_Alcoholism/Kinematics/Controller/FindPylon.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake"

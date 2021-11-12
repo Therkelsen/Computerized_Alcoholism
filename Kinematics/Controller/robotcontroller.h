@@ -5,11 +5,7 @@
 #include <vector>
 #include <ur_rtde/rtde_control_interface.h>
 #include <ur_rtde/rtde_receive_interface.h>
-#include <ur_rtde/rtde_io_interface.h>
-#include <ur_rtde/rtde.h>
-#include <ur_rtde/script_client.h>
-#include <ur_rtde/dashboard_client.h>
-#include <ur_rtde/robotiq_gripper.h>
+
 
 
 class RobotController {
@@ -17,6 +13,7 @@ public:
     RobotController(const std::string ipAddress, std::vector<double> &startingPos);
     void connectToRobot(const std::string ip);
     void startingPos();
+    std::array<double, 3> getTCP();
     void setPongPos(std::vector<double> &pongCoordinates);
     void setRobToPong();
     void moveToPong();
@@ -25,7 +22,7 @@ public:
 
 private:
     double rad = acos(-1)/180;
-
+    std::string ip = "";
     double speed = 1;
     double accel = 1;
     bool async = false;

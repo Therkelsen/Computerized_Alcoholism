@@ -7,18 +7,40 @@
 
 #include "robotcontroller.h"
 
+
+
 RobotController::RobotController(const std::string ipAddress, std::vector<double> &startingPos)
   :rc(ipAddress), startPos(startingPos) {
   std::cout << std::boolalpha;
   robToPong.reserve(2);
   abovePong.reserve(6);
   atPong.reserve(6);
+  ip = ipAddress;
 }
 
 void RobotController::startingPos() {
     // Send robot to base position
     printPose(startPos, speed, accel, async, "startPos", "moveL");
     rc.moveL(startPos);
+}
+
+std::array<double, 3> RobotController::getTCP() {
+    ur_rtde::RTDEReceiveInterface rr(ip);
+
+    std::vector<double> TCP = rr.getActualTCPPose();
+    //rr.~RTDEReceiveInterface();
+
+    std::array<double, 3> TCPPose;
+
+    //Copies TCP and converts to mm
+
+    for (unsigned int i = 0; i < 3; ++i) {
+        TCPPose.at(i) = TCP.at(i) * 1000;
+    }
+
+
+    return TCPPose;
+
 }
 
 void RobotController::setPongPos(std::vector<double> &pongCoordinates) {
