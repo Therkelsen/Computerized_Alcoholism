@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 4.15.0, 2021-11-15T13:05:37. -->
-=======
-<!-- Written by QtCreator 4.11.0, 2021-11-15T13:07:47. -->
->>>>>>> f2ca059a2cd88a1314f7204c279854963a4a22fe
+<!-- Written by QtCreator 4.15.0, 2021-11-15T14:49:12. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -359,7 +355,7 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/tmp/QtCreator-BjpHSh/qtc-cmake-rGOCizrO</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
