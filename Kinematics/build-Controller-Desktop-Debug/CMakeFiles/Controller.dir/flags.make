@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK
 
-CXX_INCLUDES = -I/opt/pylon/include -isystem /usr/local/include/opencv4 
+CXX_INCLUDES = -I/opt/pylon/include -isystem /usr/local/include/opencv4 -isystem /usr/local/include/eigen3 
 

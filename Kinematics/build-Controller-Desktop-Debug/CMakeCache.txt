@@ -215,6 +215,9 @@ Controller_BINARY_DIR:STATIC=/home/victoria/Computerized_Alcoholism/Kinematics/b
 //Value Computed by CMake
 Controller_SOURCE_DIR:STATIC=/home/victoria/Computerized_Alcoholism/Kinematics/Controller
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/local/share/eigen3/cmake
+
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
 

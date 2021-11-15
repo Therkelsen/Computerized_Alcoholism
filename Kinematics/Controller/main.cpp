@@ -19,7 +19,7 @@ using namespace std;
 
 int main() {
     // Create strings to contain ip adresses
-    const string ipPhysical = "192.168.100.30";
+    const string ipPhysical = "192.168.100.49";
     const string ipSimulator = "127.0.0.1";
     string ip = ipSimulator;
 
@@ -41,8 +41,18 @@ int main() {
 
         Calib cal1(rc, mv, std::cout, std::cin);
 
-
         cal1.printCoordinates(std::cout);
+
+        cal1.calcCentroids();
+        cal1.calcQ();
+        cal1.calcH();
+        cal1.calcSVD();
+        cal1.calcRot();
+        cal1.calcTrans();
+        cal1.printCalibration();
+
+
+
 
 
 

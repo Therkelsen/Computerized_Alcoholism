@@ -23,6 +23,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/pylon/include"
   "/usr/local/include/opencv4"
+  "/usr/local/include/eigen3"
   )
 
 # Targets to which this target links.
