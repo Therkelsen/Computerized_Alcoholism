@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/victoria/Computerized_Alcoholism/Kinematics/Controller
+CMAKE_SOURCE_DIR = /home/alex/Computerized_Alcoholism/Kinematics/Controller
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug
+CMAKE_BINARY_DIR = /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -204,6 +204,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+projectilemotion.o: projectilemotion.cpp.o
+
+.PHONY : projectilemotion.o
+
+# target to build an object file
+projectilemotion.cpp.o:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/projectilemotion.cpp.o
+.PHONY : projectilemotion.cpp.o
+
+projectilemotion.i: projectilemotion.cpp.i
+
+.PHONY : projectilemotion.i
+
+# target to preprocess a source file
+projectilemotion.cpp.i:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/projectilemotion.cpp.i
+.PHONY : projectilemotion.cpp.i
+
+projectilemotion.s: projectilemotion.cpp.s
+
+.PHONY : projectilemotion.s
+
+# target to generate assembly for a file
+projectilemotion.cpp.s:
+	$(MAKE) -f CMakeFiles/Controller.dir/build.make CMakeFiles/Controller.dir/projectilemotion.cpp.s
+.PHONY : projectilemotion.cpp.s
+
 robotcontroller.o: robotcontroller.cpp.o
 
 .PHONY : robotcontroller.o
@@ -249,6 +276,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... projectilemotion.o"
+	@echo "... projectilemotion.i"
+	@echo "... projectilemotion.s"
 	@echo "... robotcontroller.o"
 	@echo "... robotcontroller.i"
 	@echo "... robotcontroller.s"

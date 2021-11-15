@@ -107,7 +107,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
+			"value" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -179,7 +179,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-j12"
+			"value" : "-j4"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -639,7 +639,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/Controller"
+			"value" : "/home/alex/Computerized_Alcoholism/Kinematics/Controller"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -884,6 +884,18 @@
 			],
 			"type" : "STATIC",
 			"value" : ""
+		},
+		{
+			"name" : "CMAKE_PROJECT_INCLUDE_BEFORE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/home/alex/Qt5.12.11/Tools/QtCreator/share/qtcreator/package-manager/auto-setup.cmake"
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1187,7 +1199,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
+			"value" : "/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"
 		},
 		{
 			"name" : "Controller_SOURCE_DIR",
@@ -1199,7 +1211,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/victoria/Computerized_Alcoholism/Kinematics/Controller"
+			"value" : "/home/alex/Computerized_Alcoholism/Kinematics/Controller"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Boost",
@@ -1223,7 +1235,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[/usr/local][v4.5.4()]"
+			"value" : "[/usr/local][v4.3.0()]"
 		},
 		{
 			"name" : "OpenCV_DIR",

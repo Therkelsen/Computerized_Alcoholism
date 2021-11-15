@@ -14,5 +14,5 @@ find_package(Pylon)
 include_directories(${Pylon_INCLUDE_DIRS})
 
 find_package(ur_rtde REQUIRED)
-add_executable(Controller main.cpp robotcontroller.cpp robotcontroller.h machinevision.cpp machinevision.h calib.cpp calib.h)
+add_executable(Controller main.cpp robotcontroller.cpp robotcontroller.h machinevision.cpp machinevision.h calib.cpp calib.h projectilemotion.cpp projectilemotion.h)
 target_link_libraries(Controller ${OpenCV_LIBS} ${Pylon_LIBRARIES} ur_rtde::rtde)

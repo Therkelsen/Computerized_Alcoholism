@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Controller.dir/calib.cpp.o"
   "CMakeFiles/Controller.dir/machinevision.cpp.o"
   "CMakeFiles/Controller.dir/main.cpp.o"
+  "CMakeFiles/Controller.dir/projectilemotion.cpp.o"
   "CMakeFiles/Controller.dir/robotcontroller.cpp.o"
   "Controller"
   "Controller.pdb"

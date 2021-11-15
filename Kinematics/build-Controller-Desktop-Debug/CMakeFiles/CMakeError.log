@@ -1,21 +1,21 @@
 Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp
+Change Dir: /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_73d40/fast && /usr/bin/make -f CMakeFiles/cmTC_73d40.dir/build.make CMakeFiles/cmTC_73d40.dir/build
-make[1]: Entering directory '/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_73d40.dir/src.cxx.o
-/usr/bin/g++    -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_73d40.dir/src.cxx.o -c /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_73d40
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73d40.dir/link.txt --verbose=1
-/usr/bin/g++   -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_73d40.dir/src.cxx.o  -o cmTC_73d40 
-/usr/bin/ld: CMakeFiles/cmTC_73d40.dir/src.cxx.o: in function `main':
+Run Build Command(s):/usr/bin/make cmTC_caf79/fast && /usr/bin/make -f CMakeFiles/cmTC_caf79.dir/build.make CMakeFiles/cmTC_caf79.dir/build
+make[1]: Entering directory '/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_caf79.dir/src.cxx.o
+/usr/bin/g++    -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_caf79.dir/src.cxx.o -c /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_caf79
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_caf79.dir/link.txt --verbose=1
+/usr/bin/g++   -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_caf79.dir/src.cxx.o  -o cmTC_caf79 
+/usr/bin/ld: CMakeFiles/cmTC_caf79.dir/src.cxx.o: in function `main':
 src.cxx:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.cxx:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.cxx:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_73d40.dir/build.make:87: cmTC_73d40] Error 1
-make[1]: Leaving directory '/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_73d40/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_caf79.dir/build.make:87: cmTC_caf79] Error 1
+make[1]: Leaving directory '/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_caf79/fast] Error 2
 
 
 Source file was:
@@ -39,20 +39,20 @@ int main(void)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp
+Change Dir: /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_3faf0/fast && /usr/bin/make -f CMakeFiles/cmTC_3faf0.dir/build.make CMakeFiles/cmTC_3faf0.dir/build
-make[1]: Entering directory '/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_3faf0.dir/CheckFunctionExists.cxx.o
-/usr/bin/g++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_3faf0.dir/CheckFunctionExists.cxx.o -c /home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_3faf0
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3faf0.dir/link.txt --verbose=1
-/usr/bin/g++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_3faf0.dir/CheckFunctionExists.cxx.o  -o cmTC_3faf0  -lpthreads 
+Run Build Command(s):/usr/bin/make cmTC_5e801/fast && /usr/bin/make -f CMakeFiles/cmTC_5e801.dir/build.make CMakeFiles/cmTC_5e801.dir/build
+make[1]: Entering directory '/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5e801.dir/CheckFunctionExists.cxx.o
+/usr/bin/g++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_5e801.dir/CheckFunctionExists.cxx.o -c /home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_5e801
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e801.dir/link.txt --verbose=1
+/usr/bin/g++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_5e801.dir/CheckFunctionExists.cxx.o  -o cmTC_5e801  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_3faf0.dir/build.make:87: cmTC_3faf0] Error 1
-make[1]: Leaving directory '/home/victoria/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_3faf0/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_5e801.dir/build.make:87: cmTC_5e801] Error 1
+make[1]: Leaving directory '/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_5e801/fast] Error 2
 
 
 
