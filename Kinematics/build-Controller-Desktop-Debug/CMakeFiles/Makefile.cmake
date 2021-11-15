@@ -11,7 +11,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/alex/Computerized_Alcoholism/Kinematics/Controller/FindPylon.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
+<<<<<<< HEAD
   "/home/alex/Qt5.12.11/Tools/QtCreator/share/qtcreator/package-manager/auto-setup.cmake"
+=======
+>>>>>>> f2ca059a2cd88a1314f7204c279854963a4a22fe
   "/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfigVersion.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/BoostDetectToolset-1.71.0.cmake"
@@ -38,6 +41,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/lib/cmake/opencv4/OpenCVConfig.cmake"
   "/usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake"
   "/usr/local/lib/cmake/opencv4/OpenCVModules.cmake"
+<<<<<<< HEAD
+=======
+  "/usr/local/share/eigen3/cmake/Eigen3Config.cmake"
+  "/usr/local/share/eigen3/cmake/Eigen3ConfigVersion.cmake"
+  "/usr/local/share/eigen3/cmake/Eigen3Targets.cmake"
+>>>>>>> f2ca059a2cd88a1314f7204c279854963a4a22fe
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake"

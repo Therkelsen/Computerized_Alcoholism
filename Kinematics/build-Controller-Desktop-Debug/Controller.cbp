@@ -5,7 +5,11 @@
 		<Option title="Controller"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
+<<<<<<< HEAD
 		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\Qt5.12.11\;CMake Files\..\..\..\Qt5.12.11\Tools\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\share\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\share\qtcreator\;CMake Files\..\..\..\Qt5.12.11\Tools\QtCreator\share\qtcreator\package-manager\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\ur_rtde\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Boost-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_headers-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_system-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_thread-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_atomic-1.71.0\;"/>
+=======
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;CMake Files\..\..\..\..\..\usr\local\share\;CMake Files\..\..\..\..\..\usr\local\share\eigen3\;CMake Files\..\..\..\..\..\usr\local\share\eigen3\cmake\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\ur_rtde\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Boost-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_headers-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_system-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_thread-1.71.0\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\boost_atomic-1.71.0\;"/>
+>>>>>>> f2ca059a2cd88a1314f7204c279854963a4a22fe
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/alex/Computerized_Alcoholism/Kinematics/build-Controller-Desktop-Debug"/>
@@ -51,6 +55,7 @@
 					<Add directory="/opt/pylon/include"/>
 					<Add directory="/usr/local/include/opencv4"/>
 					<Add directory="/usr/include"/>
+					<Add directory="/usr/local/include/eigen3"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -79,6 +84,7 @@
 					<Add directory="/opt/pylon/include"/>
 					<Add directory="/usr/local/include/opencv4"/>
 					<Add directory="/usr/include"/>
+					<Add directory="/usr/local/include/eigen3"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -142,7 +148,20 @@
 		<Unit filename="/home/alex/Computerized_Alcoholism/Kinematics/Controller/../../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
 		</Unit>
+<<<<<<< HEAD
 		<Unit filename="/home/alex/Computerized_Alcoholism/Kinematics/Controller/../../../../../usr/lib/x86_64-linux-gnu/cmake/BoostDetectToolset-1.71.0.cmake">
+=======
+		<Unit filename="/home/victoria/Computerized_Alcoholism/Kinematics/Controller/../../../../../usr/local/share/eigen3/cmake/Eigen3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/home/victoria/Computerized_Alcoholism/Kinematics/Controller/../../../../../usr/local/share/eigen3/cmake/Eigen3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/home/victoria/Computerized_Alcoholism/Kinematics/Controller/../../../../../usr/local/share/eigen3/cmake/Eigen3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\share\eigen3\cmake\"/>
+		</Unit>
+		<Unit filename="/home/victoria/Computerized_Alcoholism/Kinematics/Controller/../../../../../usr/lib/x86_64-linux-gnu/cmake/BoostDetectToolset-1.71.0.cmake">
+>>>>>>> f2ca059a2cd88a1314f7204c279854963a4a22fe
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\"/>
 		</Unit>
 		<Unit filename="/home/alex/Computerized_Alcoholism/Kinematics/Controller/../../../../../usr/lib/x86_64-linux-gnu/cmake/ur_rtde/ur_rtdeBuildConfig.cmake">
