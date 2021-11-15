@@ -1,14 +1,9 @@
-#include <iostream>
-#include <string>
-#include <QtSql>
-#include <QSqlDatabase>
-#include <QCoreApplication>
-#include <QSqlDriver>
-#include <QString>
 
+
+#include "database_func.h"
 
 int main()
-{
+{/*
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("/home/host/Documents/project_db.db");
     QSqlQuery query;
@@ -57,6 +52,13 @@ int main()
     }
     db.close();
     return 0;
+*/
+    Database_func db;
+
+    db.ReceiveDatadb();
+    db.SendDatadb();
+    db.ReceiveDatadb();
+    db.CloseConndb();
 }
 
 
