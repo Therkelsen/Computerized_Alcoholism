@@ -1,6 +1,6 @@
 
 
-#include "database_func.h"
+#include "database.h"
 
 int main()
 {/*
@@ -53,12 +53,13 @@ int main()
     db.close();
     return 0;
 */
-    Database_func db;
+    Database db;
 
-    db.ReceiveDatadb();
-    db.SendDatadb();
-    db.ReceiveDatadb();
-    db.CloseConndb();
+    std::string intrinsics = "443.30481, 0, 719.5, 0, 471.87396, 539.5, 0, 0, 1";
+
+    db.stringToFloatArray(intrinsics);
+
+
 }
 
 

@@ -1,1 +1,1 @@
-/usr/bin/g++  -g   CMakeFiles/db_test.dir/main.cpp.o CMakeFiles/db_test.dir/database_func.cpp.o  -o db_test  /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8 
+/usr/bin/g++  -g   CMakeFiles/db_test.dir/main.cpp.o CMakeFiles/db_test.dir/database.cpp.o  -o db_test  /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8 

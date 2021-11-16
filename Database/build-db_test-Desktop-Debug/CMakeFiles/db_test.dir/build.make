@@ -70,29 +70,29 @@ CMakeFiles/db_test.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/db_test.dir/main.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/therkelsen/Computerized_Alcoholism/Database/db_test/main.cpp -o CMakeFiles/db_test.dir/main.cpp.s
 
-CMakeFiles/db_test.dir/database_func.cpp.o: CMakeFiles/db_test.dir/flags.make
-CMakeFiles/db_test.dir/database_func.cpp.o: /home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/therkelsen/Computerized_Alcoholism/Database/build-db_test-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/db_test.dir/database_func.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/db_test.dir/database_func.cpp.o -c /home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.cpp
+CMakeFiles/db_test.dir/database.cpp.o: CMakeFiles/db_test.dir/flags.make
+CMakeFiles/db_test.dir/database.cpp.o: /home/therkelsen/Computerized_Alcoholism/Database/db_test/database.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/therkelsen/Computerized_Alcoholism/Database/build-db_test-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/db_test.dir/database.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/db_test.dir/database.cpp.o -c /home/therkelsen/Computerized_Alcoholism/Database/db_test/database.cpp
 
-CMakeFiles/db_test.dir/database_func.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/db_test.dir/database_func.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.cpp > CMakeFiles/db_test.dir/database_func.cpp.i
+CMakeFiles/db_test.dir/database.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/db_test.dir/database.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/therkelsen/Computerized_Alcoholism/Database/db_test/database.cpp > CMakeFiles/db_test.dir/database.cpp.i
 
-CMakeFiles/db_test.dir/database_func.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/db_test.dir/database_func.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.cpp -o CMakeFiles/db_test.dir/database_func.cpp.s
+CMakeFiles/db_test.dir/database.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/db_test.dir/database.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/therkelsen/Computerized_Alcoholism/Database/db_test/database.cpp -o CMakeFiles/db_test.dir/database.cpp.s
 
 # Object files for target db_test
 db_test_OBJECTS = \
 "CMakeFiles/db_test.dir/main.cpp.o" \
-"CMakeFiles/db_test.dir/database_func.cpp.o"
+"CMakeFiles/db_test.dir/database.cpp.o"
 
 # External object files for target db_test
 db_test_EXTERNAL_OBJECTS =
 
 db_test: CMakeFiles/db_test.dir/main.cpp.o
-db_test: CMakeFiles/db_test.dir/database_func.cpp.o
+db_test: CMakeFiles/db_test.dir/database.cpp.o
 db_test: CMakeFiles/db_test.dir/build.make
 db_test: /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.12.8
 db_test: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8

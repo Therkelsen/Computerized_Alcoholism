@@ -6,16 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.cpp
-database_func.h
-/home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.h
+/home/therkelsen/Computerized_Alcoholism/Database/db_test/database.cpp
+database.h
+/home/therkelsen/Computerized_Alcoholism/Database/db_test/database.h
 
-/home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.h
+/home/therkelsen/Computerized_Alcoholism/Database/db_test/database.h
 iostream
 -
 string
--
-sstream
 -
 QtSql
 -

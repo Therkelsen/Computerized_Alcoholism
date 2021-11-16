@@ -94,10 +94,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.cpp">
+		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Database/db_test/database.cpp">
 			<Option target="db_test"/>
 		</Unit>
-		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Database/db_test/database_func.h">
+		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Database/db_test/database.h">
 			<Option target="db_test"/>
 		</Unit>
 		<Unit filename="/home/therkelsen/Computerized_Alcoholism/Database/db_test/main.cpp">

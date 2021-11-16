@@ -20,7 +20,7 @@ set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "RELEASE
 # SQL
 find_package(Qt5 COMPONENTS Sql REQUIRED)
 
-add_executable(db_test main.cpp database_func.cpp database_func.h)
+add_executable(db_test main.cpp database.cpp database.h)
 
 # Link libraries
 target_link_libraries(db_test PRIVATE Qt5::Sql)

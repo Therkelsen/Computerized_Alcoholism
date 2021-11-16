@@ -123,32 +123,32 @@ db_test/fast:
 	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/build
 .PHONY : db_test/fast
 
-database_func.o: database_func.cpp.o
+database.o: database.cpp.o
 
-.PHONY : database_func.o
+.PHONY : database.o
 
 # target to build an object file
-database_func.cpp.o:
-	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/database_func.cpp.o
-.PHONY : database_func.cpp.o
+database.cpp.o:
+	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/database.cpp.o
+.PHONY : database.cpp.o
 
-database_func.i: database_func.cpp.i
+database.i: database.cpp.i
 
-.PHONY : database_func.i
+.PHONY : database.i
 
 # target to preprocess a source file
-database_func.cpp.i:
-	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/database_func.cpp.i
-.PHONY : database_func.cpp.i
+database.cpp.i:
+	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/database.cpp.i
+.PHONY : database.cpp.i
 
-database_func.s: database_func.cpp.s
+database.s: database.cpp.s
 
-.PHONY : database_func.s
+.PHONY : database.s
 
 # target to generate assembly for a file
-database_func.cpp.s:
-	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/database_func.cpp.s
-.PHONY : database_func.cpp.s
+database.cpp.s:
+	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/database.cpp.s
+.PHONY : database.cpp.s
 
 main.o: main.cpp.o
 
@@ -186,9 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... db_test"
-	@echo "... database_func.o"
-	@echo "... database_func.i"
-	@echo "... database_func.s"
+	@echo "... database.o"
+	@echo "... database.i"
+	@echo "... database.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
