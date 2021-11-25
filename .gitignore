@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+/Database/build-db_test-Desktop-Debug/
+/MachineVision/build-Calibration-Desktop-Debug/
+/MachineVision/build-calibration-Desktop-Debug/
+/MachineVision/build-machineVision-Desktop-Debug/
+/Main/build-Controller-Desktop-Debug
