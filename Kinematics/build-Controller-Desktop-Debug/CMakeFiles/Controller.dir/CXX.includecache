@@ -6,33 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/victoria/Computerized_Alcoholism/Kinematics/Controller/calib.cpp
-calib.h
-/home/victoria/Computerized_Alcoholism/Kinematics/Controller/calib.h
-
-/home/victoria/Computerized_Alcoholism/Kinematics/Controller/calib.h
-robotcontroller.h
-/home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.h
-machinevision.h
-/home/victoria/Computerized_Alcoholism/Kinematics/Controller/machinevision.h
-iostream
--
-vector
--
-array
--
-iomanip
--
-Eigen/Dense
--
-Eigen/SVD
--
-
 /home/victoria/Computerized_Alcoholism/Kinematics/Controller/machinevision.h
 vector
 -
 pylon/PylonIncludes.h
 -
+
+/home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.cpp
+robotcontroller.h
+/home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.h
 
 /home/victoria/Computerized_Alcoholism/Kinematics/Controller/robotcontroller.h
 iostream

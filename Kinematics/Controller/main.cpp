@@ -39,13 +39,7 @@ int main() {
 
           //machineVision mv;
 
-        /*  rc.setR();
-          rc.setT();
-          rc.calcHInverse();
 
-
-          rc.moveToPong();
-*/
         //////Calibration///////
 
         //machineVision mv;
@@ -65,6 +59,12 @@ int main() {
         calTest.calcTrans();
         calTest.printCalibration();
 
+        rc.setR();
+        rc.setT();
+        rc.calcHInverse();
+
+
+        rc.moveToPong();
 
 
 

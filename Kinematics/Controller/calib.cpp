@@ -58,6 +58,9 @@
 
 Calib::Calib() {
 
+    //pWorldArr = {{1, 2, 3}, {2, 3, 4}, {3, 4, 5}};
+    //PRobotArr = {{1, 2, 3}, {2, 3, 4}, {3, 4, 5}};
+
     pWorldArr = {{174.43, 270.46, 0.00}, {322.27, 420.41, 0.00}, {324.08, 270.98, 0.00}};
     PRobotArr = {{252.31, -596.69, 178.27}, {55.89, -516.00, 178.43}, {193.74, -459.25, 178.44}};
 }
@@ -115,8 +118,8 @@ void Calib::calcCentroids() {
 
     }
 
-    centroidW /= 4;
-    centroidR /= 4;
+    centroidW /= pWorld.rows();
+    centroidR /= pWorld.rows();
 
     std::cout << "\n\nCentroids : \n";
     std::cout << centroidW << "\n\n";
@@ -143,8 +146,10 @@ void Calib::calcQ() {
 
 void Calib::calcH() {
 
+    H = Eigen::Matrix3d::Zero();
+
     for (unsigned int i = 0; i < qWorld.rows(); ++i) {
-        H = QRobot.row(i).transpose() * qWorld.row(i);
+        H += QRobot.row(i).transpose() * qWorld.row(i);
     }
 
     std::cout << "\n\nH : \n";
@@ -189,7 +194,3 @@ void Calib::printCalibration() {
 
 
 }
-
-
-
-
