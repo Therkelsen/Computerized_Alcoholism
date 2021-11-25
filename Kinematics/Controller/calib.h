@@ -15,25 +15,24 @@ public:
     Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist);
     Calib(); //Test-contructor: adds default values to member vectors pWorld & PRobot
     void printCoordinates(std::ostream &ost);
+    void convertToEigen();
     void calcCentroids();
-    void printCentroids(std::ostream &ost);
     void calcQ();
-    void printQ(std::ostream &ost);
     void calcH();
-    void printH();
     void calcSVD();
     void calcRot();
     void calcTrans();
-    std::array<std::array<double, 3>, 3> getRot();
-    std::array<double, 3> getTrans();
+    void getRot();
     void printCalibration();
 
 
 
 private:
-    std::vector<std::array<double, 3>> pWorld, PRobot, qWorld, QRobot;
-    std::array<std::array<double, 3>, 3> H, V, U, Sum, R;
-    std::array<double, 3> T, centroidR, centroidW;
+    std::vector<std::array<double, 3>> pWorldArr, PRobotArr;
+    Eigen::MatrixX3d pWorld, PRobot, qWorld, QRobot;
+    Eigen::Vector3d centroidR, centroidW, T;
+    Eigen::Matrix3d H, U, V, R;
+
 
 
 };

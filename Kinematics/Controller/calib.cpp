@@ -1,6 +1,6 @@
 #include "calib.h"
 
-Calib::Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist){
+/*Calib::Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist){
     int saveValues = 0;
     while (saveValues != 2) {
         ost << "Pong in place? Enter 1 : ";
@@ -53,17 +53,13 @@ Calib::Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::ist
 
     }
 }
-
+*/
 //Test-constructor
 
 Calib::Calib() {
-    std::array<double, 3> pPoint{1, 2, 3};
-    std::array<double, 3> PPoint{4, 5, 6};
 
-    for (unsigned int i = 0; i < 10; ++i) {
-        pWorld.push_back(pPoint);
-        PRobot.push_back(PPoint);
-    }
+    pWorldArr = {{174.43, 270.46, 0.00}, {322.27, 420.41, 0.00}, {324.08, 270.98, 0.00}};
+    PRobotArr = {{252.31, -596.69, 178.27}, {55.89, -516.00, 178.43}, {193.74, -459.25, 178.44}};
 }
 
 
@@ -74,217 +70,125 @@ void Calib::printCoordinates(std::ostream &ost) {
     ost << "|px      |py      |pz      |Px      |Py      |Pz      |" << "\n";
 
 
-    for (unsigned int i = 0; i < pWorld.size(); ++i) {
+    for (unsigned int i = 0; i < pWorldArr.size(); ++i) {
         if (i > 0) {
            ost << "\n";
         }
         for (unsigned int j = 0; j < 3; ++j) {
-            ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << pWorld.at(i).at(j);
+            ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << pWorldArr.at(i).at(j);
         }
         for (unsigned int j = 0; j < 3; ++j) {
             if (j == 2) {
-                ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << PRobot.at(i).at(j) << "|";
+                ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << PRobotArr.at(i).at(j) << "|";
             } else {
-                ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << PRobot.at(i).at(j);
+                ost << "|" << std::setw(8) <<  std::left << std::fixed << std::setprecision(2) << PRobotArr.at(i).at(j);
             }
         }
     }
+
+}
+
+void Calib::convertToEigen() {
+    pWorld.resize(pWorldArr.size(), 3);
+    PRobot.resize(PRobotArr.size(),3);
+
+    for (unsigned int i = 0; i < pWorldArr.size(); ++i) {
+        for (unsigned int j = 0; j < 3; ++j) {
+            pWorld(i,j) = pWorldArr.at(i).at(j);
+            PRobot(i,j) = PRobotArr.at(i).at(j);
+        }
+    }
+
+    std::cout << "\n\nConverted to eigen \n";
+    std::cout << pWorld;
+    std::cout << "\n\n";
+    std::cout << PRobot;
+    std::cout << "\n\n";
 
 }
 
 void Calib::calcCentroids() {
 
-    for (unsigned int i = 0; i < pWorld.size(); ++i) {
-        for (unsigned int j = 0; j < 3; ++j) {
-            centroidW.at(j) += pWorld.at(i).at(j);
-            centroidR.at(j) += PRobot.at(i).at(j);
-        }
+    for (unsigned int i  = 0; i < pWorld.rows(); ++i) {
+        centroidW += pWorld.row(i);
+        centroidR += PRobot.row(i);
+
     }
 
-    for (unsigned int i = 0; i < 3; ++i) {
-        centroidW.at(i) /= pWorld.size();
-        centroidR.at(i) /= PRobot.size();
-    }
+    centroidW /= 4;
+    centroidR /= 4;
+
+    std::cout << "\n\nCentroids : \n";
+    std::cout << centroidW << "\n\n";
+    std::cout << centroidR << "\n\n";
 
 }
-
-void Calib::printCentroids(std::ostream &ost) {
-
-    ost << "\n" << "centroidR: ";
-
-    for (unsigned int i = 0; i < 3; ++i) {
-        ost << centroidR.at(i) << " ";
-    }
-
-    ost << "\n" << "centroidC: ";
-
-    for (unsigned int i = 0; i < 3; ++i) {
-        ost << centroidW.at(i) << " ";
-    }
-}
-
 
 
 void Calib::calcQ() {
-    for (unsigned int i = 0; i < pWorld.size(); ++i) {
-        std::array<double, 3> qPoint, QPoint;
+    qWorld.resize(pWorldArr.size(), 3);
+    QRobot.resize(PRobotArr.size(),3);
 
-        for (unsigned int j = 0; j < 3; ++j) {
-            qPoint.at(j) = pWorld.at(i).at(j) - centroidW.at(j);
-            QPoint.at(j) = PRobot.at(i).at(j) - centroidR.at(j);
-        }
-
-        qWorld.push_back(qPoint);
-        QRobot.push_back(QPoint);
+    for (unsigned int i = 0; i < pWorld.rows(); ++i) {
+        qWorld.row(i) = pWorld.row(i) - centroidW.transpose();
+        QRobot.row(i) = PRobot.row(i) - centroidR.transpose();
     }
+
+    std::cout << "\n\nQ : \n";
+    std::cout << qWorld << "\n\n";
+    std::cout << QRobot << "\n\n";
 
 }
 
-void Calib::printQ(std::ostream &ost) {
-    ost << "Printing qWorld.." << "\n";
-
-    for (unsigned int i = 0; i < qWorld.size(); ++i) {
-        ost << "\n";
-
-        for (unsigned int j = 0; j < 3; ++j) {
-            ost << qWorld.at(i).at(j) << " ";
-        }
-    }
-
-    ost << "Printing QRobot.." << "\n";
-
-    for (unsigned int i = 0; i < qWorld.size(); ++i) {
-        ost << "\n";
-
-        for (unsigned int j = 0; j < 3; ++j) {
-            ost << QRobot.at(i).at(j) << " ";
-        }
-    }
-}
 
 void Calib::calcH() {
-    H = {};
 
-    for (unsigned int i = 0; i < qWorld.size(); ++i) {
-
-        for (unsigned int j = 0; j < 3; ++j) {
-
-            for (unsigned int h = 0; h < 3; ++h) {
-                H.at(j).at(h) += QRobot.at(i).at(j) * qWorld.at(i).at(h);
-            }
-        }
-    }
-}
-
-void Calib::printH() {
-
-    std::cout << "Printing H:";
-    for (unsigned int i = 0; i < 3; ++i) {
-        std::cout << "\n";
-        for (unsigned int j = 0; j < 3; ++j) {
-            std::cout << H.at(i).at(j) << " ";
-        }
+    for (unsigned int i = 0; i < qWorld.rows(); ++i) {
+        H = QRobot.row(i).transpose() * qWorld.row(i);
     }
 
+    std::cout << "\n\nH : \n";
+    std::cout << H << "\n\n";
 
 }
+
 
 void Calib::calcSVD() {
-    // H castes til Eigen-matrix
-    Eigen::Matrix3d h;
+    // SVD-objekt af matrix H
+    Eigen::JacobiSVD<Eigen::Matrix3d> svd(H, Eigen::ComputeFullU | Eigen::ComputeFullV);
 
-    for (unsigned int i = 0; i < 3; ++i) {
-        for (unsigned int j = 0; j < 3; ++j) {
-            h(i,j) = H.at(i).at(j);
-        }
-    }
+    U = svd.matrixU();
+    V = svd.matrixV();
 
-
-    // SVD-objekt af matrix h
-    Eigen::JacobiSVD<Eigen::Matrix3d> svd(h, Eigen::ComputeFullU | Eigen::ComputeFullV);
-
-    Eigen::Matrix3d u = svd.matrixU();
-    Eigen::Matrix3d v = svd.matrixV();
-
-    for (unsigned int i = 0; i < 3; ++i) {
-        for (unsigned int j = 0; j < 3; ++j) {
-            U.at(i).at(j) = u(i,j);
-            V.at(i).at(j) = v(i,j);
-        }
-    }
+    std::cout << "\n\nU : \n";
+    std::cout << U;
+    std::cout << "\n\nV : \n";
+    std::cout << V << "\n\n";
 
 }
-
-
 
 void Calib::calcRot() {
-    //Transpose matrix U
-    std::array<std::array<double, 3>, 3> U_T;
-
-    for (unsigned int i = 0; i < 3; ++i) {
-        for (unsigned int j = 0; j < 3; ++j) {
-            U_T.at(i).at(j) = U.at(j).at(i);
-        }
-    }
-
-    for (unsigned int i = 0; i < 3; ++i) {
-        for (unsigned int j = 0; j < 3; ++j) {
-            double temp;
-            for (unsigned int h = 0; h < 3; ++h) {
-                temp += V.at(i).at(h) * U_T.at(j).at(h);
-            }
-
-            R.at(i).at(j) = temp;
-        }
-    }
-
-}
-
-std::array<std::array<double, 3>, 3> Calib::getRot() {
-    return R;
+    R = V*U.transpose();
 }
 
 
 void Calib::calcTrans() {
-    std::array<double, 3> temp;
 
-    for (unsigned int i = 0; i < 3; ++i) {
-        double sum;
-        for (unsigned int j = 0; j < 3; ++j) {
-            sum += R.at(i).at(j) * centroidR.at(j);
-        }
-        temp.at(i) = sum;
-    }
-
-    for (unsigned int i = 0; i < 3; ++i) {
-         T.at(i) = centroidW.at(i) - temp.at(i);
-    }
-
-}
-
-std::array<double, 3> Calib::getTrans() {
-    return T;
+    T = centroidW - R*centroidR;
 }
 
 void Calib::printCalibration() {
 
-    std::cout << "\n\nRotation matrix of calibration: ";
+    std::cout << "\n\nRotation matrix from calibration: \n";
 
-    for (unsigned int i = 0; i < 3; ++i) {
-        std::cout << "\n";
-        for (unsigned int j = 0; j < 3; ++j) {
-            std::cout << R.at(i).at(j) << " ";
-        }
-    }
+    std::cout << R;
 
-    std::cout << "\n\nTranslational vector of calibration:";
-    for (unsigned int i = 0; i < 3; ++i) {
-        std::cout << T.at(i) << " ";
-    }
+    std::cout << "\n\nTranslational vector from calibration: \n";
+
+    std::cout << T;
+
 
 }
-
-
 
 
 

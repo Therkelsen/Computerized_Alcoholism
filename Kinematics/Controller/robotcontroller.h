@@ -5,6 +5,8 @@
 #include <vector>
 #include <ur_rtde/rtde_control_interface.h>
 #include <ur_rtde/rtde_receive_interface.h>
+#include <Eigen/Dense>
+#include "machinevision.h"
 
 
 
@@ -14,11 +16,10 @@ public:
     void connectToRobot(const std::string ip);
     void startingPos();
     std::array<double, 3> getTCP();
-    void setPongPos(std::vector<double> &pongCoordinates);
-    void setRobToPong();
-    void moveToPong();
-    void gripAndLift();
-    void printPose(std::vector<double> &inPose, double inSpeed, double inAccel, bool inAsync, const std::string inName, const std::string inType);
+    void setR(); //Hard codet pt. men bør hente værider fra database
+    void setT(); //-||-
+    void moveToPong(/*machineVision &mv*/);
+    void calcHInverse();
 
 private:
     double rad = acos(-1)/180;
@@ -30,14 +31,11 @@ private:
     // 6 dimentional vector with starting position and orientation of TCP
     std::vector<double> startPos{};
 
-    // position of pong in camera coordinates
-    std::vector<double> pongPos;
+    std::vector<double> pongPos{};
 
-    // position of pong in robot coordinates
-    std::vector<double> robToPong;
-
-    std::vector<double> abovePong;
-    std::vector<double> atPong;
+    Eigen::Vector3d T;
+    Eigen::Matrix3d R;
+    Eigen::Matrix4d H_Inv;
 
     // Control Interface Object
     ur_rtde::RTDEControlInterface rc;
