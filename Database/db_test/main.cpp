@@ -57,7 +57,7 @@ int main()
 
     std::string intrinsics = "443.30481, 0, 719.5, 0, 471.87396, 539.5, 0, 0, 1";
 
-    db.stringToFloatArray(intrinsics);
+    db.stringToDoubleArray(intrinsics);
 
 
 }

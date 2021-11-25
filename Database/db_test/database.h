@@ -14,11 +14,11 @@ public:
     Database();
     void insertData(std::string data);
     void extractData();
-    float* extractIPAdresses(int cellId);
-    float* extractIntrinsics(int cellId);
-    float* extractDistortionParameters(int cellId);
+    double* extractIPAdresses(int cellId);
+    double* extractIntrinsics(int cellId);
+    double* extractDistortionParameters(int cellId);
     void disconnect();
-    float* stringToFloatArray(const std::string inStr);
+    double* stringToDoubleArray(const std::string inStr);
 
 private:
     QSqlDatabase db;

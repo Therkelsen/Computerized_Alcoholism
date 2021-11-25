@@ -40,7 +40,7 @@ float* Database::extractIPAdresses(int cellId){
         value = val.toUtf8().constData();
         std::cout << "ID: " << id << " | " << "Value: " << value << " | " << std::endl;
     }
-    return stringToFloatArray(value);
+    return stringToDoubleArray(value);
 }
 
 float* Database::extractIntrinsics(int cellId){
@@ -54,7 +54,7 @@ float* Database::extractIntrinsics(int cellId){
         value = val.toUtf8().constData();
         std::cout << "ID: " << id << " | " << "Value: " << value << " | " << std::endl;
     }
-    return stringToFloatArray(value);
+    return stringToDoubleArray(value);
 }
 
 float* Database::extractDistortionParameters(int cellId){
@@ -68,7 +68,7 @@ float* Database::extractDistortionParameters(int cellId){
         value = val.toUtf8().constData();
         std::cout << "ID: " << id << " | " << "Value: " << value << " | " << std::endl;
     }
-    return stringToFloatArray(value);
+    return stringToDoubleArray(value);
 }
 
 void Database::insertData(std::string data){
@@ -86,7 +86,7 @@ void Database::disconnect() {
     db.close();
 }
 
-float* Database::stringToFloatArray(const std::string inStr) {
+double* Database::stringToDoubleArray(const std::string inStr) {
   std::cout << "DBIF: Input string: " << inStr << std::endl;
   std::cout << "DBIF: Converting to float array" << std::endl;
 
@@ -104,7 +104,7 @@ float* Database::stringToFloatArray(const std::string inStr) {
   }
   vec.push_back(s);
 
-  float *arr = new float[vec.size()];
+  double *arr = new double[vec.size()];
 
   for (int i = 0; i < vec.size(); i++) {
       float x = stof(vec.at(i));
