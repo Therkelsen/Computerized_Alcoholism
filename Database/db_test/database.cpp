@@ -29,21 +29,26 @@ void Database::extractData(){
     }
 }
 
-float* Database::extractIPAdresses(int cellId){
+double* Database::extractIPAdresses(int cellId){
     std::cout << "DBIF: Extracting IP Adresses for cell #" << cellId << std::endl;
-    std::string value = "";
+    std::string ur_ip = "";
+    std::string wsg_ip = "";
     QSqlQuery query;
-    query.exec("SELECT * FROM main_db");
+    query.prepare("SELECT ur_ip_address, wsg_ip_address FROM main_db where id = :cId");
+    query.bindValue(":cID", cellId);
+    query.exec();
     while(query.next()){
-        int id = query.value(0).toInt();
-        QString val = query.value(1).toString();
-        value = val.toUtf8().constData();
-        std::cout << "ID: " << id << " | " << "Value: " << value << " | " << std::endl;
+        QString val1 = query.value(0).toString();
+        ur_ip = val1.toUtf8().constData();
+        QString val2 = query.value(0).toString();
+        wsg_ip = val2.toUtf8().constData();
+
+        std::cout << "ur ip: " << ur_ip << " | " << "wsg ip: " << wsg_ip << " | " << std::endl;
     }
-    return stringToDoubleArray(value);
+    return stringToDoubleArray(ur_ip);
 }
 
-float* Database::extractIntrinsics(int cellId){
+double* Database::extractIntrinsics(int cellId){
     std::cout << "DBIF: Extracting intrinsics for cell #" << cellId << std::endl;
     std::string value = "";
     QSqlQuery query;
@@ -57,7 +62,7 @@ float* Database::extractIntrinsics(int cellId){
     return stringToDoubleArray(value);
 }
 
-float* Database::extractDistortionParameters(int cellId){
+double* Database::extractDistortionParameters(int cellId){
     std::cout << "DBIF: Extracting distortion parameters for cell #" << cellId << std::endl;
     std::string value = "";
     QSqlQuery query;
@@ -94,7 +99,6 @@ double* Database::stringToDoubleArray(const std::string inStr) {
 
   std::string s = inStr;
   std::string delimiter = ", ";
-
   size_t pos = 0;
   std::string token;
   while ((pos = s.find(delimiter)) != std::string::npos) {
@@ -104,10 +108,11 @@ double* Database::stringToDoubleArray(const std::string inStr) {
   }
   vec.push_back(s);
 
-  double *arr = new double[vec.size()];
 
+  double *arr = new double[vec.size()];
+std::cout << "4" << std::endl;
   for (int i = 0; i < vec.size(); i++) {
-      float x = stof(vec.at(i));
+      double x = std::stof(vec.at(i));
       arr[i] = x;
   }
 
