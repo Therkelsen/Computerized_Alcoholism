@@ -9,8 +9,8 @@
 
 
 
-RobotController::RobotController(const std::string ipAddress, std::vector<double> &startingPos)
-  :rc(ipAddress), startPos(startingPos) {
+RobotController::RobotController(const std::string ipAddress)
+  :rc(ipAddress), rr(ipAddress) {
   std::cout << std::boolalpha;
 
   ip = ipAddress;
@@ -18,14 +18,17 @@ RobotController::RobotController(const std::string ipAddress, std::vector<double
 
 void RobotController::startingPos() {
     // Send robot to base position
+
     rc.moveL(startPos);
 }
 
 std::array<double, 3> RobotController::getTCP() {
-    ur_rtde::RTDEReceiveInterface rr(ip);
 
     std::vector<double> TCP = rr.getActualTCPPose();
-    //rr.~RTDEReceiveInterface();
+
+    for (unsigned int i = 0; i < TCP.size(); ++i) {
+        std::cout << TCP.at(i) << " ";
+    }
 
     std::array<double, 3> TCPPose;
 
@@ -34,8 +37,6 @@ std::array<double, 3> RobotController::getTCP() {
     for (unsigned int i = 0; i < 3; ++i) {
         TCPPose.at(i) = TCP.at(i) * 1000;
     }
-
-
 
     return TCPPose;
 
@@ -55,7 +56,7 @@ void RobotController::setR() {
 }
 
 void RobotController::setT() {
-    T = {821.69, 276.87, -179.01};
+    T = {821.89, 276.86, -210};
 
 }
 
@@ -106,30 +107,53 @@ void RobotController::calcHInverse() {
 
 }
 
-void RobotController::moveToPong(/*machineVision &mv*/)  {
-    //pongPos = mv.getObject(1);
-
-    pongPos = {174.43, 270.46};
+void RobotController::moveToPong(machineVision &mv)  {
+    pongPos = mv.getObject(1);
 
     Eigen::Vector4d pong;
 
     pong = {pongPos.at(0), pongPos.at(1), 0, 1};
 
-    //test udskrivning af pong
-    std::cout << "Pong: \n";
-    for (unsigned int i = 0; i < 4; ++i) {
-        std::cout << pong(i) << " ";
-    }
-    std::cout << "\n";
-
-
-
     Eigen::Vector4d rob = H_Inv * pong;
 
     std::cout << rob << std::endl;
 
+    std::vector<double> robPose;
+
+    for (unsigned int i = 0; i < 3; ++i) {
+        robPose.push_back((rob(i)/1000));
+    }
+
+    for (unsigned int i = 3; i < 6; ++i) {
+       robPose.push_back(startPos.at(i));
+    }
+
+    rc.moveL(robPose);
+
 }
 
+void RobotController::moveDown(double down) {
+    std::vector<double> TCP = rr.getActualTCPPose();
+    TCP.at(5) = 0;
+
+    TCP.at(2) = TCP.at(2) - down;
+
+    rc.moveL(TCP);
+}
+
+void RobotController::moveUp(double up) {
+    std::vector<double> TCP = rr.getActualTCPPose();
+    TCP.at(5) = 0;
+
+    TCP.at(2) = TCP.at(2) + up;
+
+    rc.moveL(TCP);
+
+}
+
+void RobotController::throwPose() {
+
+}
 
 
 

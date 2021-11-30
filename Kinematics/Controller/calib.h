@@ -20,11 +20,12 @@ public:
     void calcQ();
     void calcH();
     void calcSVD();
-    void calcRot();
     void calcTrans();
-    void getRot();
     void printCalibration();
 
+    //Mangler implementering med returtype brugbar af databasen
+    void calcRot();
+    void getRot();
 
 
 private:

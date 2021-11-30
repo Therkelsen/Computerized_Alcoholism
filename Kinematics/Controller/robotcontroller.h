@@ -12,14 +12,20 @@
 
 class RobotController {
 public:
-    RobotController(const std::string ipAddress, std::vector<double> &startingPos);
+    RobotController(const std::string ipAddress);
     void connectToRobot(const std::string ip);
     void startingPos();
     std::array<double, 3> getTCP();
     void setR(); //Hard codet pt. men bør hente værider fra database
     void setT(); //-||-
-    void moveToPong(/*machineVision &mv*/);
     void calcHInverse();
+    void moveToPong(machineVision &mv);
+    void moveDown(double down);
+    void grip(); //Mangler implementation
+    void moveUp(double up);
+    void throwPose(); //Mangler implementation
+
+
 
 private:
     double rad = acos(-1)/180;
@@ -29,7 +35,7 @@ private:
     bool async = false;
 
     // 6 dimentional vector with starting position and orientation of TCP
-    std::vector<double> startPos{};
+    std::vector<double> startPos{0.143, -0.220, 0.241, 2.599, -1.792, 0};
 
     std::vector<double> pongPos{};
 
@@ -39,6 +45,8 @@ private:
 
     // Control Interface Object
     ur_rtde::RTDEControlInterface rc;
+    //Receive interface
+    ur_rtde::RTDEReceiveInterface rr;
 
 };
 
