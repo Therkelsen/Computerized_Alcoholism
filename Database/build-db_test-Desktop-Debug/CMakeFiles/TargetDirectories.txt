@@ -1,3 +1,0 @@
-/home/therkelsen/Computerized_Alcoholism/Database/build-db_test-Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/therkelsen/Computerized_Alcoholism/Database/build-db_test-Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/therkelsen/Computerized_Alcoholism/Database/build-db_test-Desktop-Debug/CMakeFiles/db_test.dir

@@ -8,6 +8,7 @@
 #include <QSqlDriver>
 #include <QString>
 
+
 class Database
 {
 public:
