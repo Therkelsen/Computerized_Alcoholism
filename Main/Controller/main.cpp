@@ -15,6 +15,10 @@
 #include <vector>
 #include <array>
 #include <ur_rtde/rtde_control_interface.h>
+#include <rl/hal/WeissWsg50.h>
+#include <chrono>
+#include <thread>
+
 
 using namespace std;
 
@@ -24,20 +28,29 @@ int main() {
     const string ipSimulator = "127.0.0.1";
     string ip = ipPhysical;
 
+    const string ipGripper = "192.168.100.10";
+
 
     try {
          cout << "UR_RTDE: Attempting connection to robot socket at " << ip << " " << endl;
 
         // Create RobotController object
-           RobotController rc(ip);
+          RobotController rc(ip, ipGripper);
+          rc.grip();
 
-           //rc.startingPos();
+          std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+          rc.releaseGrip();
+
+
+
+
 
           cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
 
 
-          machineVision mv;
+         // machineVision mv;
 
 
         //////Calibration///////
@@ -69,8 +82,7 @@ int main() {
 */
 
           //rc.moveDown(0.032);
-          rc.moveUp(0.032);
-
+          //rc.moveUp(0.032);
 
 
 
@@ -80,6 +92,8 @@ int main() {
         cout << "System : Exiting" << endl;
         return -1;
     }
+
+
 
     return 0;
 }

@@ -8,12 +8,12 @@
 #include "robotcontroller.h"
 
 
-
-RobotController::RobotController(const std::string ipAddress)
-  :rc(ipAddress), rr(ipAddress) {
+RobotController::RobotController(const std::string ipAddress, const std::string gripIP)
+  :rc(ipAddress), rr(ipAddress), gc(gripIP){
   std::cout << std::boolalpha;
 
   ip = ipAddress;
+  gripperIP = gripIP;
 }
 
 void RobotController::startingPos() {
@@ -156,6 +156,24 @@ void RobotController::throwPose() {
 }
 
 
+void RobotController::grip() {
+    gc.open();
+    gc.start();
+    gc.doGraspPart(0.04f, 0.4f);
+    gc.stop();
+    gc.close();
+}
+
+
+void RobotController::releaseGrip() {
+    gc.open();
+    gc.start();
+    gc.doSetAcceleration(0.5f);
+    gc.doSetForceLimit(20.0f);
+    gc.doPrePositionFingers(0.1f, 0.4f);
+    gc.stop();
+    gc.close();
+}
 
 
 

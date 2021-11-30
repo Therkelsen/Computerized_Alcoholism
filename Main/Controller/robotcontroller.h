@@ -7,12 +7,14 @@
 #include <ur_rtde/rtde_receive_interface.h>
 #include <Eigen/Dense>
 #include "machinevision.h"
+#include <rl/hal/WeissWsg50.h>
+
 
 
 
 class RobotController {
 public:
-    RobotController(const std::string ipAddress);
+    RobotController(const std::string ipAddress, const std::string gripIP);
     void connectToRobot(const std::string ip);
     void startingPos();
     std::array<double, 3> getTCP();
@@ -21,8 +23,9 @@ public:
     void calcHInverse();
     void moveToPong(machineVision &mv);
     void moveDown(double down);
-    void grip(); //Mangler implementation
     void moveUp(double up);
+    void grip();
+    void releaseGrip();
     void throwPose(); //Mangler implementation
 
 
@@ -33,6 +36,8 @@ private:
     double speed = 1;
     double accel = 1;
     bool async = false;
+
+    std::string gripperIP = "";
 
     // 6 dimentional vector with starting position and orientation of TCP
     std::vector<double> startPos{0.143, -0.220, 0.241, 2.599, -1.792, 0};
@@ -47,6 +52,9 @@ private:
     ur_rtde::RTDEControlInterface rc;
     //Receive interface
     ur_rtde::RTDEReceiveInterface rr;
+
+    //gripper controll object
+    rl::hal::WeissWsg50 gc;
 
 };
 
