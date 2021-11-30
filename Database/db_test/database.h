@@ -15,6 +15,10 @@ public:
     Database();
     void insertData(std::string data);
     void extractData();
+    void createCell(std::string cellName);
+    void addiptoCell(std::string cellName, std::string ip);
+    void addintrinsicstoCell(std::string cellName, std::string intrinsics);
+    void adddistortionparameterstoCell(std::string cellName, std::string distortionParams);
     double* extractIPAdresses(int cellId);
     double* extractIntrinsics(int cellId);
     double* extractDistortionParameters(int cellId);

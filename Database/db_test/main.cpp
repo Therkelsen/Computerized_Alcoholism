@@ -10,9 +10,9 @@ int main()
 
     //    db.stringToDoubleArray(intrinsics);
     db.extractIPAdresses(1);
-    db.extractIPAdresses(2);
-    db.extractIPAdresses(3);
-    db.extractIPAdresses(4);
+    //db.extractIPAdresses(2);
+    //db.extractIPAdresses(3);
+    //db.extractIPAdresses(4);
 
 }
 

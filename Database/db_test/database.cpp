@@ -29,22 +29,44 @@ void Database::extractData(){
     }
 }
 
+void Database::createCell(std::string cellName)
+{
+
+}
+
+void Database::addiptoCell(std::string cellName, std::string ip)
+{
+
+}
+
+void Database::addintrinsicstoCell(std::string cellName, std::string intrinsics)
+{
+
+}
+
+void Database::adddistortionparameterstoCell(std::string cellName, std::string distortionParams)
+{
+
+}
+
 double* Database::extractIPAdresses(int cellId){
+    std::fixed;
     std::cout << "DBIF: Extracting IP Adresses for cell #" << cellId << std::endl;
     std::string ur_ip = "";
     std::string wsg_ip = "";
     QSqlQuery query;
-    query.prepare("SELECT ur_ip_address, wsg_ip_address FROM main_db where id = :cId");
-    query.bindValue(":cID", cellId);
+    query.prepare("SELECT * FROM main_db where id =:cId");
+    query.bindValue(":cId", cellId);
     query.exec();
     while(query.next()){
-        QString val1 = query.value(0).toString();
+        QString val1 = query.value(2).toString();
         ur_ip = val1.toUtf8().constData();
-        QString val2 = query.value(0).toString();
+        QString val2 = query.value(3).toString();
         wsg_ip = val2.toUtf8().constData();
 
-        std::cout << "ur ip: " << ur_ip << " | " << "wsg ip: " << wsg_ip << " | " << std::endl;
+
     }
+    std::cout << "ur ip: " << ur_ip << " | " << "wsg ip: " << wsg_ip << " | " << std::endl;
     return stringToDoubleArray(ur_ip);
 }
 
@@ -92,6 +114,7 @@ void Database::disconnect() {
 }
 
 double* Database::stringToDoubleArray(const std::string inStr) {
+
   std::cout << "DBIF: Input string: " << inStr << std::endl;
   std::cout << "DBIF: Converting to float array" << std::endl;
 
@@ -110,7 +133,6 @@ double* Database::stringToDoubleArray(const std::string inStr) {
 
 
   double *arr = new double[vec.size()];
-std::cout << "4" << std::endl;
   for (int i = 0; i < vec.size(); i++) {
       double x = std::stof(vec.at(i));
       arr[i] = x;
