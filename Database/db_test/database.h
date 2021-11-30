@@ -15,10 +15,11 @@ public:
     Database();
     void insertData(std::string data);
     void extractData();
-    void createCell(std::string cellName);
-    void addiptoCell(std::string cellName, std::string ip);
-    void addintrinsicstoCell(std::string cellName, std::string intrinsics);
-    void adddistortionparameterstoCell(std::string cellName, std::string distortionParams);
+    void createCell(QString cellName);
+    void addiptoCell(QString cellName, QString ip);
+    void addWSGiptoCell(QString cellName, QString ip);
+    void addintrinsicstoCell(QString cellName, QString intrinsics);
+    void adddistortionparameterstoCell(QString cellName, QString distortionParams);
     double* extractIPAdresses(int cellId);
     double* extractIntrinsics(int cellId);
     double* extractDistortionParameters(int cellId);

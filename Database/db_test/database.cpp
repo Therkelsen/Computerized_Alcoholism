@@ -29,23 +29,92 @@ void Database::extractData(){
     }
 }
 
-void Database::createCell(std::string cellName)
+void Database::createCell(QString cellName){
+    std::cout << "Adding new cell..." << std::endl;
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO main_db (cell_id) "
+                  "VALUES (:cellName)");
+    query.bindValue(":cellName", cellName);
+    query.exec();
+
+    std::cout << "Cell maybe added we don't know yet" << std::endl;
+    std::cout << "*********************************************" << std::endl << std::endl;
+}
+
+void Database::addiptoCell(QString cellName, QString ip){
+    std::cout << "Adding ip to cell..." << std::endl;
+
+    QSqlQuery query;
+    query.prepare("update main_db set (ur_ip_address) =:ip where (cell_id) =:cellid");
+    query.bindValue(":ip", ip);
+    query.bindValue(":cellid", cellName);
+    query.exec();
+
+    if( !query.exec() ){
+        qDebug() << query.lastError();
+    }
+    else{
+        std::cout << "Cell updated" << std::endl;
+        std::cout << "*********************************************" << std::endl << std::endl;
+    }
+}
+
+void Database::addWSGiptoCell(QString cellName, QString ip)
 {
+    std::cout << "Adding wsg ip to cell..." << std::endl;
+
+    QSqlQuery query;
+    query.prepare("update main_db set (wsg_ip_address) =:ip where (cell_id) =:cellid");
+    query.bindValue(":ip", ip);
+    query.bindValue(":cellid", cellName);
+    query.exec();
+
+    if( !query.exec() ){
+        qDebug() << query.lastError();
+    }
+    else{
+        std::cout << "Cell updated" << std::endl;
+        std::cout << "*********************************************" << std::endl << std::endl;
+    }
 
 }
 
-void Database::addiptoCell(std::string cellName, std::string ip)
-{
+void Database::addintrinsicstoCell(QString cellName, QString intrinsics){
+    std::cout << "Adding intrinsics to cell..." << std::endl;
+
+    QSqlQuery query;
+    query.prepare("update main_db set (intrinsics) =:intrinsics where (cell_id) =:cellid");
+    query.bindValue(":cellid", cellName);
+    query.bindValue(":intrinsics", intrinsics);
+    query.exec();
+
+    if( !query.exec() ){
+        qDebug() << query.lastError();
+    }
+    else{
+        std::cout << "Cell updated" << std::endl;
+        std::cout << "*********************************************" << std::endl << std::endl;
+    }
 
 }
 
-void Database::addintrinsicstoCell(std::string cellName, std::string intrinsics)
-{
+void Database::adddistortionparameterstoCell(QString cellName, QString distortionParams){
+    std::cout << "Adding distortion parameters to cell..." << std::endl;
 
-}
+    QSqlQuery query;
+    query.prepare("update main_db set (distortion_parameters) =:distortionParam where (cell_id) =:cellid");
+    query.bindValue(":cellid", cellName);
+    query.bindValue(":distortionParam", distortionParams);
+    query.exec();
 
-void Database::adddistortionparameterstoCell(std::string cellName, std::string distortionParams)
-{
+    if( !query.exec() ){
+        qDebug() << query.lastError();
+    }
+    else{
+        std::cout << "Cell updated" << std::endl;
+        std::cout << "*********************************************" << std::endl << std::endl;
+    }
 
 }
 
@@ -115,39 +184,39 @@ void Database::disconnect() {
 
 double* Database::stringToDoubleArray(const std::string inStr) {
 
-  std::cout << "DBIF: Input string: " << inStr << std::endl;
-  std::cout << "DBIF: Converting to float array" << std::endl;
+    std::cout << "DBIF: Input string: " << inStr << std::endl;
+    std::cout << "DBIF: Converting to float array" << std::endl;
 
-  std::vector<std::string> vec = {};
+    std::vector<std::string> vec = {};
 
-  std::string s = inStr;
-  std::string delimiter = ", ";
-  size_t pos = 0;
-  std::string token;
-  while ((pos = s.find(delimiter)) != std::string::npos) {
-      token = s.substr(0, pos);
-      vec.push_back(token);
-      s.erase(0, pos + delimiter.length());
-  }
-  vec.push_back(s);
+    std::string s = inStr;
+    std::string delimiter = ", ";
+    size_t pos = 0;
+    std::string token;
+    while ((pos = s.find(delimiter)) != std::string::npos) {
+        token = s.substr(0, pos);
+        vec.push_back(token);
+        s.erase(0, pos + delimiter.length());
+    }
+    vec.push_back(s);
 
 
-  double *arr = new double[vec.size()];
-  for (int i = 0; i < vec.size(); i++) {
-      double x = std::stof(vec.at(i));
-      arr[i] = x;
-  }
+    double *arr = new double[vec.size()];
+    for (int i = 0; i < vec.size(); i++) {
+        double x = std::stof(vec.at(i));
+        arr[i] = x;
+    }
 
-  std::cout << "\nDBIF: Output of conversion:\n[";
+    std::cout << "\nDBIF: Output of conversion:\n[";
 
-  for (int i = 0; i < sizeof(arr) + 1; i++) {
-      if(i < sizeof(arr)) {
-          std::cout << arr[i] << ", ";
-      } else {
-          std::cout << arr[i] << "]" << std::endl;
-      }
-  }
-  std::cout << std::endl;
+    for (int i = 0; i < sizeof(arr) + 1; i++) {
+        if(i < sizeof(arr)) {
+            std::cout << arr[i] << ", ";
+        } else {
+            std::cout << arr[i] << "]" << std::endl;
+        }
+    }
+    std::cout << std::endl;
 
-  return arr;
+    return arr;
 }
