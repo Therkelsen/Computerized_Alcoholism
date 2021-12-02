@@ -37,9 +37,15 @@ void Database::createCell(QString cellName){
                   "VALUES (:cellName)");
     query.bindValue(":cellName", cellName);
     query.exec();
+    if( !query.exec() ){
+        qDebug() << query.lastError();
+    }
+    else{
 
-    std::cout << "Cell maybe added we don't know yet" << std::endl;
-    std::cout << "*********************************************" << std::endl << std::endl;
+        std::cout << "Cell maybe added we don't know yet" << std::endl;
+        std::cout << "*********************************************" << std::endl << std::endl;
+
+    }
 }
 
 void Database::addiptoCell(QString cellName, QString ip){
@@ -219,4 +225,33 @@ double* Database::stringToDoubleArray(const std::string inStr) {
     std::cout << std::endl;
 
     return arr;
+}
+
+void Database::kastOutcome(QString cellname, int kast){
+    // 0 = ikke ramt | 1 = ramt
+    std::cout << "Adding throw outcome" << std::endl;
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO kast (cell_id, ramt)"
+                  "VALUES (:cellName, :ramt)");
+    query.bindValue(":cellName", cellname);
+    query.bindValue(":ramt", kast);
+    query.exec();
+}
+
+std::string Database::accuracy(QString cellId)
+{
+    int i;
+    QSqlQuery query;
+    query.prepare("select (cast((select count(ramt) from kast where ramt > 0 and cell_id =:cellid) as real)) / (cast((select count(ramt) from kast where cell_id =:cellid) as real)) * 100;");
+    query.bindValue(":cellid", cellId);
+    query.exec();
+    while(query.next()){
+      i = query.value(0).toInt();
+    }
+    std::string acc = "Accuracy of throws: ";
+    acc += std::to_string(i);
+    acc += "%";
+    return acc;
+
 }
