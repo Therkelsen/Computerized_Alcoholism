@@ -6,26 +6,34 @@
 #include <opencv2/imgproc.hpp>
 #include <math.h>
 
-projectileMotion::projectileMotion(std::vector<double> ball, std::vector<double> cup, int t)
+projectileMotion::projectileMotion(Eigen::Vector4d cup, double t)
 {
-    mBall = ball;
-    mCup = cup;
-    double x0 = 0;
-    double y0 = 0;
+    double x =sqrt(pow(cup(0),2)+pow(cup(1),2));
+    double y = 0.277;
+    double x0;
+    double y0;
     mTime = t;
+    Eigen::Vector2d xDirection(1,0);
+    Eigen::Vector2d cup2d(cup(0), cup(1));
+    double taeller = xDirection(0)*cup2d(0)+xDirection(1)*cup2d(1);
+    double naevner = sqrt(pow(xDirection(0),2)+pow(xDirection(1),2))+sqrt(pow(xDirection(0),2)+pow(xDirection(1),2));
+
+    double angle = acos(taeller/naevner);
 }
 
-std::vector<double> projectileMotion::initialVelocity()
+Eigen::Vector3d projectileMotion::initialVelocity(RobotController &rc)
 {
-    double v0x = (mBall[0]-x0)/mTime;
-    double v0z = (mBall[1]-y0)/mTime+0.5*9.82*mTime;
-    double v0Array[3] = {v0x, 0, v0z};
-    cv::Mat v0(3,1,CV_32F, v0Array);
-    double angle = 45*M_PI/180;
-    double rotation[9] = {cos(angle), -sin(angle),0,sin(angle),cos(angle),0,0,0,1};
-    cv::Mat zRotation(3,3,CV_32F, rotation);
-    cv::Mat result = v0*zRotation;
+    std::vector<double> temp = rc.getEndThrowPose();
+    x0 = temp.at(0);
+    y0 = temp.at(2);
 
-    std::vector<double> resultVector = {result.at<double>(0,0), result.at<double>(1,0), result.at<double>(2,0)};
-    return resultVector;
+
+
+    double v0x = (x-x0)/mTime;
+    double v0y = (y-y0)/mTime+0.5*9.82*mTime;
+    Eigen::Vector3d v0(v0x, 0, v0y);
+    Eigen::Matrix3d zRotation;
+    zRotation << cos(angle), -sin(angle), 0, sin(angle), cos(angle), 0,0,0,1;
+    Eigen::Vector3d result = zRotation*v0;
+    return result;
 }

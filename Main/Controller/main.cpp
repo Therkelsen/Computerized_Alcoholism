@@ -77,7 +77,7 @@ int main() {
 
         rc.moveUp(0.032);
 
-        rc.throwPose();
+        //rc.throwPose();
 
         rc.releaseGrip();
 

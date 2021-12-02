@@ -133,6 +133,18 @@ void RobotController::moveToPong(machineVision &mv)  {
 
 }
 
+Eigen::Vector4d RobotController::getRobCoords(machineVision &mv) {
+    std::vector<double> cupPos = mv.getObject(0);
+
+    Eigen::Vector4d cup;
+
+    cup = {cupPos.at(0), cupPos.at(1), 0, 1};
+
+    Eigen::Vector4d robCoords = H_Inv * cup;
+
+    return robCoords;
+}
+
 void RobotController::moveDown(double down) {
     std::vector<double> TCP = rr.getActualTCPPose();
     TCP.at(5) = 0;
@@ -152,12 +164,25 @@ void RobotController::moveUp(double up) {
 
 }
 
-void RobotController::throwPose() {
+void RobotController::startThrowPose() {
 
-    rc.moveL(throwPos);
+    rc.moveL(startThrowPos);
 
 }
 
+void RobotController::endThrowPose() {
+    rc.moveL(endThrowPos);
+}
+
+std::vector<double> RobotController::getEndThrowPose() {
+    std::vector<double> endPose;
+
+    for (unsigned int i = 0; i < 3; ++i) {
+        endPose.at(i) = endThrowPos.at(i);
+    }
+
+    return endPose;
+}
 
 void RobotController::grip() {
 

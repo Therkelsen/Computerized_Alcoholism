@@ -22,11 +22,14 @@ public:
     void setT(); //-||-
     void calcHInverse();
     void moveToPong(machineVision &mv);
+    Eigen::Vector4d getRobCoords(machineVision &mv);
     void moveDown(double down);
     void moveUp(double up);
     void grip();
     void releaseGrip();
-    void throwPose(); //Mangler implementation
+    void startThrowPose();
+    void endThrowPose();
+    std::vector<double> getEndThrowPose();
     void stopGripper();
 
 
@@ -42,7 +45,8 @@ private:
 
     // 6 dimentional vector with starting position and orientation of TCP
     std::vector<double> startPos{0.143, -0.220, 0.241, 2.599, -1.792, 0};
-    std::vector<double> throwPos{0.132, -0.255, 0.251, 2.599, -1.792, 0};
+    std::vector<double> startThrowPos{0.132, -0.255, 0.251, 2.599, -1.792, 0};
+    std::vector<double> endThrowPos{0.132, -0.255, 0.251, 2.599, -1.792, 0};
 
     std::vector<double> pongPos{};
 
