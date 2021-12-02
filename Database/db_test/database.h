@@ -25,6 +25,8 @@ public:
     double* extractDistortionParameters(int cellId);
     void disconnect();
     double* stringToDoubleArray(const std::string inStr);
+    void kastOutcome(QString cellname, int kast);
+    std::string accuracy(QString cellId);
 
 private:
     QSqlDatabase db;
