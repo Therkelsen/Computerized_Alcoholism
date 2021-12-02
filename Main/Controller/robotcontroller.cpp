@@ -11,7 +11,8 @@
 RobotController::RobotController(const std::string ipAddress, const std::string gripIP)
   :rc(ipAddress), rr(ipAddress), gc(gripIP){
   std::cout << std::boolalpha;
-
+  gc.open();
+  gc.start();
   ip = ipAddress;
   gripperIP = gripIP;
 }
@@ -153,30 +154,29 @@ void RobotController::moveUp(double up) {
 
 void RobotController::throwPose() {
 
+    rc.moveL(throwPos);
+
 }
 
 
 void RobotController::grip() {
-    gc.open();
-    gc.start();
-    gc.doGraspPart(0.04f, 0.4f);
-    gc.stop();
-    gc.close();
+
+    gc.doPrePositionFingers(0.04f, 0.2f);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
 }
 
 
 void RobotController::releaseGrip() {
-    gc.open();
-    gc.start();
-    gc.doSetAcceleration(0.5f);
-    gc.doSetForceLimit(20.0f);
+
     gc.doPrePositionFingers(0.1f, 0.4f);
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+}
+
+void RobotController::stopGripper() {
     gc.stop();
     gc.close();
 }
-
-
-
-
-
-

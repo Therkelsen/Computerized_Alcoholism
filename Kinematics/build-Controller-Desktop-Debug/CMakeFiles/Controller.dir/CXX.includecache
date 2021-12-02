@@ -6,10 +6,62 @@
 
 #IncludeRegexTransform: 
 
+/home/victoria/Computerized_Alcoholism/Main/Controller/calib.cpp
+calib.h
+/home/victoria/Computerized_Alcoholism/Main/Controller/calib.h
+
+/home/victoria/Computerized_Alcoholism/Main/Controller/calib.h
+robotcontroller.h
+/home/victoria/Computerized_Alcoholism/Main/Controller/robotcontroller.h
+machinevision.h
+/home/victoria/Computerized_Alcoholism/Main/Controller/machinevision.h
+iostream
+-
+vector
+-
+array
+-
+iomanip
+-
+Eigen/Dense
+-
+Eigen/SVD
+-
+chrono
+-
+thread
+-
+
 /home/victoria/Computerized_Alcoholism/Main/Controller/machinevision.h
 vector
 -
 pylon/PylonIncludes.h
+-
+
+/home/victoria/Computerized_Alcoholism/Main/Controller/main.cpp
+robotcontroller.h
+/home/victoria/Computerized_Alcoholism/Main/Controller/robotcontroller.h
+calib.h
+/home/victoria/Computerized_Alcoholism/Main/Controller/calib.h
+machinevision.h
+/home/victoria/Computerized_Alcoholism/Main/Controller/machinevision.h
+iostream
+-
+iomanip
+-
+math.h
+-
+vector
+-
+array
+-
+ur_rtde/rtde_control_interface.h
+-
+rl/hal/WeissWsg50.h
+-
+chrono
+-
+thread
 -
 
 /home/victoria/Computerized_Alcoholism/Main/Controller/robotcontroller.cpp
@@ -2528,5 +2580,11 @@ boost/chrono.hpp
 
 /usr/include/rl-0.7.0/rl/std/string
 ../include/string
+-
+
+/usr/include/rl-0.7.0/rl/std/thread
+../include/thread
+-
+boost/thread/thread.hpp
 -
 

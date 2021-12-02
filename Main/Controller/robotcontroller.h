@@ -27,6 +27,7 @@ public:
     void grip();
     void releaseGrip();
     void throwPose(); //Mangler implementation
+    void stopGripper();
 
 
 
@@ -41,6 +42,7 @@ private:
 
     // 6 dimentional vector with starting position and orientation of TCP
     std::vector<double> startPos{0.143, -0.220, 0.241, 2.599, -1.792, 0};
+    std::vector<double> throwPos{0.132, -0.255, 0.251, 2.599, -1.792, 0};
 
     std::vector<double> pongPos{};
 

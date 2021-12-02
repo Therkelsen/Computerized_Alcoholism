@@ -32,25 +32,17 @@ int main() {
 
 
     try {
-         cout << "UR_RTDE: Attempting connection to robot socket at " << ip << " " << endl;
+        cout << "UR_RTDE: Attempting connection to robot socket at " << ip << " " << endl;
 
         // Create RobotController object
-          RobotController rc(ip, ipGripper);
-          rc.grip();
+        RobotController rc(ip, ipGripper);
 
-          std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-          rc.releaseGrip();
+        cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
 
 
-
-
-          cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
-
-
-
-         // machineVision mv;
+         machineVision mv;
 
 
         //////Calibration///////
@@ -58,7 +50,7 @@ int main() {
         //machineVision mv;
 
         //Calib cal1(rc, mv, std::cout, std::cin);
-/*
+        /*
         Calib calTest;
 
         calTest.printCoordinates(std::cout);
@@ -72,18 +64,24 @@ int main() {
         calTest.calcTrans();
         calTest.printCalibration();
 
-
+*/
         rc.setR();
         rc.setT();
         rc.calcHInverse();
 
         rc.moveToPong(mv);
 
-*/
+        rc.moveDown(0.032);
 
-          //rc.moveDown(0.032);
-          //rc.moveUp(0.032);
+        rc.grip();
 
+        rc.moveUp(0.032);
+
+        rc.throwPose();
+
+        rc.releaseGrip();
+
+        rc.stopGripper();
 
 
 

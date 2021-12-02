@@ -8,6 +8,8 @@
 #include <iomanip>
 #include <Eigen/Dense>
 #include <Eigen/SVD>
+#include <chrono>
+#include <thread>
 
 class Calib
 {
