@@ -5,6 +5,7 @@ nice, yes?
 
 # Installation guide
 Backup your files, I resign all responsibility if you mess up anything in your files by following this.
+Also, never ever use the restart or hibernate functions on your PC after dualbooting - Always shut it down fully.
 ## Ubuntu Dual Booting
 ### Disable BitLocker Drive Encryption
 First, disable your disc encryption if it is active - As that will block you from resizing the Windows partition
