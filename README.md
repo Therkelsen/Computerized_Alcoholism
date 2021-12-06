@@ -55,9 +55,9 @@ Remember to hit save, before you quit.
 ## Install Google Chrome
 Run the following commands to install Google Chrome
 
-`wget https://dl.google.com/linux/direct/google-chrome-stable\_current\_amd64.deb`
+`wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb`
 
-`sudo dpkg -i google-chrome-stable\_current\_amd64.deb`
+`sudo dpkg -i google-chrome-stable_current_amd64.deb`
 
 ## Customize the dock
 Run the following commands to install dconf-editor in which you can customize the dock
@@ -86,9 +86,9 @@ Run the following commands to install RTDE
 
 `sudo apt install libboost-all-dev`
 
-`git clone https://gitlab.com/sdurobotics/ur\_rtde.git`
+`git clone https://gitlab.com/sdurobotics/ur_rtde.git`
 
-`cd ur\_rtde`
+`cd ur_rtde`
 
 `git submodule update --init --recursive`
 
@@ -103,15 +103,15 @@ Run the following commands to install RTDE
 Then you can link RTDE with Cmake
 
 ```cmake
-cmake\_minimum\_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.5)
 
-project(ur\_rtde\_cmake\_example)
+project(ur_rtde_cmake_example)
 
-find\_package(ur\_rtde REQUIRED)
+find_package(ur_rtde REQUIRED)
 
-add\_executable(ur\_rtde\_cmake\_example main.cpp)
+add_executable(ur_rtde_cmake_example main.cpp)
 
-target\_link\_libraries(ur\_rtde\_cmake\_example PRIVATE ur\_rtde::rtde)
+target_link_libraries(ur_rtde_cmake_example PRIVATE ur_rtde::rtde)
 ```
 
 ## Installer OpenCV
@@ -119,9 +119,9 @@ Run the following commands to install OpenCV
 
 `sudo apt install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev`
 
-`git clone https://github.com/opencv/opencv.git && git clone https://github.com/opencv/opencv\_contrib.git && cd ./opencv && mkdir build && cd ./build`
+`git clone https://github.com/opencv/opencv.git && git clone https://github.com/opencv/opencv_contrib.git && cd ./opencv && mkdir build && cd ./build`
 
-`cmake -DCMAKE\_BUILD\_TYPE=Release -DCMAKE\_INSTALL\_PREFIX=/usr/local -DBUILD\_DOCS=ON -DBUILD\_EXAMPLES=ON -DOPENCV\_EXTRA\_MODULES\_PATH=&quot;~/opencv\_contrib/modules&quot; -DPYTHON3\_EXECUTABLE=/usr/bin/python3.8 -DPYTHON\_INCLUDE\_DIR=/usr/include/python3.8 -DPYTHON\_INCLUDE\_DIR2=/usr/include/x86\_64-linux-gnu/python3.8 -DPYTHON\_LIBRARY=/usr/lib/x86\_64-linux-gnu/libpython3.8.so -DPYTHON3\_NUMPY\_INCLUDE\_DIRS=/usr/lib/python3.8/dist-packages/numpy/core/include/ -DOPENCV\_GENERATE\_PKGCONFIG=ON -DBUILD\_opencv\_apps=ON ..`
+`cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_DOCS=ON -DBUILD_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=&quot;~/opencv_contrib/modules&quot; -DPYTHON3_EXECUTABLE=/usr/bin/python3.8 -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 -DPYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.8 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.8.so -DPYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3.8/dist-packages/numpy/core/include/ -DOPENCV_GENERATE_PKGCONFIG=ON -DBUILD_opencv_apps=ON ..`
 
 `make -j$((`nproc`-1))`
 
@@ -130,17 +130,17 @@ Run the following commands to install OpenCV
 Then you can link it with Cmake
 
 ```cmake
-cmake\_minimum\_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8)
 
 project( main )
 
-find\_package( OpenCV REQUIRED )
+find_package( OpenCV REQUIRED )
 
-include\_directories( ${OpenCV\_INCLUDE\_DIRS} )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
 
-add\_executable( main main.cpp )
+add_executable( main main.cpp )
 
-target\_link\_libraries( main ${OpenCV\_LIBS} )
+target_link_libraries( main ${OpenCV_LIBS} )
 ```
 
 ## Install URSim
@@ -173,7 +173,7 @@ Kør følgende commands
 
 `sudo apt install libcurl4`
 
-`sudo ln -s /usr/lib/x86\_64-linux-gnu/libcurl.so.4.5.0 /usr/lib/x86\_64-linux-gnu/libcurl.so.4.7.0`
+`sudo ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4.5.0 /usr/lib/x86_64-linux-gnu/libcurl.so.4.7.0`
 
 `sudo add-apt-repository ppa:ondrej/php`
 
@@ -194,7 +194,7 @@ Run the following commands
 
 `cd /home/(brugernavn)/`
 
-`tar xvzf URSim\_Linux-X.XX.X.XXXXXX.tar.gz` (Where X.XX.X.XXXXXX is your version)
+`tar xvzf URSim_Linux-X.XX.X.XXXXXX.tar.gz` (Where X.XX.X.XXXXXX is your version)
 
 `sudo mv /Downloads/ursim-X.XX.X.XXXXXX/ ~/`
 
@@ -211,13 +211,12 @@ with
 Remember saving the file before exiting
 
 **Make the necessary files executable**
+
 Cd into the ursim folder
 
 `cd /home/(brugernavn)/ursim-X.XX.X.XXXXXX`
 
 Run the following commands
-
-`sudo chmod +x filename.sh`
 
 `sudo chmod +x start-ursim.sh`
 
