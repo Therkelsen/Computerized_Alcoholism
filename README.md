@@ -72,7 +72,7 @@ Run the following commands to install dconf-editor in which you can customize th
 
 `git clone https://gitlab.gnome.org/GNOME/dconf-editor.git`
 
-`sudo apt install dconf-editor –y`
+`sudo apt install dconf-editor`
 
 `dconf-editor`
 
