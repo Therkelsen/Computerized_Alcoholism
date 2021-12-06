@@ -24,7 +24,7 @@ Press the Windows key on your keyboard, and type in Command Prompt.
 
 Without pressing Enter, right-click the cmd icon that appears, then select Run as administrator.
 
-Type in powercfg -h off and press Enter.
+Type in `powercfg -h off` and press Enter.
 
 ### Ubuntu Installation
 Download [Rufus](https://github.com/pbatard/rufus/releases/download/v3.15/rufus-3.15.exe) &amp; [the Ubuntu .iso file](https://ubuntu.com/download/desktop/thank-you?version=20.04.3&amp;architecture=amd64)
