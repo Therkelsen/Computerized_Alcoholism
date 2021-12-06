@@ -9,6 +9,7 @@
 #include "robotcontroller.h"
 #include "calib.h"
 #include "machinevision.h"
+#include "projectilemotion.h"
 #include <iostream>
 #include <iomanip>
 #include <math.h>
@@ -26,7 +27,7 @@ int main() {
     // Create strings to contain ip adresses
     const string ipPhysical = "192.168.100.30";
     const string ipSimulator = "127.0.0.1";
-    string ip = ipPhysical;
+    string ip = ipSimulator;
 
     const string ipGripper = "192.168.100.10";
 
@@ -42,7 +43,7 @@ int main() {
 
 
 
-         machineVision mv;
+        // machineVision mv;
 
 
         //////Calibration///////
@@ -64,7 +65,7 @@ int main() {
         calTest.calcTrans();
         calTest.printCalibration();
 
-*/
+
         rc.setR();
         rc.setT();
         rc.calcHInverse();
@@ -82,6 +83,15 @@ int main() {
         rc.releaseGrip();
 
         rc.stopGripper();
+*/
+        Eigen::Vector4d t(100,100,00,00);
+
+        projectileMotion pm(t, 0.5);
+
+        //pm.initialVelocity(rc);
+
+       // pm.calcQDot();
+
 
 
 
