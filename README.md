@@ -100,7 +100,7 @@ Run the following commands to install RTDE
 
 `git submodule update --init --recursive`
 
-`mkdir build &amp;&amp; cd build`
+`mkdir build && cd build`
 
 `cmake ..`
 
