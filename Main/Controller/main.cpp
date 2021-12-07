@@ -30,13 +30,29 @@ int main() {
     string ip = ipSimulator;
 
     const string ipGripper = "192.168.100.10";
-
+    std::fixed;
 
     try {
         cout << "UR_RTDE: Attempting connection to robot socket at " << ip << " " << endl;
 
         // Create RobotController object
         RobotController rc(ip, ipGripper);
+
+        machineVision mv;
+
+        rc.setR();
+        rc.setT();
+        rc.calcHInverse();
+
+        Eigen::Vector4d cup = rc.getRobCoords(mv);
+        std::cout << "Cup : \n" << cup << "\n" << std::endl;
+
+        projectileMotion pm;
+        pm.getStartThrowPos(cup, 0.5, rc);
+
+
+
+
 
 
         cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
@@ -84,13 +100,7 @@ int main() {
 
         rc.stopGripper();
 */
-        Eigen::Vector4d t(100,100,00,00);
 
-        projectileMotion pm(t, 0.5);
-
-        //pm.initialVelocity(rc);
-
-       // pm.calcQDot();
 
 
 

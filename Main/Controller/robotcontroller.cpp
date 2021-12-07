@@ -6,6 +6,7 @@
 */
 
 #include "robotcontroller.h"
+#include "projectilemotion.h"
 
 
 RobotController::RobotController(const std::string ipAddress, const std::string gripIP)
@@ -83,7 +84,7 @@ void RobotController::calcHInverse() {
         }
     }
 
-    std::cout << "\n\nH: ";
+   /* std::cout << "\n\nH: ";
     for (unsigned int i = 0; i < 4; ++i) {
         std::cout << "\n";
         for (unsigned int j = 0; j < 4; ++j) {
@@ -91,11 +92,12 @@ void RobotController::calcHInverse() {
         }
     }
     std::cout << "\n";
+    */
 
     H_Inv = H.inverse();
 
     //testudskrivning af H_Inv
-    std::cout << "H_Inv : \n";
+   /* std::cout << "H_Inv : \n";
     for (unsigned int i = 0; i < 4; ++i) {
         std::cout << "\n";
         for (unsigned int j = 0; j < 4; ++j) {
@@ -104,7 +106,7 @@ void RobotController::calcHInverse() {
     }
 
     std::cout << "\n";
-
+*/
 
 }
 
@@ -117,7 +119,7 @@ void RobotController::moveToPong(machineVision &mv)  {
 
     Eigen::Vector4d rob = H_Inv * pong;
 
-    std::cout << rob << std::endl;
+    std::cout << "Rob : \n "<< rob << std::endl;
 
     std::vector<double> robPose;
 
@@ -140,7 +142,10 @@ Eigen::Vector4d RobotController::getRobCoords(machineVision &mv) {
 
     cup = {cupPos.at(0), cupPos.at(1), 0, 1};
 
-    Eigen::Vector4d robCoords = H_Inv * cup;
+    Eigen::Vector4d temp = H_Inv * cup;
+    Eigen::Vector4d robCoords = temp/1000;
+
+
 
     return robCoords;
 }
@@ -164,21 +169,15 @@ void RobotController::moveUp(double up) {
 
 }
 
-void RobotController::startThrowPose() {
-
-    rc.moveL(startThrowPos);
-
-}
-
-void RobotController::endThrowPose() {
-    rc.moveL(endThrowPos);
+void RobotController::startThrowPose(std::vector<double> startThrowPos) {
+    rc.moveJ(startThrowPos);
 }
 
 std::vector<double> RobotController::getEndThrowPose() {
     std::vector<double> endPose;
 
-    for (unsigned int i = 0; i < 3; ++i) {
-        endPose.at(i) = endThrowPos.at(i);
+    for (unsigned int i = 0; i < 3; i++) {
+        endPose.push_back(endThrowPos.at(i));
     }
 
     return endPose;

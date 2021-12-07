@@ -6,40 +6,38 @@
 #include <opencv2/imgproc.hpp>
 #include <math.h>
 
-projectileMotion::projectileMotion(Eigen::Vector4d cup, double t)
-{
+projectileMotion::projectileMotion() {
+
+}
+
+std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, double t, RobotController &rc) {
     x = sqrt(pow(cup(0),2)+pow(cup(1),2));
     y = 0.277;
     mTime = t;
     Eigen::Vector2d xDirection(1,0);
-    std::cout << xDirection << "\n\n";
+    std::cout << "xDirection \n" << xDirection << "\n\n";
     Eigen::Vector2d cup2d(cup(0), cup(1));
-    std::cout << cup2d << "\n\n";
+    std::cout << "cup2d \n" << cup2d << "\n\n";
     double taeller = xDirection(0)*cup2d(0)+xDirection(1)*cup2d(1);
     std::cout << "Tæller:\n";
     std::cout << taeller << "\n\n";
-    double naevner = sqrt(pow(xDirection(0),2)+pow(xDirection(1),2))+sqrt(pow(xDirection(0),2)+pow(xDirection(1),2));
+    double naevner = sqrt(pow(xDirection(0),2)+pow(xDirection(1),2))*sqrt(pow(cup2d(0),2)+pow(cup2d(1),2));
     std::cout << "Nævner:\n";
     std::cout << naevner << "\n\n";
-    double toRad = (taeller/naevner)*(M_PI/180);
+    double toRad = acos(taeller/naevner);
 
-    std::cout << toRad << "\n\n";
+    std::cout << "ToRad \n" << toRad << "\n\n";
 
-    double radAngle = acos(toRad);
-    angle = (radAngle*180) /M_PI;
+    angle = toRad;
 
 
-    std::cout << angle << "\n\n";
-}
+    double angleDegree = angle*180/M_PI;
 
-void projectileMotion::initialVelocity(RobotController &rc)
-{
-    std::cout << "fisse";
+    std::cout << "angleDegree: \n" << angleDegree << "\n\n" << std::endl;
+
     std::vector<double> temp = rc.getEndThrowPose();
     x0 = temp.at(0);
     y0 = temp.at(2);
-
-    std::cout << "FIsse";
 
     double v0x = (x-x0)/mTime;
     double v0y = (y-y0)/mTime+0.5*9.82*mTime;
@@ -48,27 +46,46 @@ void projectileMotion::initialVelocity(RobotController &rc)
     zRotation << cos(angle), -sin(angle), 0, sin(angle), cos(angle), 0,0,0,1;
     Eigen::Vector3d result = zRotation*v0;
     startV = result;
+    std::cout << "Result: \n\n";
+    std::cout << result << "\n\n" << std::endl;
 
-}
-
-void projectileMotion::calcQDot() {
-
-    Eigen::RowVectorXd xDot(6);
+    Eigen::VectorXd xDot(6);
     xDot << startV(0), startV(1), startV(2), 0, 0, 0;
 
     Eigen::MatrixXd jacobian(6,6);
-    jacobian << 0.0150, 0.0098, -0.0384, -0.0543, -0.1857, 0,
-            -0.1689, -0.0326, 0.1281, 0.1811, 0.0356, 0,
-            0, 0.0341, 0.4246, 0.0365, 0.2610, 0,
-            0, 0.9578, 0.9578, 0.9578, -0.2724, -0.7706,
-            0, 0.2873, 0.2873, 0.2873, 0.9082, -0.4037,
-            1.0000, 0, 0, 0, -0.3178, -0.4932;
+    jacobian << 0.4514, 0.0165, -0.0268, -0.0285, 0.3185, 0,
+                0.1843, -0.1541, 0.2499, 0.2661, 0.0433, 0,
+                     0, -0.4684, -0.5930, -0.2013, 0.0244, 0,
+                     0, 0.9943, 0.9943, 0.9943, 0.0997, 0.1175,
+                     0, 0.1064, 0.1064, 0.1064, -0.9312, -0.3388,
+                1.0000, 0, 0, 0, 0.3505, -0.9335;
 
     QDot.resize(6);
     QDot = jacobian.inverse() * xDot;
 
-    std::cout << QDot;
+    std::cout << QDot << std::endl;
 
+    accel = QDot/T;
 
+    std::cout << "\n\naccel :\n"<< accel << std::endl;
 
+    endJointPos.resize(6);
+    endJointPos << 1.6774, -1.8682, 1.8265, -1.8872, -1.4900, -1.8085;
+
+    std::cout << "\n endJointPos: \n" << endJointPos << std::endl;
+
+    startJointPos.resize(6);
+    for (unsigned int i = 0; i < 6; ++i) {
+        startJointPos(i) = endJointPos(i) - (accel(i)/2)*pow(T,2);
+    }
+    std::cout << "\nStartJointPos :\n" << startJointPos << std::endl;
+
+    std::vector<double> startThrowPos;
+
+    for (unsigned int i = 0; i < 6; ++i) {
+        startThrowPos.push_back(startJointPos(i));
+    }
+
+    return startThrowPos;
 }
+

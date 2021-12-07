@@ -7,16 +7,18 @@
 class projectileMotion
 {
 public:
-    projectileMotion(Eigen::Vector4d cup, double t);
-    void initialVelocity(RobotController &rc);
-    void calcQDot();
+    projectileMotion();
+    std::vector<double> getStartThrowPos(Eigen::Vector4d cup, double t, RobotController &rc);
+
 
 private:
     std::vector<double> mBall, mCup;
     double x0, y0, x, y, angle;
     double mTime;
+    double T = 0.5;
     Eigen::Vector3d startV;
-    Eigen::VectorXd QDot;
+    Eigen::VectorXd QDot, accel, endJointPos, startJointPos;
+
 };
 
 #endif // PROJECTILEMOTION_H

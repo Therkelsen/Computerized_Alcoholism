@@ -27,8 +27,7 @@ public:
     void moveUp(double up);
     void grip();
     void releaseGrip();
-    void startThrowPose();
-    void endThrowPose();
+    void startThrowPose(std::vector<double> startThrowPos);
     std::vector<double> getEndThrowPose();
     void stopGripper();
 
@@ -45,8 +44,7 @@ private:
 
     // 6 dimentional vector with starting position and orientation of TCP
     std::vector<double> startPos{0.143, -0.220, 0.241, 2.599, -1.792, 0};
-    std::vector<double> startThrowPos{0.132, -0.255, 0.251, 2.599, -1.792, 0};
-    std::vector<double> endThrowPos{0.132, -0.255, 0.251, 2.599, -1.792, 0};
+    std::vector<double> endThrowPos{0.155, -0.371, 0.467, 2.373, -1.643, 0.417};
 
     std::vector<double> pongPos{};
 
