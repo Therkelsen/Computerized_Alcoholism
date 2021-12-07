@@ -27,7 +27,7 @@ int main() {
     // Create strings to contain ip adresses
     const string ipPhysical = "192.168.100.30";
     const string ipSimulator = "127.0.0.1";
-    string ip = ipSimulator;
+    string ip = ipPhysical;
 
     const string ipGripper = "192.168.100.10";
     std::fixed;
@@ -40,20 +40,28 @@ int main() {
 
         machineVision mv;
 
-        rc.setR();
-        rc.setT();
-        rc.calcHInverse();
+        rc.startingPos();
 
         Eigen::Vector4d cup = rc.getRobCoords(mv);
         std::cout << "Cup : \n" << cup << "\n" << std::endl;
 
         projectileMotion pm;
-        pm.getStartThrowPos(cup, 0.5, rc);
+        std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.5, rc);
 
 
+        rc.setR();
+        rc.setT();
+        rc.calcHInverse();
 
+        rc.moveToPong(mv);
 
+        rc.moveDown(0.032);
 
+        rc.grip();
+
+        rc.moveUp(0.032);
+
+        rc.startThrowPose(startThrowPos);
 
         cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 
