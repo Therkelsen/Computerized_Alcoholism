@@ -204,7 +204,7 @@ Run the following commands
 
 `tar xvzf URSim_Linux-X.XX.X.XXXXXX.tar.gz` (Where X.XX.X.XXXXXX is your version)
 
-`sudo mv /Downloads/ursim-X.XX.X.XXXXXX/ ~/`
+`sudo mv ursim-X.XX.X.XXXXXX/ ~`
 
 You will now have a file called **ursim-X.XX.X.XXXXXX** in **/home/(brugernavn)/**
 
