@@ -42,13 +42,6 @@ int main() {
 
         rc.startingPos();
 
-        Eigen::Vector4d cup = rc.getRobCoords(mv);
-        std::cout << "Cup : \n" << cup << "\n" << std::endl;
-
-        projectileMotion pm;
-        std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.5, rc);
-
-
         rc.setR();
         rc.setT();
         rc.calcHInverse();
@@ -61,7 +54,16 @@ int main() {
 
         rc.moveUp(0.032);
 
+        Eigen::Vector4d cup = rc.getRobCoords(mv);
+        std::cout << "Cup : \n" << cup << "\n" << std::endl;
+
+        projectileMotion pm;
+        std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.5, rc);
+
+
         rc.startThrowPose(startThrowPos);
+
+        rc.stopGripper();
 
         cout << "UR_RTDE: Connected to robot socket at " << ip << "\n" << endl;
 

@@ -170,7 +170,14 @@ void RobotController::moveUp(double up) {
 }
 
 void RobotController::startThrowPose(std::vector<double> startThrowPos) {
-    rc.moveJ(startThrowPos);
+    rc.moveL_FK(startThrowPos);
+    std::cout << "StartThowPos : \n";
+
+    for (unsigned int i  = 0; i < startThrowPos.size(); ++i) {
+        std::cout << startThrowPos.at(i) << std::endl;
+    }
+
+
 }
 
 std::vector<double> RobotController::getEndThrowPose() {

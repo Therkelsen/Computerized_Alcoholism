@@ -44,7 +44,7 @@ private:
 
     // 6 dimentional vector with starting position and orientation of TCP
     std::vector<double> startPos{0.143, -0.220, 0.241, 2.599, -1.792, 0};
-    std::vector<double> endThrowPos{0.155, -0.371, 0.467, 2.373, -1.643, 0.417};
+    std::vector<double> endThrowPos{0.204, -0.467, 0.648, 2.002, -1.487, 0.869};
 
     std::vector<double> pongPos{};
 
