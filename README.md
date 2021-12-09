@@ -200,7 +200,7 @@ I downloaded [CB-SERIES - LINUX - URSIM-3.15.4](https://www.universal-robots.com
 
 Run the following commands
 
-`cd /home/(brugernavn)/`
+`cd ~/Downloads/`
 
 `tar xvzf URSim_Linux-X.XX.X.XXXXXX.tar.gz` (Where X.XX.X.XXXXXX is your version)
 
