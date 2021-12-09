@@ -211,3 +211,15 @@ void RobotController::stopGripper() {
     gc.stop();
     gc.close();
 }
+
+void RobotController::throwPong(std::vector<double> QDot, std::vector<double> Accel, double T) {
+    double max = 0;
+    for(int i = 0; i < Accel.size(); i++){
+        if(abs(max) < abs(Accel.at(i))){
+            max = abs(Accel.at(i));
+        }
+    }
+    std::cout << "max accel" <<  std::endl;
+    std::cout << max << std::endl;
+    rc.speedJ(QDot, max, T);
+}

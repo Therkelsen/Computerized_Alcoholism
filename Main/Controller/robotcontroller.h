@@ -3,6 +3,7 @@
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <algorithm>
 #include <ur_rtde/rtde_control_interface.h>
 #include <ur_rtde/rtde_receive_interface.h>
 #include <Eigen/Dense>
@@ -30,6 +31,7 @@ public:
     void startThrowPose(std::vector<double> startThrowPos);
     std::vector<double> getEndThrowPose();
     void stopGripper();
+    void throwPong(std::vector<double> QDot, std::vector<double> Accel, double T);
 
 
 

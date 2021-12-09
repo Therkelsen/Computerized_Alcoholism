@@ -27,7 +27,7 @@ int main() {
     // Create strings to contain ip adresses
     const string ipPhysical = "192.168.100.30";
     const string ipSimulator = "127.0.0.1";
-    string ip = ipPhysical;
+    string ip = ipSimulator;
 
     const string ipGripper = "192.168.100.10";
     std::fixed;
@@ -37,6 +37,8 @@ int main() {
 
         // Create RobotController object
         RobotController rc(ip, ipGripper);
+
+        std::cout << "tis" << std::endl;
 
         machineVision mv;
 
@@ -58,10 +60,26 @@ int main() {
         std::cout << "Cup : \n" << cup << "\n" << std::endl;
 
         projectileMotion pm;
-        std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.5, rc);
+        std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.3, rc);
 
 
         rc.startThrowPose(startThrowPos);
+
+        std::vector<double> qd = pm.getQDot();
+        std::vector<double> accel = pm.getAccel();
+        double T = pm.getTEnd();
+        std::cout << "QDot:" << std::endl;
+        for(int i = 0; i < 6; i++){
+            std::cout << qd.at(i) << std::endl;
+        }
+        std::cout << "Accel:" << std::endl;
+        for(int i = 0; i < 6; i++){
+            std::cout << accel.at(i) << std::endl;
+        }
+        std::cout << "T:" << std::endl;
+        std::cout << T << std::endl;
+
+        rc.throwPong(qd, accel, T);
 
         rc.stopGripper();
 

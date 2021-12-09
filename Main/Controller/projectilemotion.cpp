@@ -11,6 +11,9 @@ projectileMotion::projectileMotion() {
 }
 
 std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, double t, RobotController &rc) {
+
+    ///////////////Initial Velocity Angle//////////////////////7
+
     x = sqrt(pow(cup(0),2)+pow(cup(1),2));
     y = 0.277;
     mTime = t;
@@ -24,7 +27,7 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     double naevner = sqrt(pow(xDirection(0),2)+pow(xDirection(1),2))*sqrt(pow(cup2d(0),2)+pow(cup2d(1),2));
     std::cout << "Nævner:\n";
     std::cout << naevner << "\n\n";
-    double toRad = acos(taeller/naevner);
+    double toRad = (M_PI/2)-acos(taeller/naevner);
 
     std::cout << "ToRad \n" << toRad << "\n\n";
 
@@ -35,6 +38,11 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
 
     std::cout << "angleDegree: \n" << angleDegree << "\n\n" << std::endl;
 
+    //////////////////////////////////////////////////////////////////////
+
+
+
+
     std::vector<double> temp = rc.getEndThrowPose();
     x0 = temp.at(0);
     y0 = temp.at(2);
@@ -42,6 +50,7 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     double v0x = (x-x0)/mTime;
     double v0y = (y-y0)/mTime+0.5*9.82*mTime;
     Eigen::Vector3d v0(v0x, 0, v0y);
+    std::cout << "\nv0 : \n" << v0 << std::endl;
     Eigen::Matrix3d zRotation;
     zRotation << cos(angle), -sin(angle), 0, sin(angle), cos(angle), 0,0,0,1;
     Eigen::Vector3d result = zRotation*v0;
@@ -87,5 +96,30 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     }
 
     return startThrowPos;
+}
+
+
+std::vector<double> projectileMotion::getQDot() {
+     std::vector<double> qd;
+
+     for (unsigned int i = 0; i < 6; ++i) {
+         qd.push_back(QDot(i));
+     }
+
+     return qd;
+}
+
+std::vector<double> projectileMotion::getAccel() {
+    std::vector<double> a;
+
+    for (unsigned int i = 0; i < 6; ++i) {
+        a.push_back(accel(i));
+    }
+
+    return a;
+}
+
+double projectileMotion::getTEnd() {
+    return T;
 }
 
