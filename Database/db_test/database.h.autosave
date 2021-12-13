@@ -31,7 +31,7 @@ public:
     double* stringToDoubleArray(const std::string inStr);
     void kastOutcome(QString cellname, int kast);
     std::string accuracy(QString cellId);
-    std::string arrayToString(double array[]);
+    std::string arrayToString(double array[]); //måske brug eigen
     std::string vecToString(std::vector<double> vect);
     std::vector<std::string> stringToVec();
 

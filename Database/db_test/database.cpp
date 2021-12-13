@@ -327,3 +327,28 @@ std::string Database::accuracy(QString cellId){
     return acc;
 
 }
+
+std::string Database::arrayToString(double array[]){
+
+    std::string value = "55";
+    std::cout << sizeof(array) << std::endl;
+    //int len = sizeof(array)/sizeof(*array);
+    for (int i = 0; i < sizeof(array); i++) {
+
+        std::cout << array[i] << std::endl;
+
+    }
+    return value;
+}
+
+std::string Database::vecToString(std::vector<double> vect){
+    return 0;
+
+}
+
+/*std::vector<std::string> Database::stringToVec(){
+    int vec[] = {0,1,2,3};
+    return vec[1];
+
+}
+*/
