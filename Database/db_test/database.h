@@ -20,6 +20,10 @@ public:
     void addWSGiptoCell(QString cellName, QString ip);
     void addintrinsicstoCell(QString cellName, QString intrinsics);
     void adddistortionparameterstoCell(QString cellName, QString distortionParams);
+    void addTranslationToDB(QString cellName, QString translation);
+    void addRotationToDB(QString cellName, QString rotation);
+    std::string extractTranslation(QString cellName);
+    std::string extractRotation(QString cellName);
     double* extractIPAdresses(int cellId);
     double* extractIntrinsics(int cellId);
     double* extractDistortionParameters(int cellId);

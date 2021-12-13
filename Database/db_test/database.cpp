@@ -1,4 +1,4 @@
-#include "database.h"
+﻿#include "database.h"
 
 Database::Database()
     :db()
@@ -66,8 +66,7 @@ void Database::addiptoCell(QString cellName, QString ip){
     }
 }
 
-void Database::addWSGiptoCell(QString cellName, QString ip)
-{
+void Database::addWSGiptoCell(QString cellName, QString ip){
     std::cout << "Adding wsg ip to cell..." << std::endl;
 
     QSqlQuery query;
@@ -121,6 +120,80 @@ void Database::adddistortionparameterstoCell(QString cellName, QString distortio
         std::cout << "Cell updated" << std::endl;
         std::cout << "*********************************************" << std::endl << std::endl;
     }
+
+}
+
+void Database::addTranslationToDB(QString cellName, QString translation){
+    std::cout << "Adding translation parameters to cell..." << std::endl;
+
+    QSqlQuery query;
+    query.prepare("update main_db set (translation) =:translation where (cell_id) =:cellid");
+    query.bindValue(":cellid", cellName);
+    query.bindValue(":translation", translation);
+    query.exec();
+
+    if( !query.exec() ){
+        qDebug() << query.lastError();
+    }
+    else{
+        std::cout << "Cell updated" << std::endl;
+        std::cout << "*********************************************" << std::endl << std::endl;
+    }
+}
+
+void Database::addRotationToDB(QString cellName, QString rotation){
+    std::cout << "Adding rotation parameters to cell..." << std::endl;
+
+    QSqlQuery query;
+    query.prepare("update main_db set (rotation) =:rotation where (cell_id) =:cellid");
+    query.bindValue(":cellid", cellName);
+    query.bindValue(":rotation", rotation);
+    query.exec();
+
+    if( !query.exec() ){
+        qDebug() << query.lastError();
+    }
+    else{
+        std::cout << "Cell updated" << std::endl;
+        std::cout << "*********************************************" << std::endl << std::endl;
+    }
+
+}
+
+std::string Database::extractTranslation(QString cellName){
+    std::cout << "DBIF: Extracting translation parameters for cell #" << std::endl;
+    std::string value = "";
+    QSqlQuery query;
+    query.prepare("SELECT translation FROM main_db where cell_id =:cellName");
+    query.bindValue(":cellName", cellName);
+    query.exec();
+    while(query.next()){
+        //int id = query.value(0).toInt();
+        QString val = query.value(0).toString();
+        value = val.toUtf8().constData();
+        std::cout << "Value: " << value << " | " << std::endl;
+    }
+    //return stringToDoubleArray(value);
+    return value;
+
+}
+
+std::string Database::extractRotation(QString cellName){
+    std::cout << "DBIF: Extracting ratation parameters for cell #" << std::endl;
+    std::string value = "";
+    QSqlQuery query;
+    query.prepare("SELECT rotation FROM main_db where cell_id =:cellName");
+    query.bindValue(":cellName", cellName);
+    query.exec();
+    while(query.next()){
+        //int id = query.value(0).toInt();
+        QString val = query.value(0).toString();
+        value = val.toUtf8().constData();
+        std::cout << "Value: " << value << " | " << std::endl;
+    }
+    //return stringToDoubleArray(value);
+    return value;
+
 
 }
 
@@ -183,12 +256,12 @@ void Database::insertData(std::string data){
     query.exec();
 }
 
-void Database::disconnect() {
+void Database::disconnect(){
     std::cout << "DBIF: Disconnecting from database" << std::endl;
     db.close();
 }
 
-double* Database::stringToDoubleArray(const std::string inStr) {
+double* Database::stringToDoubleArray(const std::string inStr){
 
     std::cout << "DBIF: Input string: " << inStr << std::endl;
     std::cout << "DBIF: Converting to float array" << std::endl;
@@ -239,15 +312,14 @@ void Database::kastOutcome(QString cellname, int kast){
     query.exec();
 }
 
-std::string Database::accuracy(QString cellId)
-{
+std::string Database::accuracy(QString cellId){
     int i;
     QSqlQuery query;
     query.prepare("select (cast((select count(ramt) from kast where ramt > 0 and cell_id =:cellid) as real)) / (cast((select count(ramt) from kast where cell_id =:cellid) as real)) * 100;");
     query.bindValue(":cellid", cellId);
     query.exec();
     while(query.next()){
-      i = query.value(0).toInt();
+        i = query.value(0).toInt();
     }
     std::string acc = "Accuracy of throws: ";
     acc += std::to_string(i);
