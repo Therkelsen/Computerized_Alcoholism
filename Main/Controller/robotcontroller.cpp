@@ -111,7 +111,7 @@ void RobotController::calcHInverse() {
 }
 
 void RobotController::moveToPong(machineVision &mv)  {
-    pongPos = mv.getObject(1);
+    pongPos = mv.getBall();
 
     Eigen::Vector4d pong;
 
@@ -136,7 +136,7 @@ void RobotController::moveToPong(machineVision &mv)  {
 }
 
 Eigen::Vector4d RobotController::getRobCoords(machineVision &mv) {
-    std::vector<double> cupPos = mv.getObject(0);
+    std::vector<double> cupPos = mv.getCup();
 
     Eigen::Vector4d cup;
 
@@ -199,7 +199,10 @@ void RobotController::grip() {
 }
 
 
-void RobotController::releaseGrip() {
+void RobotController::releaseGrip(double T) {
+    int temp = static_cast<int>(T*1000);
+    int buffer = 15;
+    std::this_thread::sleep_for(std::chrono::milliseconds(temp-buffer));
 
     gc.doPrePositionFingers(0.1f, 0.4f);
 
@@ -221,5 +224,9 @@ void RobotController::throwPong(std::vector<double> QDot, std::vector<double> Ac
     }
     std::cout << "max accel" <<  std::endl;
     std::cout << max << std::endl;
-    rc.speedJ(QDot, max, T);
+    rc.speedJ(QDot, max);
+}
+
+void RobotController::stopThrow() {
+    rc.speedStop(40);
 }

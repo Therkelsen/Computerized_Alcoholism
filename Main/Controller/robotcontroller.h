@@ -27,11 +27,12 @@ public:
     void moveDown(double down);
     void moveUp(double up);
     void grip();
-    void releaseGrip();
+    void releaseGrip(double T);
     void startThrowPose(std::vector<double> startThrowPos);
     std::vector<double> getEndThrowPose();
     void stopGripper();
     void throwPong(std::vector<double> QDot, std::vector<double> Accel, double T);
+    void stopThrow();
 
 
 
@@ -46,7 +47,7 @@ private:
 
     // 6 dimentional vector with starting position and orientation of TCP
     std::vector<double> startPos{0.143, -0.220, 0.241, 2.599, -1.792, 0};
-    std::vector<double> endThrowPos{0.204, -0.467, 0.648, 2.002, -1.487, 0.869};
+    std::vector<double> endThrowPos{0.122, -0.357, 0.600, 1.527, -1.043, 1.457};
 
     std::vector<double> pongPos{};
 

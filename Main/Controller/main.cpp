@@ -27,7 +27,7 @@ int main() {
     // Create strings to contain ip adresses
     const string ipPhysical = "192.168.100.30";
     const string ipSimulator = "127.0.0.1";
-    string ip = ipSimulator;
+    string ip = ipPhysical;
 
     const string ipGripper = "192.168.100.10";
     std::fixed;
@@ -60,12 +60,15 @@ int main() {
         std::cout << "Cup : \n" << cup << "\n" << std::endl;
 
         projectileMotion pm;
-        std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.3, rc);
+        std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.4, rc);
 
 
         rc.startThrowPose(startThrowPos);
 
-        std::vector<double> qd = pm.getQDot();
+        std::vector<double> endPos = {1.826, -1.752, 1.700, -3.077, -1.49, -1.571};
+        rc.startThrowPose(endPos);
+
+        /*std::vector<double> qd = pm.getQDot();
         std::vector<double> accel = pm.getAccel();
         double T = pm.getTEnd();
         std::cout << "QDot:" << std::endl;
@@ -78,8 +81,14 @@ int main() {
         }
         std::cout << "T:" << std::endl;
         std::cout << T << std::endl;
-
+        double tEnd = pm.getTEnd();
+        std::thread t1(&RobotController::releaseGrip, &rc, tEnd);
         rc.throwPong(qd, accel, T);
+        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(tEnd*1000)));
+        rc.stopThrow();
+        t1.join();
+
+*/
 
         rc.stopGripper();
 

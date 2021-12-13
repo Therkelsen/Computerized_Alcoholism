@@ -27,11 +27,11 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     double naevner = sqrt(pow(xDirection(0),2)+pow(xDirection(1),2))*sqrt(pow(cup2d(0),2)+pow(cup2d(1),2));
     std::cout << "Nævner:\n";
     std::cout << naevner << "\n\n";
-    double toRad = (M_PI/2)-acos(taeller/naevner);
+    double toRad = /*(M_PI/2)-*/acos(taeller/naevner);
 
     std::cout << "ToRad \n" << toRad << "\n\n";
 
-    angle = toRad;
+    angle = -toRad;
 
 
     double angleDegree = angle*180/M_PI;
@@ -62,12 +62,27 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     xDot << startV(0), startV(1), startV(2), 0, 0, 0;
 
     Eigen::MatrixXd jacobian(6,6);
-    jacobian << 0.6365,    0.0733,   -0.0049,   -0.0271,    0.3125,         0,
+    jacobian << 0.5788,   -0.0327,   -0.0062,   -0.0052,    0.2989,         0,
+                0.2116,   -0.5002,   -0.0942,   -0.0796,    0.1202,         0,
+                     0,   -0.5638,   -0.6867,   -0.2949,    0.0071,         0,
+                     0,    0.9979,    0.9979,    0.9979,   -0.0033,    0.3737,
+                     0,   -0.0652,   -0.0652,   -0.0652,   -0.0510,   -0.9264,
+                1.0000,         0,         0,         0,    0.9987,   -0.0461;
+
+                /*0.5825,    0.1336,    0.0280,    0.0229,    0.3043,         0,
+                0.2917,   -0.5119,   -0.1074,   -0.0877,    0.1063,         0,
+                     0,   -0.6373,   -0.7139,   -0.3224,    0.0003,         0,
+                     0,    0.9676,    0.9676,    0.9676,    0.0032,    0.3297,
+                     0,    0.2524,    0.2524,    0.2524,   -0.0122,   -0.9440,
+                1.0000,         0,         0,         0,    0.9999,   -0.0126;
+
+
+                0.6365,    0.0733,   -0.0049,   -0.0271,    0.3125,         0,
                 0.2557,   -0.3917,    0.0260,    0.1446,    0.0772,         0,
                      0,   -0.6727,   -0.6739,   -0.3009,    0.0169,         0,
                      0,    0.9829,    0.9829,    0.9829,    0.1242,    0.2115,
                      0,    0.1840,    0.1840,    0.1840,   -0.6638,   -0.7085,
-                1.0000,         0,         0,         0,    0.7375,   -0.6733;
+                1.0000,         0,         0,         0,    0.7375,   -0.6733;*/
 
     QDot.resize(6);
     QDot = jacobian.inverse() * xDot;
@@ -79,7 +94,9 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     std::cout << "\n\naccel :\n"<< accel << std::endl;
 
     endJointPos.resize(6);
-    endJointPos << 1.6774, -1.8682, 1.8265, -1.8872, -1.4900, -1.8085;
+    endJointPos << 1.51, -1.86, 1.83, -3.05, -1.12, -1.57;
+                   //1.826, -1.752, 1.700, -3.077, -1.49, -1.571;
+                   //1.6774, -1.8682, 1.8265, -1.8872, -1.4900, -1.8085;
 
     std::cout << "\n endJointPos: \n" << endJointPos << std::endl;
 

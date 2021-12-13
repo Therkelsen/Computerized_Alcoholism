@@ -18,7 +18,7 @@ private:
     std::vector<double> mBall, mCup;
     double x0, y0, x, y, angle;
     double mTime;
-    double T = 0.1;
+    double T = 0.16;
     Eigen::Vector3d startV;
     Eigen::VectorXd QDot, accel, endJointPos, startJointPos;
 
