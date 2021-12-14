@@ -62,13 +62,12 @@ int main() {
         projectileMotion pm;
         std::vector<double> startThrowPos = pm.getStartThrowPos(cup, 0.4, rc);
 
-
         rc.startThrowPose(startThrowPos);
 
-        std::vector<double> endPos = {1.826, -1.752, 1.700, -3.077, -1.49, -1.571};
-        rc.startThrowPose(endPos);
+        //std::vector<double> endPos = {1.8260, -1.7520, 1.7001, -3.0770, -1.4902, 0.0};
+        //rc.startThrowPose(endPos);
 
-        /*std::vector<double> qd = pm.getQDot();
+        std::vector<double> qd = pm.getQDot();
         std::vector<double> accel = pm.getAccel();
         double T = pm.getTEnd();
         std::cout << "QDot:" << std::endl;
@@ -88,7 +87,7 @@ int main() {
         rc.stopThrow();
         t1.join();
 
-*/
+
 
         rc.stopGripper();
 

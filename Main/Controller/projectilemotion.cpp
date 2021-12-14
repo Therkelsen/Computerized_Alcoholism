@@ -84,6 +84,9 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
                      0,    0.1840,    0.1840,    0.1840,   -0.6638,   -0.7085,
                 1.0000,         0,         0,         0,    0.7375,   -0.6733;*/
 
+    //    Eigen::MatrixXd jacobianInverse = jacobian.completeOrthogonalDecomposition().pseudoInverse();
+
+
     QDot.resize(6);
     QDot = jacobian.inverse() * xDot;
 

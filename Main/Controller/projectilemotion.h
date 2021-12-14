@@ -2,6 +2,7 @@
 #define PROJECTILEMOTION_H
 #include <vector>
 #include <Eigen/Dense>
+#include <Eigen/QR>
 #include "robotcontroller.h"
 
 class projectileMotion

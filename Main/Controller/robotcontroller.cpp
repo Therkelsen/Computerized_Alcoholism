@@ -201,7 +201,7 @@ void RobotController::grip() {
 
 void RobotController::releaseGrip(double T) {
     int temp = static_cast<int>(T*1000);
-    int buffer = 15;
+    int buffer = 35;
     std::this_thread::sleep_for(std::chrono::milliseconds(temp-buffer));
 
     gc.doPrePositionFingers(0.1f, 0.4f);
@@ -224,7 +224,7 @@ void RobotController::throwPong(std::vector<double> QDot, std::vector<double> Ac
     }
     std::cout << "max accel" <<  std::endl;
     std::cout << max << std::endl;
-    rc.speedJ(QDot, max);
+    rc.speedJ(QDot, 40);
 }
 
 void RobotController::stopThrow() {
