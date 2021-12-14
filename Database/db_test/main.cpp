@@ -21,7 +21,7 @@ int main()
     std::cout << db.accuracy("cell 5") << std::endl;*/
     //db.addRotationToDB("cell 5", "12345");
     //db.extractRotation("cell 5");
-    double x[] = {
+   /* double x[] = {
             4.2201,
             2.0035,
             6.1921,
@@ -29,7 +29,11 @@ int main()
             1.3023,
             2.0334
           };
-    db.arrayToString(x);
+    db.addRotationToDB("cell 5", QString::fromStdString(db.arrayToString(x)));*/
+    //std::vector<double> vec = {1.1,2.2,3.3};
+    //std::cout << db.vecToString(vec) << std::endl;
+    std::string val = "1.1, 2.2, 3.3";
+    std::cout << db.stringToVec(val) << std::endl;
 
 }
 

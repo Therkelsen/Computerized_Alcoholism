@@ -328,27 +328,52 @@ std::string Database::accuracy(QString cellId){
 
 }
 
-std::string Database::arrayToString(double array[]){
+std::string Database::arrayToString(double array[6]){
 
-    std::string value = "55";
-    std::cout << sizeof(array) << std::endl;
+    std::string value = "";
+    //std::cout << sizeof(array) << std::endl;
     //int len = sizeof(array)/sizeof(*array);
-    for (int i = 0; i < sizeof(array); i++) {
-
+    for (int i = 0; i < 6; i++) {
+        if(i == 0){
         std::cout << array[i] << std::endl;
+        value.append(std::to_string(array[i]));
 
+}
+        else{
+            std::cout << array[i] << std::endl;
+            value += ", ";
+            value.append(std::to_string(array[i]));
+
+        }
     }
     return value;
 }
 
 std::string Database::vecToString(std::vector<double> vect){
-    return 0;
+    std::string value = "";
+    for (int i = 0; i < 3; ++i) {
+        if(i == 0){
+            std::cout << vect[i] << std::endl;
+            value.append(std::to_string(vect[i]));
+        }
+        else {
+
+            std::cout << vect[i] << std::endl;
+            value.append(", ");
+            value.append(std::to_string(vect[i]));
+
+        }
+
+    }
+    return value;
 
 }
 
-/*std::vector<std::string> Database::stringToVec(){
-    int vec[] = {0,1,2,3};
-    return vec[1];
+std::vector<double> Database::stringToVec(std::string val){
+    std::string delim = ", ";
+    std::vector<double> vec[3] = {1.1, 2.2, 3.3};
+
+    return vec;
 
 }
-*/
+
