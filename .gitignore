@@ -31,9 +31,11 @@
 *.out
 *.app
 
-/Database/build-db_test-Desktop-Debug/
-/MachineVision/build-Calibration-Desktop-Debug/
-/MachineVision/build-calibration-Desktop-Debug/
-/MachineVision/build-machineVision-Desktop-Debug/
+/Database/build-db_test-Desktop-Debug
+/MachineVision/build-Calibration-Desktop-Debug
+/MachineVision/build-calibration-Desktop-Debug
+/MachineVision/build-machineVision-Desktop-Debug
+/Main/Controller/build-Controller-Desktop-Debug
 /Main/build-Controller-Desktop-Debug
+/Main/build-Main-Desktop-Debug
 /Kinematics/build-Controller-Desktop-Debug

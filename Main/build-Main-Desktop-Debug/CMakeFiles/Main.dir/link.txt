@@ -1,1 +1,0 @@
-/usr/bin/g++  -g   CMakeFiles/Main.dir/main.cpp.o CMakeFiles/Main.dir/database.cpp.o  -o Main  /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8 
