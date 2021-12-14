@@ -7,7 +7,7 @@
 #include <QCoreApplication>
 #include <QSqlDriver>
 #include <QString>
-
+#include <QDebug>
 
 class Database
 {
@@ -24,13 +24,16 @@ public:
     void addRotationToDB(QString cellName, QString rotation);
     std::string extractTranslation(QString cellName);
     std::string extractRotation(QString cellName);
-    double* extractIPAdresses(int cellId);
-    double* extractIntrinsics(int cellId);
-    double* extractDistortionParameters(int cellId);
+    std::vector<double> extractIPAdresses(int cellId);
+    std::vector<double> extractIntrinsics(int cellId);
+    std::vector<double> extractDistortionParameters(int cellId);
     void disconnect();
-    double* stringToDoubleArray(const std::string inStr);
+    std::vector<double> stringToDoubleVec(const std::string inStr);
     void kastOutcome(QString cellname, int kast);
     std::string accuracy(QString cellId);
+    std::string arrayToString(double array[6]); //måske brug eigen
+    std::string vecToString(std::vector<double> vect);
+    std::vector<double> stringToVec(std::string val);
 
 private:
     QSqlDatabase db;

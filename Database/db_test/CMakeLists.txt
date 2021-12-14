@@ -15,10 +15,14 @@ set(CMAKE_CXX_FLAGS_COVERAGE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-arcs -ftest-c
 # used in the COVERAGE CMake configuration.
 set_target_properties(Qt5::Core PROPERTIES MAP_IMPORTED_CONFIG_COVERAGE "RELEASE")
 
+#set(EIGEN_DIR "/home/host/Eigen")
 
 
 # SQL
 find_package(Qt5 COMPONENTS Sql REQUIRED)
+
+#find_package (Eigen 3.4 REQUIRED NO_MODULE)
+
 
 add_executable(db_test main.cpp database.cpp database.h)
 

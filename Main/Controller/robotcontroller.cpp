@@ -45,7 +45,6 @@ std::array<double, 3> RobotController::getTCP() {
 }
 
 void RobotController::setR() {
-
     R(0,0) = -0.38;
     R(0,1) = 0.93;
     R(0,2) = 0.00;
