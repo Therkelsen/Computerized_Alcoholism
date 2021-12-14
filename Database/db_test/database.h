@@ -22,8 +22,9 @@ public:
     void adddistortionparameterstoCell(QString cellName, QString distortionParams);
     void addTranslationToDB(QString cellName, QString translation);
     void addRotationToDB(QString cellName, QString rotation);
-    std::string extractTranslation(QString cellName);
-    std::string extractRotation(QString cellName);
+    std::vector<double> extractImagePoints(QString cellName);
+    std::vector<double> extractTranslation(QString cellName);
+    std::vector<double> extractRotation(QString cellName);
     std::vector<std::string> extractIPAdresses(int cellId);
     std::vector<double> extractIntrinsics(int cellId);
     std::vector<double> extractDistortionParameters(int cellId);

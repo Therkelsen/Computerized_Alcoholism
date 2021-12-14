@@ -160,7 +160,23 @@ void Database::addRotationToDB(QString cellName, QString rotation){
 
 }
 
-std::string Database::extractTranslation(QString cellName){
+std::vector<double> Database::extractImagePoints(QString cellName) {
+    std::cout << "DBIF: Extracting image points for cell #" << std::endl;
+    std::string value = "";
+    QSqlQuery query;
+    query.prepare("SELECT image_points FROM main_db WHERE cell_id = :cellName");
+    query.bindValue(":cellName", cellName);
+    query.exec();
+    while(query.next()){
+        //int id = query.value(0).toInt();
+        QString val = query.value(0).toString();
+        value = val.toUtf8().constData();
+        std::cout << "Value: " << value << " | " << std::endl;
+    }
+    return stringToDoubleVec(value);
+}
+
+std::vector<double> Database::extractTranslation(QString cellName){
     std::cout << "DBIF: Extracting translation parameters for cell #" << std::endl;
     std::string value = "";
     QSqlQuery query;
@@ -173,12 +189,10 @@ std::string Database::extractTranslation(QString cellName){
         value = val.toUtf8().constData();
         std::cout << "Value: " << value << " | " << std::endl;
     }
-    //return stringToDoubleArray(value);
-    return value;
-
+    return stringToDoubleVec(value);
 }
 
-std::string Database::extractRotation(QString cellName){
+std::vector<double> Database::extractRotation(QString cellName){
     std::cout << "DBIF: Extracting ratation parameters for cell #" << std::endl;
     std::string value = "";
     QSqlQuery query;
@@ -191,8 +205,7 @@ std::string Database::extractRotation(QString cellName){
         value = val.toUtf8().constData();
         std::cout << "Value: " << value << " | " << std::endl;
     }
-    //return stringToDoubleArray(value);
-    return value;
+    return stringToDoubleVec(value);
 }
 
 std::vector<std::string> Database::extractIPAdresses(int cellId){
@@ -220,6 +233,7 @@ std::vector<std::string> Database::extractIPAdresses(int cellId){
     std::vector<std::string> temp;
     temp.emplace_back(ur_ip);
     temp.emplace_back(wsg_ip);
+
     return temp;
 }
 
