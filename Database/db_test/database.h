@@ -24,7 +24,7 @@ public:
     void addRotationToDB(QString cellName, QString rotation);
     std::string extractTranslation(QString cellName);
     std::string extractRotation(QString cellName);
-    std::vector<double> extractIPAdresses(int cellId);
+    std::vector<std::string> extractIPAdresses(int cellId);
     std::vector<double> extractIntrinsics(int cellId);
     std::vector<double> extractDistortionParameters(int cellId);
     void disconnect();

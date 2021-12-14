@@ -9,7 +9,10 @@ void setup(Database db) {
     int cellId;
     std::string choice;
     std::string cellIdString = "cell ";
+    QString intrinsics = "443.30481, 0, 719.5, 0, 471.87396, 539.5, 0, 0, 1";
+    QString distortion = "-0.0306633, 0.000208614, 0.000163452, -0.00413883, -3.86967e-07";
     std::string robotIPAddress, gripperIPAddress;
+    std::vector<std::string> ips;
     cout << "System: Initializing program" << endl;
     while(state != -1) {
             switch (state) {
@@ -25,7 +28,7 @@ void setup(Database db) {
                     cin >> choice;
                     if(choice == "y") {
                         cout << "System: You have confirmed the choice of robot cell " << cellId << "\n" << endl;
-                        cellIdString.append(to_string(cellId));
+                        cellIdString.append(std::to_string(cellId));
                         state = 2;
                     } else {
                         state = 0;
@@ -34,7 +37,18 @@ void setup(Database db) {
 
                 case 2:
                     //double ips[2] = db.extractIPAdresses(cellId);
-                    db.extractIPAdresses(cellId);
+                    ips = db.extractIPAdresses(cellId);
+                    std::cout << cellIdString << std::endl;
+                    std::cout << "UR ip: " << ips.at(0) << std::endl;
+                    std::cout << "WSG ip: " << ips.at(1) << std::endl;
+                    db.addintrinsicstoCell(QString::fromStdString(cellIdString), intrinsics);
+                    db.adddistortionparameterstoCell(QString::fromStdString(cellIdString), distortion);
+                    db.addRotationToDB(QString::fromStdString(cellIdString), "12345");
+                    db.addTranslationToDB(QString::fromStdString(cellIdString), "12345");
+                    db.extractIntrinsics(cellId);
+                    db.extractDistortionParameters(cellId);
+                    db.stringToDoubleVec(db.extractRotation(QString::fromStdString(cellIdString)));
+                    db.stringToDoubleVec(db.extractTranslation(QString::fromStdString(cellIdString)));
                     //cout << "ips: " << ips[1] << " & " << ips[2] << endl;
                     state = -1;
                     break;
@@ -46,7 +60,7 @@ void setup(Database db) {
 
 int main() {
     Database db;
-    db.extractIPAdresses(1);
+    //std::cout << db.extractIPAdresses(1).at(1) << std::endl;
     //std::string intrinsics = "443.30481, 0, 719.5, 0, 471.87396, 539.5, 0, 0, 1";
 
     //    db.stringToDoubleArray(intrinsics);

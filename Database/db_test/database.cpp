@@ -87,7 +87,7 @@ void Database::addWSGiptoCell(QString cellName, QString ip){
 
 void Database::addintrinsicstoCell(QString cellName, QString intrinsics){
     std::cout << "Adding intrinsics to cell..." << std::endl;
-
+    std::cout << intrinsics.toStdString() << std::endl;
     QSqlQuery query;
     query.prepare("update main_db set (intrinsics) =:intrinsics where (cell_id) =:cellid");
     query.bindValue(":cellid", cellName);
@@ -195,44 +195,49 @@ std::string Database::extractRotation(QString cellName){
     return value;
 }
 
-std::vector<double> Database::extractIPAdresses(int cellId){
+std::vector<std::string> Database::extractIPAdresses(int cellId){
     std::fixed;
-    std::cout << "DBIF: Extracting IP Adresses for cell #" << cellId << std::endl;
+    //std::cout << "DBIF: Extracting IP Adresses for cell #" << cellId << std::endl;
     std::string ur_ip = "";
     std::string wsg_ip = "";
     QSqlQuery query;
-    query.prepare("SELECT ur_ip_address, wsg_ip_address FROM main_db WHERE id = (:cellId)");
-    query.bindValue("(:cellId)", cellId);
+    query.prepare("SELECT ur_ip_address, wsg_ip_address FROM main_db WHERE id =:cellId");
+    query.bindValue(":cellId", cellId);
     query.exec();
     if(!query.exec()) {
         qDebug() << query.lastError();
     }
     while(query.next()){
         QString val1 = query.value(0).toString();
-        std::cout << val1.toUtf8().constData() << " ";
+        //std::cout << val1.toUtf8().constData() << " ";
         ur_ip = val1.toUtf8().constData();
         QString val2 = query.value(1).toString();
-        std::cout << val1.toUtf8().constData() << std::endl;
+       // std::cout << val1.toUtf8().constData() << std::endl;
         wsg_ip = val2.toUtf8().constData();
     }
 
-    std::cout << "ur ip: " << ur_ip << " | " << "wsg ip: " << wsg_ip << " | " << std::endl;
-    std::string temp = ur_ip;
-    temp.append(",");
-    temp.append(wsg_ip);
-    return stringToDoubleVec(ur_ip);
+   // std::cout << "ur ip: " << ur_ip << " | " << "wsg ip: " << wsg_ip << " | " << std::endl;
+    std::vector<std::string> temp;
+    temp.emplace_back(ur_ip);
+    temp.emplace_back(wsg_ip);
+    return temp;
 }
 
 std::vector<double> Database::extractIntrinsics(int cellId){
     std::cout << "DBIF: Extracting intrinsics for cell #" << cellId << std::endl;
     std::string value = "";
     QSqlQuery query;
-    query.exec("SELECT * FROM main_db");
+    query.prepare("SELECT intrinsics FROM main_db WHERE id =:cellId");
+    query.bindValue(":cellId", cellId);
+    query.exec();
+    if(!query.exec()) {
+        qDebug() << query.lastError();
+    }
     while(query.next()){
-        int id = query.value(0).toInt();
-        QString val = query.value(1).toString();
-        value = val.toUtf8().constData();
-        std::cout << "ID: " << id << " | " << "Value: " << value << " | " << std::endl;
+        QString val1 = query.value(0).toString();
+        //std::cout << val1.toUtf8().constData() << " ";
+        value = val1.toUtf8().constData();
+
     }
     return stringToDoubleVec(value);
 }
@@ -241,12 +246,17 @@ std::vector<double> Database::extractDistortionParameters(int cellId){
     std::cout << "DBIF: Extracting distortion parameters for cell #" << cellId << std::endl;
     std::string value = "";
     QSqlQuery query;
-    query.exec("SELECT * FROM main_db");
+    query.prepare("SELECT distortion_parameters FROM main_db WHERE id =:cellId");
+    query.bindValue(":cellId", cellId);
+    query.exec();
+    if(!query.exec()) {
+        qDebug() << query.lastError();
+    }
     while(query.next()){
-        int id = query.value(0).toInt();
-        QString val = query.value(1).toString();
-        value = val.toUtf8().constData();
-        std::cout << "ID: " << id << " | " << "Value: " << value << " | " << std::endl;
+        QString val1 = query.value(0).toString();
+        //std::cout << val1.toUtf8().constData() << " ";
+        value = val1.toUtf8().constData();
+
     }
     return stringToDoubleVec(value);
 }
@@ -286,7 +296,7 @@ std::vector<double> Database::stringToDoubleVec(const std::string inStr){
 
     std::cout << "\nDBIF: Output of conversion:\n[";
 
-    for (int i = 0; i < vec.size() + 1; i++) {
+    for (int i = 0; i < vec.size(); i++) {
         if(i < vec.size()) {
             std::cout << vec.at(i) << ", ";
         } else {
