@@ -202,8 +202,8 @@ void RobotController::grip() {
 
 void RobotController::releaseGrip(double T) {
     int temp = static_cast<int>(T*1000);
-    int buffer = 35;
-    std::this_thread::sleep_for(std::chrono::milliseconds(temp-buffer));
+    int offset = 40;
+    std::this_thread::sleep_for(std::chrono::milliseconds(temp-offset));
 
     gc.doPrePositionFingers(0.1f, 0.4f);
 

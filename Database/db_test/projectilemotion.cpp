@@ -19,7 +19,8 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     mTime = t;
     Eigen::Vector2d xDirection(1,0);
     std::cout << "xDirection \n" << xDirection << "\n\n";
-    Eigen::Vector2d cup2d(cup(0), cup(1));
+    std::vector<double> tcp = rc.getEndThrowPose();
+    Eigen::Vector2d cup2d(cup(0)-tcp.at(0), cup(1)-tcp.at(1));
     std::cout << "cup2d \n" << cup2d << "\n\n";
     double taeller = xDirection(0)*cup2d(0)+xDirection(1)*cup2d(1);
     std::cout << "Tæller:\n";
@@ -87,6 +88,7 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     //    Eigen::MatrixXd jacobianInverse = jacobian.completeOrthogonalDecomposition().pseudoInverse();
 
 
+
     QDot.resize(6);
     QDot = jacobian.inverse() * xDot;
 
@@ -97,7 +99,22 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     std::cout << "\n\naccel :\n"<< accel << std::endl;
 
     endJointPos.resize(6);
-    endJointPos << 1.51, -1.86, 1.83, -3.05, -1.12, -1.57;
+    double r = (abs(angleDegree) - 63.6) * 1.27;
+    std::cout << "\n\nr : " << r << std::endl;
+    double q6;
+    if (abs(angleDegree) < 63.6) {
+        q6 = -90 - abs(r);
+    } else {
+        q6 = -90 + abs(r);
+    }
+
+    std::cout << "\n\nq6 : " << q6 << std::endl;
+    q6 = q6*M_PI/180;
+
+
+
+
+    endJointPos << 1.51, -1.86, 1.83, -3.05, -1.12, q6;
                    //1.826, -1.752, 1.700, -3.077, -1.49, -1.571;
                    //1.6774, -1.8682, 1.8265, -1.8872, -1.4900, -1.8085;
 

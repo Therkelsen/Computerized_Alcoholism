@@ -204,6 +204,7 @@ std::vector<double> machineVision::getBall()
                         circle(undistortedImg, center, radius, cv::Scalar(255, 0, 255), 3, cv::LINE_AA);
                     }
 
+                    //cv::imwrite("test1234.png", undistortedImg);
                     cv::imshow("Detected circles", undistortedImg);
                     cv::waitKey(0);
                     //std::cout << "Shutting down camera..." << std::endl;
