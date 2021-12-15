@@ -1,7 +1,5 @@
 # Computerized_Alcoholism
-Robot throws ping pong ball into cup
-
-nice, yes?
+Robot throws ping pong ball into cup - nice, yes?
 
 # Installation guide
 Backup your files, I resign all responsibility if you mess up anything in your files by following this.
