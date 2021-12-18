@@ -10,10 +10,10 @@ machineVision::machineVision(int cellId, QString cellIdString){
 
     Database db;
     std::vector<double> imagePointss = db.extractImagePoints(cellIdString);
-    /*imagePoints[0] = cv::Point2f(488.5, 1018.5);
-    imagePoints[1] = cv::Point2f(486.5, 462.5);
-    imagePoints[2] = cv::Point2f(1046.5, 459.5);
-    imagePoints[3] = cv::Point2f(1049.5, 1026.5);*/
+    /*(0, 650) = [466.5, 998.5, 1]
+    (0,0) = [459.5, 439.5, 1]
+    (650, 0) = [1018.5, 434.5, 1]
+    (650,650) = [1022.5, 995.5, 1]*/
     imagePoints[0] = cv::Point2f(imagePointss.at(0), imagePointss.at(1));
     imagePoints[1] = cv::Point2f(imagePointss.at(2), imagePointss.at(3));
     imagePoints[2] = cv::Point2f(imagePointss.at(4), imagePointss.at(5));
@@ -175,7 +175,7 @@ std::vector<double> machineVision::getBall()
                     //std::cout << "Detected circle:" << std::endl;
                     cv::Vec3f temp = circles[i];
                     //std::cout << temp << std::endl;
-                    if(temp[2] < 20 && temp[0] < 1100 && temp[0] > 450 && temp[1] < 1100 && temp[1] > 430){
+                    if(temp[2] < 20 && temp[0] < 1100 && temp[0] > 350 && temp[1] < 1100 && temp[1] > 350){
                         temp[2] = 1;
                         balls.push_back(temp);
                     }

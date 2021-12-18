@@ -1,6 +1,6 @@
 #include "calib.h"
 
-/*Calib::Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist){
+Calib::Calib(RobotController &rc, machineVision &mv, std::ostream &ost, std::istream &ist){
     int saveValues = 0;
     while (saveValues != 2) {
         ost << "Pong in place? Enter 1 : ";
@@ -8,7 +8,7 @@
 
         if (saveValues == 1) {
 
-            std::vector<double> pongCoords = mv.getObject(1);
+            std::vector<double> pongCoords = mv.getBall();
 
             std::array<double, 3> pCoords;
 
@@ -20,7 +20,7 @@
                 }
             }
 
-            pWorld.push_back(pCoords);
+            pWorldArr.push_back(pCoords);
 
             saveValues = 0;
             ost << "PONG COORDINATES HAS BEEN COPIED TO VECTOR" << "\n" << "\n";
@@ -37,7 +37,7 @@
         ist >> saveValues;
 
         if (saveValues == 1) {
-            PRobot.push_back(rc.getTCP());
+            PRobotArr.push_back(rc.getTCP());
             ost << "ROBOT COORDINATES COPIED TO VECTOR \n";
             saveValues = 0;
 
@@ -53,7 +53,7 @@
 
     }
 }
-*/
+
 //Test-constructor
 
 Calib::Calib() {
@@ -61,8 +61,8 @@ Calib::Calib() {
     //pWorldArr = {{1, 2, 3}, {2, 3, 4}, {3, 4, 5}};
     //PRobotArr = {{1, 2, 3}, {2, 3, 4}, {3, 4, 5}};
 
-    pWorldArr = {{174.43, 270.46, 0.00}, {322.27, 420.41, 0.00}, {324.08, 270.98, 0.00}};
-    PRobotArr = {{252.31, -596.69, 210}, {55.89, -516.00, 210}, {193.74, -459.25, 210}};
+    pWorldArr = {{299, 247.39, 0.00}, {401.03, 449.27, 0.00}, {449.69, 248.15, 0.00}, {499.13, 148.24, 0.00}};
+    PRobotArr = {{258.65, -488.52, 210}, {35.59, -474.24, 210}, {199.78, -352.10, 210}, {273.12, -268.25, 210}};
 }
 
 

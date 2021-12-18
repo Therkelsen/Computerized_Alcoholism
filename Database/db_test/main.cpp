@@ -23,6 +23,7 @@
 using namespace std;
 
 // Create strings to contain ip adresses
+
 string ipPhysical = "192.168.100.30";
 string ipSimulator = "127.0.0.1";
 string ipGripper = "192.168.100.10";
@@ -94,7 +95,12 @@ int main() {
         machineVision mv(cellId, QString::fromStdString(cellIdString));
         cout << "mv cellIdString " << cellIdString << endl;
 
-        rc.startingPos();
+        std::vector<double> ball = mv.getBall();
+        for (unsigned int i = 0; i < ball.size(); ++i) {
+            std::cout << ball.at(i) << std::endl;
+        }
+
+        /*rc.startingPos();
 
         rc.setR();
         rc.setT();
@@ -135,15 +141,14 @@ int main() {
         double tEnd = pm.getTEnd();
         std::thread t1(&RobotController::releaseGrip, &rc, tEnd);
         rc.throwPong(qd, accel, T);
-        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(tEnd*1000)));
+        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(tEnd*1000+10)));
         rc.stopThrow();
         t1.join();
 
         rc.stopGripper();
-        // machineVision mv;
+        */
 
         //////Calibration///////
-
         //machineVision mv;
 
         //Calib cal1(rc, mv, std::cout, std::cin);

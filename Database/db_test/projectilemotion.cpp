@@ -102,7 +102,7 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
     double r = (abs(angleDegree) - 63.6) * 1.27;
     std::cout << "\n\nr : " << r << std::endl;
     double q6;
-    if (abs(angleDegree) < 63.6) {
+    if (abs(angleDegree) > 63.6) {
         q6 = -90 - abs(r);
     } else {
         q6 = -90 + abs(r);
@@ -114,7 +114,7 @@ std::vector<double> projectileMotion::getStartThrowPos(Eigen::Vector4d cup, doub
 
 
 
-    endJointPos << 1.51, -1.86, 1.83, -3.05, -1.12, q6;
+    endJointPos << 1.51, -1.86, 1.83, -3.05, -1.12, /*-1.57*/ q6;
                    //1.826, -1.752, 1.700, -3.077, -1.49, -1.571;
                    //1.6774, -1.8682, 1.8265, -1.8872, -1.4900, -1.8085;
 
