@@ -31,6 +31,7 @@
 *.out
 *.app
 
+/Database/build-Database-Debug
 /Database/build-db_test-Desktop-Debug
 /MachineVision/build-Calibration-Desktop-Debug
 /MachineVision/build-calibration-Desktop-Debug
