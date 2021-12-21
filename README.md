@@ -1,7 +1,18 @@
 # Computerized_Alcoholism
 Robot throws ping pong ball into cup - nice, yes?
 
+# Abstract
+[This](https://github.com/Therkelsen/Computerized_Alcoholism/blob/v2/Assets/Gruppe%205%20Rapport.pdf) (danish) report showcases the process of programming a UR5-series industrial robotic arm to throw a ping-pong ball into a cup.
+
+First, the report introduces the Machine Vision section of the project. Contained in this is both: Computation and correction of lens and image distortion, as well as calibrating the camera’s coordinate frame to match the table coordinate frame to ascertain precision, and lastly identifying and locating both the target and projectile for further use in the program, by utilizing specifically the OpenCV C++ library.
+
+Furthermore, the calibration from robot to table coordinate frame and the Physics part of the project is elucidated. Included in that, is the modeling of the throw, as well as transforming that information into a usable movement curve that the robot can move along, which is accomplished utilizing the Jacobian matrix.
+
+In conclusion, it's addressed why SQLite was chosen as the database engine in this project, as well as how it ended up being implemented and used in the main program.
+
 # Installation guide
+This project has a few dependencies that you'll need before you can build and run it. Below is a guide to install some of it, but not all. The rest, you'll have to find a guide on.
+
 Backup your files, I resign all responsibility if you mess up anything in your files by following this.
 Also, never ever use the restart or hibernate functions on your PC after dualbooting - Always shut it down fully.
 ## Ubuntu Dual Booting
