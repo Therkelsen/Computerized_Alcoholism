@@ -1,3 +1,0 @@
-/home/victoria/Computerized_Alcoholism/Database/CMakeFiles/rebuild_cache.dir
-/home/victoria/Computerized_Alcoholism/Database/CMakeFiles/edit_cache.dir
-/home/victoria/Computerized_Alcoholism/Database/CMakeFiles/db_test.dir
