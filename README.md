@@ -140,7 +140,7 @@ Run the following commands to install OpenCV
 
 `cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_DOCS=ON -DBUILD_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=&quot;~/opencv_contrib/modules&quot; -DPYTHON3_EXECUTABLE=/usr/bin/python3.8 -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 -DPYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.8 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.8.so -DPYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3.8/dist-packages/numpy/core/include/ -DOPENCV_GENERATE_PKGCONFIG=ON -DBUILD_opencv_apps=ON ..`
 
-`make -j$((\`nproc\`-1))`
+`make -j$((```nproc```-1))`
 
 `sudo make install`
 
