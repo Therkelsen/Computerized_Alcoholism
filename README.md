@@ -131,7 +131,7 @@ add_executable(ur_rtde_cmake_example main.cpp)
 target_link_libraries(ur_rtde_cmake_example PRIVATE ur_rtde::rtde)
 ```
 
-## Installer OpenCV
+## Install OpenCV
 Run the following commands to install OpenCV
 
 `sudo apt install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libcanberra-gtk-module`
@@ -140,7 +140,7 @@ Run the following commands to install OpenCV
 
 `cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_DOCS=ON -DBUILD_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=&quot;~/opencv_contrib/modules&quot; -DPYTHON3_EXECUTABLE=/usr/bin/python3.8 -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 -DPYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.8 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.8.so -DPYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3.8/dist-packages/numpy/core/include/ -DOPENCV_GENERATE_PKGCONFIG=ON -DBUILD_opencv_apps=ON ..`
 
-`make -j$((`nproc`-1))`
+`make -j$((\`nproc\`-1))`
 
 `sudo make install`
 
