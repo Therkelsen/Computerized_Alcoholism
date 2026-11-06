@@ -1,254 +1,81 @@
-# Computerized_Alcoholism
-Robot throws ping pong ball into cup - nice, yes?
+# Computerized Alcoholism
 
-# Abstract
-[This](https://github.com/Therkelsen/Computerized_Alcoholism/blob/v2/Assets/Gruppe%205%20Rapport.pdf) (danish) report showcases the process of programming a UR5-series industrial robotic arm to throw a ping-pong ball into a cup.
+[![C++](https://img.shields.io/badge/C%2B%2B-MSVC%2Fgcc-00599C?logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?logo=opencv&logoColor=white)](https://opencv.org/)
+[![Qt](https://img.shields.io/badge/Qt-41CD52?logo=qt&logoColor=white)](https://www.qt.io/)
+[![SQLite](https://img.shields.io/badge/SQLite-07405E?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![Universal Robots](https://img.shields.io/badge/Universal_Robots-UR5-006699?logo=robotframework&logoColor=white)](https://www.universal-robots.com/)
 
-First, the report introduces the Machine Vision section of the project. Contained in this is both: Computation and correction of lens and image distortion, as well as calibrating the camera’s coordinate frame to match the table coordinate frame to ascertain precision, and lastly identifying and locating both the target and projectile for further use in the program, by utilizing specifically the OpenCV C++ library.
+## 📄 Academic Project Report
 
-Furthermore, the calibration from robot to table coordinate frame and the Physics part of the project is elucidated. Included in that, is the modeling of the throw, as well as transforming that information into a usable movement curve that the robot can move along, which is accomplished utilizing the Jacobian matrix.
+The complete methodology, mathematical modeling, and engineering design for this project are detailed in the university report (in Danish):
+[**Gruppe 5 Rapport - Computerized Alcoholism**](https://github.com/Therkelsen/Computerized_Alcoholism/blob/v2/Assets/Gruppe%205%20Rapport.pdf)
 
-In conclusion, it's addressed why SQLite was chosen as the database engine in this project, as well as how it ended up being implemented and used in the main program.
+## Overview
 
-# Installation guide
-This project has a few dependencies that you'll need before you can build and run it. Below is a guide to install some of it, but not all. The rest, you'll have to find a guide on.
+This repository contains the software stack for an industrial robotics project utilizing a **UR5 series robotic arm** equipped with a Weiss WSG-50 gripper and an industrial camera (Basler pylon) to accurately throw a ping-pong ball into a target cup. 
 
-Backup your files, I resign all responsibility if you mess up anything in your files by following this.
-Also, never ever use the restart or hibernate functions on your PC after dualbooting - Always shut it down fully.
-## Ubuntu Dual Booting
-### Disable BitLocker Drive Encryption
-First, disable your disc encryption if it is active - As that will block you from resizing the Windows partition
+The software integrates computer vision, coordinate frame transformations, trajectory planning via Jacobian matrix calculations, database management, and real-time robot control via `ur_rtde`.
 
-Click Start, click Control Panel, click System and Security, and then click BitLocker Drive Encryption.
+## System Architecture
 
-Look for the drive on which you want BitLocker Drive Encryption turned off, and click Turn Off BitLocker.
+* **Machine Vision (`machinevision.cpp`)**: Utilizes Basler pylon and OpenCV to capture images, remove optical lens distortion using intrinsic camera matrices and distortion coefficients, and compute homography perspectives (`cv::getPerspectiveTransform`) to map pixel coordinates to real-world table coordinates. Employs Hough Circle Transforms (`cv::HoughCircles`) to locate the ball and cup dynamically.
 
-A message will be displayed, stating that the drive will be decrypted and that decryption may take some time.
+* **Robot-to-Table Calibration (`calib.cpp`)**: Implements the Kabsch algorithm using Singular Value Decomposition (SVD) and Eigen matrices to compute precise 3D rotation and translation vectors between the camera/table frame and the robot's TCP (Tool Center Point) frame.
 
-Once ready, Click Turn off Bitlocker / Decrypt the drive to continue and turn off BitLocker on the drive.
+* **Projectile Motion Modeling (`projectilemotion.cpp`)**: Computes the kinematic equations for projectile motion given a target cup position and flight duration. Translates Cartesian velocity vectors into joint velocities (`QDot`) and accelerations using the robot's Jacobian matrix.
 
-### Disable fast boot to avoid driver problems
+* **Robot Control Interface (`robotcontroller.cpp`)**: Built on top of the `ur_rtde` C++ library and `WeissWsg50` gripper driver. Handles precise Cartesian and joint-space movements, vacuum/gripper sequencing, throw initialization, and emergency stopping.
 
-Press the Windows key on your keyboard, and type in Command Prompt.
+* **Database Engine (`database.cpp`)**: Interfaces with an SQLite local database (`project_db.db`) using Qt SQL drivers to store and retrieve cell parameters, camera intrinsics, distortion coefficients, spatial homography translations/rotations, and experimental throw outcomes to track overall system accuracy.
 
-Without pressing Enter, right-click the cmd icon that appears, then select Run as administrator.
+## Repository Structure
 
-Type in `powercfg -h off` and press Enter.
+* `Code/main.cpp`: Main entry point handling system initialization, cell selection, state machine sequencing, and the throw execution loop.
+* `Code/machinevision.cpp` / `machinevision.h`: Basler camera interfacing, undistortion routines, and circle/object detection for balls and cups.
+* `Code/calib.cpp` / `calib.h`: SVD-based spatial calibration routine between robot coordinates and world vision frames.
+* `Code/projectilemotion.cpp` / `projectilemotion.h`: Physics modeling for the throw trajectory and Jacobian inverse kinematics mapping.
+* `Code/robotcontroller.cpp` / `robotcontroller.h`: UR5 RTDE control wrapper and Weiss gripper orchestration.
+* `Code/database.cpp` / `database.h`: SQLite database management layer for configuration persistence and hit statistics.
 
-### Ubuntu Installation
-Download [Rufus](https://github.com/pbatard/rufus/releases/download/v3.15/rufus-3.15.exe) &amp; [the Ubuntu .iso file](https://ubuntu.com/download/desktop/thank-you?version=20.04.3&amp;architecture=amd64)
+## Prerequisites & Dependencies
 
-Use Rufus to create a boot file on your flash drive
+* **Operating System**: Ubuntu 20.04 LTS (or compatible Linux environment for real-time control / URSim simulation)
+* **Libraries & Frameworks**:
+  * C++11 or higher
+  * OpenCV 4.x with contrib modules
+  * Qt 5 (with SQLite support)
+  * `ur_rtde` (UR Real-Time Data Exchange library)
+  * Basler pylon Camera Software Suite
+  * Eigen3 math library
 
-Boot from the flash drive (Do an advanced start and boot from the flash drive)
+## Installation & Setup
 
-First, you reduce the Windows partition by the amount of space you want your Ubuntu partition to have available. (Be careful when you mess around with your partitions, as you can seriously mess up your files.)
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Therkelsen/Computerized_Alcoholism.git
+   cd Computerized_Alcoholism
+   ```
 
-Then you create a new partition from the newly aquired free space, with the Ext4 format, which mounts on **/**
+2. **Install Dependencies (Ubuntu 20.04 reference):**
+   * Follow the detailed instructions inside the README installation subsections for setting up **RTDE**, **OpenCV**, and **URSim** (Java 8 + UR Offline Simulator).
 
-And you will need a BIOS partition with the size of 1 MB.
+3. **Build the Project:**
+   * Open the project in Qt Creator or configure via CMake:
+     ```bash
+     mkdir build && cd build
+     cmake ..
+     make
+     ```
 
-![Ext4 Partition illustration couldn't load](Assets/ext4.png)
+## Usage
 
-Then you just click Install Now and follow through the installer.
-
-You may have some problems booting into Ubuntu after installation, then you just load the boot menu on start (F2 or F10 by default on most laptops, but use google to find yours)
-
-### Select OS every time you boot
-Hvis du vil kunne vælge hvilken OS du booter fra når du starter op, skal du bruge grub-customizer
-
-Run the following commands
-
-`sudo apt install grub-customizer`
-
-`grub-customizer`
-
-Then you remove the tick from &quot;Boot default entry after x Seconds&quot;, under &quot;General settings&quot;.
-
-![Grub Customizer illustration couldn't load](Assets/grub.png)
-
-Remember to hit save, before you quit.
-
-## Install Google Chrome
-Run the following commands to install Google Chrome
-
-`wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb`
-
-`sudo dpkg -i google-chrome-stable_current_amd64.deb`
-
-## Customize the dock
-Run the following commands to install dconf-editor in which you can customize the dock
-
-`git clone https://gitlab.gnome.org/GNOME/dconf-editor.git`
-
-`sudo apt install dconf-editor`
-
-`dconf-editor`
-
-Go to `/org/gnome/shell/extensions/dash-to-dock/` and change what you want to change
-
-## Install QT Creator
-Run the following commands to install QT Creator and its dependencies
-
-`sudo apt install qtcreator build-essential qt5-default qt5-doc qt5-doc-html qtbase5-doc-html qtbase5-examples`
-
-## Install RTDE
-Run the following commands to install RTDE
-
-`sudo add-apt-repository ppa:sdurobotics/ur-rtde`
-
-`sudo apt update`
-
-`sudo apt install librtde librtde-dev`
-
-`sudo apt install libboost-all-dev`
-
-`git clone https://gitlab.com/sdurobotics/ur_rtde.git`
-
-`cd ur_rtde`
-
-`git submodule update --init --recursive`
-
-`mkdir build && cd build`
-
-`cmake ..`
-
-`make`
-
-`sudo make install`
-
-Then you can link RTDE with Cmake
-
-```cmake
-cmake_minimum_required(VERSION 3.5)
-
-project(ur_rtde_cmake_example)
-
-find_package(ur_rtde REQUIRED)
-
-add_executable(ur_rtde_cmake_example main.cpp)
-
-target_link_libraries(ur_rtde_cmake_example PRIVATE ur_rtde::rtde)
-```
-
-## Install OpenCV
-Run the following commands to install OpenCV
-
-`sudo apt install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libcanberra-gtk-module`
-
-`git clone https://github.com/opencv/opencv.git && git clone https://github.com/opencv/opencv_contrib.git && cd ./opencv && mkdir build && cd ./build`
-
-`cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_DOCS=ON -DBUILD_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=&quot;~/opencv_contrib/modules&quot; -DPYTHON3_EXECUTABLE=/usr/bin/python3.8 -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 -DPYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.8 -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.8.so -DPYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3.8/dist-packages/numpy/core/include/ -DOPENCV_GENERATE_PKGCONFIG=ON -DBUILD_opencv_apps=ON ..`
-
-`make -j$((`nproc`-1))`
-
-`sudo make install`
-
-Then you can link it with Cmake
-
-```cmake
-cmake_minimum_required(VERSION 2.8)
-
-project( main )
-
-find_package( OpenCV REQUIRED )
-
-include_directories( ${OpenCV_INCLUDE_DIRS} )
-
-add_executable( main main.cpp )
-
-target_link_libraries( main ${OpenCV_LIBS} )
-```
-
-## Install URSim
-Install Java 8
-
-Run the following command
-
-`sudo apt install openjdk-8-jdk`
-
-Confirm that you are using the right version of Java
-
-`java -version`
-
-You should get an output similar to this
-```
-openjdk version "1.8.0_292"
-
-OpenJDK Runtime Environment (build 1.8.0_292-8u292-b10-0ubuntu1~20.04-b10)
-
-OpenJDK 64-Bit Server VM (build 25.292-b10, mixed mode)
-```
-
-If there are multiple versions of Java, you must choose 8 (1.8)
-
-`sudo update-alternatives --config java`
-
-### Installer libcurl4
-
-Kør følgende commands
-
-`sudo apt install libcurl4`
-
-`sudo ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4.5.0 /usr/lib/x86_64-linux-gnu/libcurl.so.4.7.0`
-
-`sudo add-apt-repository ppa:ondrej/php`
-
-`sudo apt update`
-
-`sudo apt install php7.2-fpm php7.2-gd php7.2-curl php7.2-mysql php7.2-dev php7.2-cli php7.2-common php7.2-mbstring php7.2-intl php7.2-zip php7.2-bcmath`
-
-### Download & Install URSim
-Download the newest URSim from [URs webpage](https://www.universal-robots.com/download/?query=ursim)
-
-(Choose the filters **Robot arm size: UR5** and **Software: Linux Offline simulator** )
-
-I downloaded [CB-SERIES - LINUX - URSIM-3.15.4](https://www.universal-robots.com/download/software-cb-series/simulator-linux/offline-simulator-cb3-linux-ursim-3154/)
-
-**Unzip the file**
-
-Run the following commands
-
-`cd ~/Downloads/`
-
-`tar xvzf URSim_Linux-X.XX.X.XXXXXX.tar.gz` (Where X.XX.X.XXXXXX is your version)
-
-`sudo mv ursim-X.XX.X.XXXXXX/ ~`
-
-You will now have a file called **ursim-X.XX.X.XXXXXX** in **/home/(brugernavn)/**
-
-In the file **install.sh** in the folder **ursim-X.XX.X.XXXXXX**, replace the following line
-
-`commonDependencies='libcurl3 libjava3d-* ttf-dejavu* fonts-ipafont fonts-baekmuk fonts-nanum fonts-arphic-uming fonts-arphic-ukai'`
-
-with
-
-`commonDependencies='libcurl4 openjdk-8-jre libjava3d-* ttf-dejavu* fonts-ipafont fonts-baekmuk fonts-nanum fonts-arphic-uming fonts-arphic-ukai'`
-
-Remember saving the file before exiting
-
-**Make the necessary files executable**
-
-Cd into the ursim folder
-
-`cd /home/(brugernavn)/ursim-X.XX.X.XXXXXX`
-
-Run the following commands
-
-`sudo chmod +x start-ursim.sh`
-
-`sudo chmod +x starturcontrol.sh`
-
-`sudo chmod +x stopurcontrol.sh`
-
-`sudo chmod +x URControl`
-
-Run the installer
-
-`./install.sh`
-
-Now you can run the simulator, I recommend running it as sudo first, then normally - That way you force the controller to start first.
-
-`sudo ./start-ursim.sh`
-
-`./start-ursim.sh`
+1. Start your UR5 robot controller or launch the local **URSim** instance:
+   ```bash
+   sudo ./start-ursim.sh
+   ```
+2. Run the compiled application binary:
+   ```bash
+   ./Computerized_Alcoholism
+   ```
+3. Follow the console prompt to select your active robot cell (1-4) or simulator (Cell 5). The program will load calibration data, move to the starting position, locate the ball and cup, execute the modeled throwing trajectory, release the ball at the calculated timestamp, and record performance metrics into the SQLite database.
